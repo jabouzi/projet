@@ -80,13 +80,13 @@ class Runner {
             // permissions issue or non-existent file
             throw $e;
         } catch ( XmlException $e ) {
-			throw $e;
+            throw $e;
             // broken xml
         } catch ( ConfException $e ) {
-			throw $e;
+            throw $e;
             // wrong kind of XML file
         } catch ( Exception $e ) {
-			throw $e;
+            throw $e;
             // backstop: should not be called
         }
     }
