@@ -5,7 +5,7 @@ class XmlException extends Exception {
 
     function __construct( LibXmlError $error ) {
         $shortfile = basename( $error->file );
-	print_r( $error );
+        //~ print_r( $error );
         $msg = "[{$shortfile}, line {$error->line}, col {$error->column}] {$error->message}";
         $this->error = $error;
         parent::__construct( $msg, $error->code );
@@ -69,7 +69,9 @@ class Conf {
 class Runner {
     static function init() { 
         try {
-            $conf = new Conf( dirname(__FILE__)."/conf.broken.xml" );
+            //~ $conf = new Conf( dirname(__FILE__)."/conf.broken.xml" );
+            //~ $conf = new Conf( dirname(__FILE__)."/conf.unwriteable.xml" );
+            $conf = new Conf( "nonexistent/not_there.xml" );
             print "user: ".$conf->get('user')."\n";
             print "host: ".$conf->get('host')."\n";
             $conf->set("pass", "newpass");
@@ -78,10 +80,13 @@ class Runner {
             // permissions issue or non-existent file
             throw $e;
         } catch ( XmlException $e ) {
+			throw $e;
             // broken xml
         } catch ( ConfException $e ) {
+			throw $e;
             // wrong kind of XML file
         } catch ( Exception $e ) {
+			throw $e;
             // backstop: should not be called
         }
     }

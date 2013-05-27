@@ -41,9 +41,9 @@ class Conf {
 
 
 try {
-    $conf = new Conf( dirname(__FILE__)."/conf01.xml" );
+    //$conf = new Conf( dirname(__FILE__)."/conf01.xml" );
     //$conf = new Conf( dirname(__FILE__)."/conf.unwriteable.xml" );
-    //$conf = new Conf( "nonexistent/not_there.xml" );
+    $conf = new Conf( "nonexistent/not_there.xml" );
     print "user: ".$conf->get('user')."\n";
     print "host: ".$conf->get('host')."\n";
     $conf->set("pass", "newpass");

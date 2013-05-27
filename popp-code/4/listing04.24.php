@@ -22,6 +22,7 @@ class Person {
 }
 
 $p = new Person();
+print $p->age;
 if ( isset( $p->name ) ) {
     print $p->name;
 } else {
