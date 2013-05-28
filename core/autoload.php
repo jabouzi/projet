@@ -29,13 +29,6 @@ class autoload
         if (is_readable($path)) require $path;
     }
     
-    public static function view_autoload($class)
-    {
-        $class = strtolower($class);
-        $path = $_SERVER['DOCUMENT_ROOT'] . "app/view/{$class}.php";
-        if (is_readable($path)) require $path;
-    }
-    
     public static function model_autoload($class)
     {
         $class = strtolower($class);
@@ -47,7 +40,6 @@ spl_autoload_register('autoload::config_autoload');
 spl_autoload_register('autoload::core_autoload');
 spl_autoload_register('autoload::lib_autoload');
 spl_autoload_register('autoload::controller_autoload');
-spl_autoload_register('autoload::view_autoload');
 spl_autoload_register('autoload::model_autoload');
 
 

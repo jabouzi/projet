@@ -83,7 +83,7 @@ class Database {
     }
     
     public function setDriver($driver){
-        $this->drive = $driver;
+        $this->driver = $driver;
     }
 
     /**

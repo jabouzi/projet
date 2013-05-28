@@ -1,6 +1,6 @@
 <?php
 
-interface InterfaceDB
+interface Interfacedb
 {
     public function select_all($table);
     public function select($table, $where);

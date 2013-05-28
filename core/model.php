@@ -1,14 +1,15 @@
 <?php
 
-class Model implements InterfaceDB
+require_once('interfacedb.php');
+
+class Model implements Interfacedb
 {
     private $bd = null;
-    private last_insert_id = 0;
     
     function __construct()
     {
         require_once('app/config/config.php');
-        $this->db = new Database();
+        $this->db = Database::getInstance();
         $this->db->setHost($config['host']);
         $this->db->setUsername($config['username']);
         $this->db->setPassword($config['password']);
@@ -23,7 +24,7 @@ class Model implements InterfaceDB
         $sql_select = ' * ';
         if (count($select)) $sql_select = implode(", ", $select);
         $query = "SELECT {$select} FROM {$table} ";
-        $this->db->query($query, $args);
+        return $this->db->query($query, $args);
     }
     
     public function select($table, $where, $select = array())
@@ -36,17 +37,17 @@ class Model implements InterfaceDB
         }
         
         $i = 0;
-        foreach($args as $key => $value)
+        foreach($where as $key => $value)
         {
-            if (!$i) $where_sql = "WHERE {$key} = {$value}";
-            else $where_sql .= " AND {$key} = {$value}";
+            if (!$i) $where_sql = "WHERE :{$key} = {$key}";
+            else $where_sql .= " AND {$key} = {$key}";
             $i++;
         }
         
         $sql_select = ' * ';
         if (count($select)) $sql_select = implode(", ", $select);
-        $query = "SELECT {$select} FROM {$table} {$where_sql} ";
-        $this->db->query($query, $args);
+        $query = "SELECT {$sql_select} FROM {$table} {$where_sql} ";
+        return $this->db->query($query, $args);
     }
     
     public function insert($table, $data)
@@ -60,9 +61,9 @@ class Model implements InterfaceDB
         $keys = array_keys($data);
         $values = array_keys($args);
         
-        $query = "insert INTO {$table} (" . implode(", ", $keys) . ") VALUES ('" . implode("', '", $values) . "')";
-        $this->db->query($query, $args);
-        $this->last_insert_id = $this->db->last_insert_id;
+        $query = "insert INTO {$table} (" . implode(", ", $keys) . ") VALUES (" . implode(", ", $values) . ")";
+        $res = $this->db->query($query, $args);
+        return $res;
     }
     
     public function update($table, $data, $where)
@@ -76,10 +77,10 @@ class Model implements InterfaceDB
         }
         
         $i = 0;
-        foreach($args2 as $key => $value)
+        foreach($where as $key => $value)
         {
-            if (!$i) $where_sql = "WHERE {$key} = {$value}";
-            else $where_sql .= " AND {$key} = {$value}";
+            if (!$i) $where_sql = "WHERE :{$key} = {$key}";
+            else $where_sql .= " AND {$key} = {$key}";
             $i++;
         }
         
@@ -96,7 +97,7 @@ class Model implements InterfaceDB
         }
         
         $query = "UPDATE {$table} SET {$set_sql} {$where_sql} ";
-        $this->db->query($query, array_merge($args1, $args2));
+        return $this->db->query($query, array_merge($args1, $args2));
     }
     
     public function delete($table, $where)
@@ -109,19 +110,19 @@ class Model implements InterfaceDB
         }
         
         $i = 0;
-        foreach($args as $key => $value)
+        foreach($where as $key => $value)
         {
-            if (!$i) $where_sql = "WHERE {$key} = {$value}";
-            else $where_sql .= " AND {$key} = {$value}";
+            if (!$i) $where_sql = "WHERE :{$key} = {$key}";
+            else $where_sql .= " AND {$key} = {$key}";
             $i++;
         }
         
         $query = "DELETE FROM {$table} {$where_sql} ";
-        $this->db->query($query, $args);
+        return $this->db->query($query, $args);
     }
     
     public function get_last_inert_id()
     {
-        return $this->last_insert_id;
+        return $this->db->lastInsertId();
     }
 }
