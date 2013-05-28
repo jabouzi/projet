@@ -1,7 +1,8 @@
 <?php
 
-require_once('core/autoload.php');
 require_once('app/helper/functions.php');
+require_once('core/autoload.php');
+
 //require 'includes/exceptions.php';
 
 session_start();
@@ -23,10 +24,3 @@ else
 {
     echo 'Load default controller';
 }
-//~ lib::setitem('controller', new controller($_GET['u']));
-//~ 
-//~ $view = new view();
-//~ lib::getitem('controller')->render();
-//~ $content = $view->finish();
-//~ 
-//~ echo view::show('shell', array('body'=>$content));

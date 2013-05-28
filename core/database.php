@@ -1,9 +1,11 @@
 <?php
 
-interface Database 
+interface InterfaceDB
 {
-    public function insert();
-    public function update();
-    public function delete();
+    public function select_all($table);
+    public function select($table, $where);
+    public function insert($table, $data);
+    public function update($table, $data, $where);
+    public function delete($table, $where);
     public function get_last_inert_id();
 }
