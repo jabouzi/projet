@@ -11,7 +11,7 @@ class Car {
 		// the engine object is created outside and is passed as argument to Car constructor
 		// When this Car object is destroyed, the engine is still available to objects other than Car
 		// If the instance of Car is garbage collected the associated instance of Engine may not be garbage collected (if it is still referenced by other objects)
-		$this->engine = new Engine($engineCapacity, $engineSerialNumber);
+		$this->engine = new Engine($engineCapacity, $engineSerialNumber, $this);
 	}
     
     function  __destruct() {
@@ -34,10 +34,12 @@ class Car {
 class Engine {
 	private $engineCapacity;
 	private $engineSerialNumber;
+    public $car;
 	
-	function __construct($engineCapacity, $engineSerialNumber) {
+	function __construct($engineCapacity, $engineSerialNumber, $car) {
 		$this->engineCapacity = $engineCapacity;
 		$this->engineSerialNumber = $engineSerialNumber;
+        $this->car = $car;
 	}
 
 	public function getEngineCapacity() {
