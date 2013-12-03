@@ -1,0 +1,1 @@
+<p>Now is: <?php echo date("l, j F Y, H:i:s"); ?> and the weather is <strong><?php echo $weather; ?></strong></p><p>Template is: Monday, 2 December 2013, 21:44:12</p>
