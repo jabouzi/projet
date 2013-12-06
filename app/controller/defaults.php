@@ -7,11 +7,20 @@ class Defaults extends Controller
         $this->user = new User();
     }
     
+    public function index()
+    {
+        view::load_view('header');
+        view::load_view('defaults');
+        view::load_view('footer');
+    }
+    
     public function test()
     {
         $data['var1'] = 'Test1';
         var_dump($data);
+        view::load_view('header');
         view::load_view('defaults', $data);
+        view::load_view('footer');
     } 
     
     public function test2($p1, $p2)
