@@ -7,21 +7,28 @@ require_once('core/autoload.php');
 //require 'includes/exceptions.php';
 
 session_start();
-var_dump($_GET);
+//var_dump($_GET);
 $params = get_controller_params($_GET);
-var_dump($params);
+//var_dump($params);
 if (count($params))
 {
     if (isset($params['controller']))
     {
-        $obj = new $params['controller']();
-        if (is_callable(array($obj, $params['method'])))
+        if (controller_exists($params['controller']))
         {
-            echo call_user_func_array(array($obj, $params['method']), $params['args']);
+            $obj = new $params['controller']();
+            if (is_callable(array($obj, $params['method'])))
+            {
+                echo call_user_func_array(array($obj, $params['method']), $params['args']);
+            }
+            else
+            {
+                echo display_page_error();
+            }
         }
         else
         {
-            echo 'Errorz';
+            display_page_error();
         }
     }
     else

@@ -39,6 +39,7 @@ class Defaults extends Controller
     
     public function user($id)
     {
+        var_dump($id);
         $user = $this->user->get_user($id);
         $data['user'] = $user[0];
         view::load_view('user', $data);
