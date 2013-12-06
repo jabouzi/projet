@@ -8,7 +8,7 @@ class Controller
         require_once('model.php');
     }
     
-    function load_view($view_path, $view_args)
+    function load_view($view_path, $view_args = array())
     {
         view::load_view($view_path, $view_args);
     }

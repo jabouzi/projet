@@ -2,11 +2,14 @@
 
 class View
 {
-    static function load_view($view_path, $view_args)
+    static function load_view($view_path, $view_args = array())
     {
-        foreach($view_args as $var => $args)
+        if (!empty($view_args))
         {
-            ${$var} = $args;
+            foreach($view_args as $var => $args)
+            {
+                ${$var} = $args;
+            }
         }
 
         ob_start();
