@@ -17,7 +17,6 @@ class Defaults extends Controller
     public function test()
     {
         $data['var1'] = 'Test1';
-        var_dump($data);
         view::load_view('header');
         view::load_view('defaults', $data);
         view::load_view('footer');
@@ -39,7 +38,6 @@ class Defaults extends Controller
     
     public function user($id)
     {
-        var_dump($id);
         $user = $this->user->get_user($id);
         $data['user'] = $user[0];
         view::load_view('user', $data);
