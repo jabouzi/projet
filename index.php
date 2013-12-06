@@ -8,6 +8,7 @@ require_once('core/autoload.php');
 session_start();
 
 $params = get_controller_params($_GET);
+var_dump($params);
 if (count($params))
 {
     $obj = new $params['controller']();
