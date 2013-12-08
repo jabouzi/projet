@@ -1,7 +1,7 @@
 <?php
 //echo __DIR__.'/__prepend.php';
 //ini_set('auto_prepend_file', __DIR__.'/__prepend.php');
-require_once('__prepend.php');
+require_once('prepend.php');
 
 function get_controller_params($url_params)
 {
@@ -28,8 +28,7 @@ function controller_exists($controller)
 function display_page_error()
 {
     $message = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "core/template/error.html");
-    $message = printf($message, 'Warning', '404 Page Not Found', 'The page you requested was not found.');
-    
-    echo $message;
+    $message = printf($message, 'Warning', '404 Page Not Found', 'The page you requested was not found.');    
+    //echo $message;
 }
 

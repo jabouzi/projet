@@ -22,7 +22,7 @@ if (count($params))
             }
             else
             {
-                echo display_page_error();
+                display_page_error();
             }
         }
         else
