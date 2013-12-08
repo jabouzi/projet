@@ -24,10 +24,12 @@ class Defaults extends Controller
     
     public function test2($p1, $p2)
     {
-        $data['var1'] = 'Test1';
+        $data['var1'] = 'Test2';
         $data['var2'] = $p1 + $p2;
+        view::load_view('header');
         view::load_view('defaults', $data);
         view::load_view('defaults2', $data);
+        view::load_view('footer');
     }
     
     public function insert()

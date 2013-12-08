@@ -1,6 +1,6 @@
 <?php
     // Variables
-    $weather = "fine";
+    $weather = "alex";
 
     include("cached_file.php");
 ?>
