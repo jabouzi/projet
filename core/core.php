@@ -1,4 +1,7 @@
 <?php
+//echo __DIR__.'/__prepend.php';
+//ini_set('auto_prepend_file', __DIR__.'/__prepend.php');
+require_once('__prepend.php');
 
 function get_controller_params($url_params)
 {
