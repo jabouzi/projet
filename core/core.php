@@ -27,6 +27,9 @@ function controller_exists($controller)
 
 function display_page_error()
 {
-    require $_SERVER['DOCUMENT_ROOT'] . "core/error.php";
+    $message = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "core/template/error.html");
+    $message = printf($message, 'Warning', '404 Page Not Found', 'The page you requested was not found.');
+    
+    echo $message;
 }
 
