@@ -7,7 +7,7 @@ function get_controller_params($url_params)
 {
     $core = array();
     if (!isset($url_params['u'])) return $core;
-    $url_params = mysql_escape_string($url_params['u']);
+    $url_params = $url_params['u'];
     $params = explode('/',trim($url_params,'/'));
     //var_dump($params);
     if (isset($params[0])) $core['lang'] = $params[0];

@@ -16,13 +16,27 @@ if (count($params))
         if (controller_exists($params['controller']))
         {
             $obj = new $params['controller']();
-            if (is_callable(array($obj, $params['method'])))
+            if (isset($params['method']))
             {
-                echo call_user_func_array(array($obj, $params['method']), $params['args']);
+                if (is_callable(array($obj, $params['method'])))
+                {
+                    echo call_user_func_array(array($obj, $params['method']), $params['args']);
+                }
+                else
+                {
+                    display_page_error();
+                }
             }
             else
             {
-                display_page_error();
+                if (is_callable(array($obj, 'index')))
+                {
+                    echo call_user_func_array(array($obj, 'index'), array());
+                }
+                else
+                {
+                    display_page_error();
+                }
             }
         }
         else
