@@ -33,6 +33,7 @@ class CDUpperCase
         $cd->$type = array_map('strtoupper', $cd->$type);
     }
 }
+
 class CDMakeXML
 {
     public static function create(CD $cd)
