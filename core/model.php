@@ -8,7 +8,7 @@ class Model implements Interfacedb
     
     function __construct()
     {
-        require_once('app/config/config.php');
+        require(APPPATH.'/app/config/config.php');
         $this->db = Database::getInstance();
         $this->db->setHost($config['host']);
         $this->db->setUsername($config['username']);

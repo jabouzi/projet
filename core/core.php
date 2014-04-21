@@ -1,11 +1,11 @@
 <?php
-//echo __DIR__.'/__prepend.php';
-//ini_set('auto_prepend_file', __DIR__.'/__prepend.php');
-require_once('prepend.php');
+
+require('prepend.php');
 
 function get_controller_params($url_params)
 {
-    $core = array();
+	require(APPPATH.'/app/config/config.php');
+    $core = array('lang' => $config['lang'], 'controller' => $config['default']);
     if (!isset($url_params['u'])) return $core;
     $url_params = $url_params['u'];
     $params = explode('/',trim($url_params,'/'));

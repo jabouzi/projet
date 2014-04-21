@@ -1,21 +1,21 @@
 <?php
 //ini_set('display_errors',1);
 //ini_set('display_startup_errors',1);
-require_once('core/core.php');
-require_once('core/autoload.php');
+define('APPPATH', $_SERVER['DOCUMENT_ROOT']);
+require_once(APPPATH.'core/core.php');
+require_once(APPPATH.'core/autoload.php');
 //require 'includes/exceptions.php';
-$sess = new SessionHandler();
-session_set_save_handler(array(&$sess, '_open'),
-                         array(&$sess, '_close'),
-                         array(&$sess, '_read'),
-                         array(&$sess, '_write'),
-                         array(&$sess, '_destroy'),
-                         array(&$sess, '_clean'));
+$session = new Session();
+session_set_save_handler(array(&$session, '_open'),
+                         array(&$session, '_close'),
+                         array(&$session, '_read'),
+                         array(&$session, '_write'),
+                         array(&$session, '_destroy'),
+                         array(&$session, '_clean'));
 session_start();
 
-//var_dump($_GET);
 $params = get_controller_params($_GET);
-//var_dump($params);
+
 if (count($params))
 {
     if (isset($params['controller']))

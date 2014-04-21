@@ -8,7 +8,7 @@
     Welcome to the replacement system for the Outlook Address book.
 </p>
 <p>
-    Cool things to know: <h1><?=$var1?></h1>
+    Cool things to know: <h1><?//=$var1?></h1>
 </p>
 <ul>
     <li>You can easily <a href="/contacts/add">add contacts</a></li>
