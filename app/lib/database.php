@@ -9,7 +9,8 @@
 * print_r($results);
 *
 * @author Matthew Elliston <matt@e-titans.com>
-* @version 1.0
+* @modified Skander Jabouzi <skander@skanderjabouzi.com>
+* @version 2.0
 */
 class Database {
 
@@ -18,19 +19,20 @@ class Database {
     * @static Database $instance
     */
     private static $instance;
-    
+
     /**
     * Database connection
     * @access private
     * @var PDO $connection
     */
     private $connection;
-    
+
     private $hostname;
     private $username;
     private $password;
     private $database;
     private $driver;
+
     /**
     * Constructor
     * @param $dsn The Data Source Name. eg, "mysql:dbname=testdb;host=127.0.0.1"
@@ -38,15 +40,18 @@ class Database {
     * @param $password
     */
     private function __construct(){
-        
-    }
-    
-    public function connect()
-    {                
-        $this->connection = new PDO("{$this->driver}:dbname={$this->database};host={$this->hostname}",$this->username,$this->password);
-        //$this->con = new pdo("{$this->driver}:dbname={$this->database};host={$this->host};port=3307;unix_socket:/tmp/mysql41.sock",$this->username,$this->password);
 
+    }
+
+    public function connect()
+    {
+        $this->connection = new PDO("{$this->driver}:dbname={$this->database};host={$this->hostname}",$this->username,$this->password);
         $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+
+    public function close()
+    {
+        $this->connection = null;
     }
 
     /**
@@ -65,23 +70,23 @@ class Database {
         }
         return self::$instance;
     }
-    
+
     public function setHost($hostname){
         $this->hostname = $hostname;
     }
-    
+
     public function setUsername($username){
         $this->username = $username;
     }
-    
+
     public function setPassword($password){
         $this->password = $password;
     }
-    
+
     public function setDatabase($database){
         $this->database = $database;
     }
-    
+
     public function setDriver($driver){
         $this->driver = $driver;
     }
@@ -94,7 +99,6 @@ class Database {
     * @return array Containing all the remaining rows in the result set.
     */
     public function query($query, $args){
-        $tokens = explode(" ",$query);
         try{
             $sth = $this->connection->prepare($query);
             if(empty($args)){
@@ -103,7 +107,7 @@ class Database {
             else{
                 $sth->execute($args);
             }
-            if($tokens[0] == "SELECT"){
+            if(strpos(strtoupper(trim($query)), "SELECT") === 0){
                 $sth->setFetchMode(PDO::FETCH_ASSOC);
                 $results = $sth->fetchAll();
                 return $results;

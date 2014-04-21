@@ -4,8 +4,15 @@
 require_once('core/core.php');
 require_once('core/autoload.php');
 //require 'includes/exceptions.php';
-
+$sess = new SessionHandler();
+session_set_save_handler(array(&$sess, '_open'),
+                         array(&$sess, '_close'),
+                         array(&$sess, '_read'),
+                         array(&$sess, '_write'),
+                         array(&$sess, '_destroy'),
+                         array(&$sess, '_clean'));
 session_start();
+
 //var_dump($_GET);
 $params = get_controller_params($_GET);
 //var_dump($params);
