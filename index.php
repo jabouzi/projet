@@ -1,7 +1,10 @@
 <?php
 //ini_set('display_errors',1);
 //ini_set('display_startup_errors',1);
-define('APPPATH', $_SERVER['DOCUMENT_ROOT']);
+$slash = '';
+if (substr($_SERVER['DOCUMENT_ROOT'], -1) != '/') $slash = '/';
+define('APPPATH', $_SERVER['DOCUMENT_ROOT'].$slash);
+
 require_once(APPPATH.'core/core.php');
 require_once(APPPATH.'core/autoload.php');
 //require 'includes/exceptions.php';
