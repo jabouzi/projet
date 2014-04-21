@@ -5,10 +5,18 @@ $slash = '';
 if (substr($_SERVER['DOCUMENT_ROOT'], -1) != '/') $slash = '/';
 define('APPPATH', $_SERVER['DOCUMENT_ROOT'].$slash);
 
-require_once(APPPATH.'core/core.php');
-require_once(APPPATH.'core/autoload.php');
-require_once(APPPATH.'app/helper/general_helper.php');
-//require_once(APPPATH.'app/config/config.php');
+require(APPPATH.'core/core.php');
+require(APPPATH.'core/autoload.php');
+require(APPPATH.'app/config/config.php');
+foreach($config['autoload_helpers'] as $file)
+{
+	require(APPPATH."app/helper/{$file}.php");
+}
+
+foreach($config['autoload_languages'] as $file)
+{
+	require(APPPATH."app/languages/{$file}.php");
+}
 
 //require 'includes/exceptions.php';
 $session = new Session();
@@ -21,7 +29,7 @@ session_set_save_handler(array(&$session, '_open'),
 session_start();
 
 $params = get_controller_params($_GET);
-
+//var_dump($params);
 //if (count($params))
 //{
     if (isset($params['controller']))

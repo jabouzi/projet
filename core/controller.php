@@ -4,6 +4,7 @@ class Controller
 {
     function __construct()
     {
+        require_once(APPPATH.'app/config/config.php');
         require_once('view.php');
         require_once('model.php');
     }

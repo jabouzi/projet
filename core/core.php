@@ -14,7 +14,6 @@ function get_controller_params($url_params)
     if (isset($params[1])) $core['controller'] = ucfirst(strtolower($params[1]));
     if (isset($params[2])) $core['method'] = $params[2];
     if (isset($params[3])) $core['args'] = array_slice($params, 3);
-    else $core['args'] = array();
     //var_dump($core);
     return $core;
 }
