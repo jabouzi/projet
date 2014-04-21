@@ -7,6 +7,9 @@ define('APPPATH', $_SERVER['DOCUMENT_ROOT'].$slash);
 
 require_once(APPPATH.'core/core.php');
 require_once(APPPATH.'core/autoload.php');
+require_once(APPPATH.'app/helper/general_helper.php');
+//require_once(APPPATH.'app/config/config.php');
+
 //require 'includes/exceptions.php';
 $session = new Session();
 session_set_save_handler(array(&$session, '_open'),

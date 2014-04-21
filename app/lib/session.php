@@ -38,8 +38,8 @@ class Session {
     function _write($session_id, $user_data)
     {
         $args = array(':session_id' => $session_id,
-					':ip_address' => $this->ip_address(),
-					':user_agent' => $this->user_agent(),
+					':ip_address' => ip_address(),
+					':user_agent' => user_agent(),
 					':last_activity' => time(),
 					':user_data' => serialize($user_data));
         $query = "REPLACE INTO sessions VALUES (:session_id, :ip_address, :user_agent, :last_activity, :user_data)";
@@ -65,18 +65,7 @@ class Session {
 		$args = array(':username' => $username);
         $query = "delete from sessions where data like('%userID|s:%\":username%\";first_name|s:%')";
         $this->db->query($query);
-    }
-
-    private function user_agent()
-	{
-		$user_agent = ( ! isset($_SERVER['HTTP_USER_AGENT'])) ? FALSE : $_SERVER['HTTP_USER_AGENT'];
-		return $user_agent;
-	}
-
-	private function ip_address()
-	{
-		return $_SERVER['REMOTE_ADDR'];
-	}
+    }  
 
 }
 ?>
