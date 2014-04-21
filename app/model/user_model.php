@@ -1,6 +1,6 @@
 <?php
 
-class User extends Model
+class User_model extends Model
 {
     public function add_user($user)
     {

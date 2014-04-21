@@ -12,4 +12,9 @@ class Controller
     {
         view::load_view($view_path, $view_args);
     }
+    
+    function redirect($controller)
+    {
+		
+	}
 }

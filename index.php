@@ -16,8 +16,8 @@ session_start();
 
 $params = get_controller_params($_GET);
 
-if (count($params))
-{
+//if (count($params))
+//{
     if (isset($params['controller']))
     {
         if (controller_exists($params['controller']))
@@ -51,20 +51,20 @@ if (count($params))
             display_page_error();
         }
     }
-    else
-    {
-        $obj = new defaults();
-        if (is_callable(array($obj, 'index')))
-        {
-            echo call_user_func_array(array($obj, 'index'), array());
-        }
-    }
-}
-else
-{
-    $obj = new defaults();
-    if (is_callable(array($obj, 'index')))
-    {
-        echo call_user_func_array(array($obj, 'index'), array());
-    }
-}
+    //else
+    //{
+        //$obj = new defaults();
+        //if (is_callable(array($obj, 'index')))
+        //{
+            //echo call_user_func_array(array($obj, 'index'), array());
+        //}
+    //}
+//}
+//else
+//{
+    //$obj = new defaults();
+    //if (is_callable(array($obj, 'index')))
+    //{
+        //echo call_user_func_array(array($obj, 'index'), array());
+    //}
+//}
