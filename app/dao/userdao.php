@@ -11,7 +11,7 @@ class Userdao {
     
     public function insert($user)
     {
-        $args = (
+        $args = array(
                 ':email' => $user->email, 
                 ':first_name' => $user->first_name, 
                 ':last_name' => $user->last_name,
@@ -19,14 +19,14 @@ class Userdao {
                 ':password' => $user->password
             );
             
-        $query = "INSERT INTO user_data VALUES ('', :email, :first_name, :last_name, :user_name, :password";
+        $query = "INSERT INTO user_data VALUES ('', :email, :first_name, :last_name, :user_name, :password)";
         $this->db->query($query, $args);
         return $this->db->lastInsertId();
     }
     
     public function update($user, $where)
     {
-        $args = (
+        $args = array(
                 ':email' => $user->email, 
                 ':first_name' => $user->first_name, 
                 ':last_name' => $user->last_name,
@@ -34,14 +34,31 @@ class Userdao {
                 ':password' => $user->password
             );
             
-        $query = "INSERT INTO user_data VALUES ('', :email, :first_name, :last_name, :user_name, :password";
-        $this->db->query($query, $args);
+        $i = 0;
+        foreach($where as $key => $value)
+        {
+            if (!$i) $where_sql = "WHERE :{$key} = {$key}";
+            else $where_sql .= " AND {$key} = {$key}";
+            $i++;
+        }
+        
+        $query = "UPDATE user_data SET 
+                email = :email, first_name = :first_name, last_name = :last_name, user_name = :user_name, password = :password 
+                {$sql_where} ";
+        return $this->db->query($query, $args);
     }
     
     public function delete($where)
     {
-            
-        $query = "INSERT INTO user_data VALUES ('', :email, :first_name, :last_name, :user_name, :password";
+        $i = 0;
+        foreach($where as $key => $value)
+        {
+            if (!$i) $where_sql = "WHERE :{$key} = {$key}";
+            else $where_sql .= " AND {$key} = {$key}";
+            $i++;
+        }
+        
+        $query = "DELETE FROM user_data {$sql_where} ";
         $this->db->query($query, $args);
         return $this->db->lastInsertId();
     }
@@ -51,7 +68,7 @@ class Userdao {
         $args = array();
         $sql_select = ' * ';
         if (count($select)) $sql_select = implode(", ", $select);
-        $query = "SELECT {$select} FROM user_data ";
+        $query = "SELECT {$sql_select} FROM user_data ";
         $results = $this->db->query($query, $args);
         foreach($results as $result)
         {

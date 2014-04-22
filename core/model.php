@@ -16,7 +16,7 @@ class Model implements Interfacedb
         $args = array();
         $sql_select = ' * ';
         if (count($select)) $sql_select = implode(", ", $select);
-        $query = "SELECT {$select} FROM {$table} ";
+        $query = "SELECT {$sql_select} FROM {$table} ";
         return $this->db->query($query, $args);
     }
     
