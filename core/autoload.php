@@ -35,6 +35,20 @@ class autoload
         $path = $_SERVER['DOCUMENT_ROOT'] . "app/model/{$class}.php";
         if (is_readable($path)) require $path;
     }
+    
+    public static function class_autoload($class)
+    {
+        $class = strtolower($class);
+        $path = $_SERVER['DOCUMENT_ROOT'] . "app/class/{$class}.php";
+        if (is_readable($path)) require $path;
+    }
+    
+    public static function dao_autoload($class)
+    {
+        $class = strtolower($class);
+        $path = $_SERVER['DOCUMENT_ROOT'] . "app/dao/{$class}.php";
+        if (is_readable($path)) require $path;
+    }
 }
 spl_autoload_register('autoload::config_autoload');
 spl_autoload_register('autoload::core_autoload');
