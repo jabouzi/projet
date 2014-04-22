@@ -8,14 +8,7 @@ class Model implements Interfacedb
     
     function __construct()
     {
-        require(APPPATH.'/app/config/config.php');
-        $this->db = Database::getInstance();
-        $this->db->setHost($config['host']);
-        $this->db->setUsername($config['username']);
-        $this->db->setPassword($config['password']);
-        $this->db->setDatabase($config['database']);
-        $this->db->setDriver($config['driver']);
-        $this->db->connect(); 
+        $this->db = Database::getInstance(); 
     }
     
     public function select_all($table, $select = array())
