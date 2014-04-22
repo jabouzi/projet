@@ -9,6 +9,7 @@ function get_controller_params($url_params)
     if (!isset($url_params['u'])) return $core;
     $url_params = $url_params['u'];
     $params = explode('/',trim($url_params,'/'));
+    $core['args'] = array();
     //var_dump($params);
     if (isset($params[0])) $core['lang'] = $params[0];
     if (isset($params[1])) $core['controller'] = ucfirst(strtolower($params[1]));

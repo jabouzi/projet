@@ -24,6 +24,7 @@ function ip_address()
 
 function get_site_lang()
 {
+	require(APPPATH.'/app/config/config.php');
 	$params = explode('/',trim($_GET['u'],'/'));
 	if (is_valid_site_lang()) return $params[0];
 	return $config['lang'];
@@ -41,7 +42,7 @@ function redirect($uri = '', $method = 'location', $http_response_code = 302)
 {
 	if ( ! preg_match('#^https?://#i', $uri))
 	{
-		header("Location: /".get_site_lang()."/".$uri, TRUE, 302);
+		header("Location: /".get_site_lang()."/".trim($uri,'/'), TRUE, 302);
 	}
 	else
 	{
