@@ -32,7 +32,7 @@ session_start();
 
 $params = get_controller_params($_GET);
 
-if (isset($params['lang']))
+if (isset($_GET['u']) and isset($params['lang']))
 {
 	if (!is_valid_site_lang()) redirect('/');
 }
