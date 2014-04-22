@@ -29,9 +29,7 @@ session_set_save_handler(array(&$session, '_open'),
                          array(&$session, '_destroy'),
                          array(&$session, '_clean'));
 session_start();
-$userdao = new Userdao();
-$users = $userdao->select_all();
-var_dump($users[0]->getUser());
+
 $params = get_controller_params($_GET);
 
 if (isset($_GET['u']) and isset($params['lang']))

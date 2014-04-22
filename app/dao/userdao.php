@@ -72,7 +72,9 @@ class Userdao {
         $results = $this->db->query($query, $args);
         foreach($results as $result)
         {
-            $users[] = new userbuilder($result);
+			$builder = new userbuilder($result);
+			$builder->build();
+            $users[] = $builder->getUser();
         }
         
         return $users;

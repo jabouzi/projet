@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 22, 2014 at 06:31 AM
+-- Generation Time: Apr 22, 2014 at 09:45 AM
 -- Server version: 5.5.35-0ubuntu0.13.10.2
--- PHP Version: 5.5.3-1ubuntu2.2
+-- PHP Version: 5.5.3-1ubuntu2.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -42,7 +42,32 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('4igte9c021jc2g5uevo6ilh8h6', '127.0.0.1', 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/33.0.1750.152 Chrome/33.0.1750.152 ', 1398162632, 's:0:"";');
+('4igte9c021jc2g5uevo6ilh8h6', '127.0.0.1', 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/33.0.1750.152 Chrome/33.0.1750.152 ', 1398162632, 's:0:"";'),
+('ngpacs28ivpjrmkqbmp2u3kk65', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0', 1398174295, 's:0:"";');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(64) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `admin` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `admin`) VALUES
+(1, ':username', ':password', 0),
+(2, ':username', ':password', 0),
+(3, 'skander', 'NzAyNDA0Mw==', 1);
 
 -- --------------------------------------------------------
 
@@ -56,12 +81,12 @@ CREATE TABLE IF NOT EXISTS `user_data` (
   `email` varchar(256) NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `last_name` varchar(100) NOT NULL,
-  `username` varchar(64) NOT NULL,
+  `user_name` varchar(64) NOT NULL,
   `password` varchar(40) NOT NULL,
   `admin` tinyint(3) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `email` (`email`(255)),
-  KEY `username` (`username`),
+  KEY `username` (`user_name`),
   KEY `admin` (`admin`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
@@ -69,8 +94,8 @@ CREATE TABLE IF NOT EXISTS `user_data` (
 -- Dumping data for table `user_data`
 --
 
-INSERT INTO `user_data` (`id`, `email`, `first_name`, `last_name`, `username`, `password`, `admin`) VALUES
-(3, '', '', '', 'skander', 'NzAyNDA0Mw==', 1);
+INSERT INTO `user_data` (`id`, `email`, `first_name`, `last_name`, `user_name`, `password`, `admin`) VALUES
+(3, 'jabouzi@gmail.com', 'Skander', 'Jabouzi', 'skander', 'NzAyNDA0Mw==', 1);
 
 -- --------------------------------------------------------
 
