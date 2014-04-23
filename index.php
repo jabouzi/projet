@@ -52,7 +52,7 @@ if (isset($params['controller']))
 			}
 			else
 			{
-				display_page_error();
+				//display_page_error();
 			}
 		}
 		else
@@ -63,12 +63,12 @@ if (isset($params['controller']))
 			}
 			else
 			{
-				display_page_error();
+				//display_page_error();
 			}
 		}
 	}
 	else
 	{
-		display_page_error();
+		//display_page_error();
 	}
 }  
