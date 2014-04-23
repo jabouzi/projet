@@ -1,7 +1,7 @@
 <?php
 
-//ini_set('display_errors',1);
-//ini_set('display_startup_errors',1);
+ini_set('display_errors',1);
+ini_set('display_startup_errors',1);
 $slash = '';
 if (substr($_SERVER['DOCUMENT_ROOT'], -1) != '/') $slash = '/';
 define('APPPATH', $_SERVER['DOCUMENT_ROOT'].$slash);
