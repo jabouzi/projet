@@ -53,7 +53,7 @@ class autoload
 }
 spl_autoload_register('autoload::config_autoload');
 spl_autoload_register('autoload::core_autoload');
-spl_autoload_register('autoload::lib_autoload');
+var_dump(spl_autoload_register('autoload::lib_autoload'));
 spl_autoload_register('autoload::controller_autoload');
 spl_autoload_register('autoload::model_autoload');
 spl_autoload_register('autoload::class_autoload');
