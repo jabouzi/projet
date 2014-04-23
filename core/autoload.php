@@ -19,6 +19,7 @@ class autoload
     {
         $class = strtolower($class);
         $path = $_SERVER['DOCUMENT_ROOT'] . "app/lib/{$class}.php";
+        var_dump($path);
         if (is_readable($path)) require $path;
     }
     

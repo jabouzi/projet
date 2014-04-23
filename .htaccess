@@ -1,4 +1,3 @@
-AddHandler application/x-httpd-php54 .php
 <IfModule !mod_rewrite.c>
 	ErrorDocument 500 "mod_rewrite must be enabled"
 </IfModule>
