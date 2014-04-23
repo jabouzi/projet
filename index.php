@@ -22,7 +22,7 @@ foreach($config['autoload_languages'] as $file)
 }
 
 //require 'includes/exceptions.php';
-require '/home/jabouzic/public_html/projet.jabouzi.comapp/lib/session.php';
+//require '/home/jabouzic/public_html/projet.jabouzi.comapp/lib/session.php';
 $session = new Session();
 session_set_save_handler(array(&$session, '_open'),
                          array(&$session, '_close'),
