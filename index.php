@@ -1,4 +1,5 @@
 <?php
+phpinfo();
 //ini_set('display_errors',1);
 //ini_set('display_startup_errors',1);
 $slash = '';
@@ -70,4 +71,3 @@ if (isset($params['controller']))
 		display_page_error();
 	}
 }  
-phpinfo();
