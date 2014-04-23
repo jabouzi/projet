@@ -2,8 +2,8 @@
 
 $config['default'] = 'login';
 $config['lang'] = 'fr';
-$config['database'] = 'projet';
-$config['username'] = 'root';
+$config['database'] = 'jabouzic_projet';
+$config['username'] = 'jabouzic_db';
 $config['password'] = '7024043';
 $config['host'] = 'localhost';
 $config['driver'] = 'mysql';
