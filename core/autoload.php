@@ -19,7 +19,6 @@ class autoload
     {
         $class = strtolower($class);
         $path = APPPATH . "app/lib/{$class}.php";
-        var_dump($path);
         if (is_readable($path)) require $path;
     }
     
@@ -53,7 +52,7 @@ class autoload
 }
 spl_autoload_register('autoload::config_autoload');
 spl_autoload_register('autoload::core_autoload');
-var_dump(spl_autoload_register('autoload::lib_autoload'));
+spl_autoload_register('autoload::lib_autoload');
 spl_autoload_register('autoload::controller_autoload');
 spl_autoload_register('autoload::model_autoload');
 spl_autoload_register('autoload::class_autoload');
