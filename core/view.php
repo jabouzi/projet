@@ -13,7 +13,7 @@ class View
         }
 
         ob_start();
-        include_once($_SERVER['DOCUMENT_ROOT'].'app/view/'.$view_path.'.php');
+        include_once(APPPATH.'app/view/'.$view_path.'.php');
         $content = ob_get_clean();
         echo $content;
     }
