@@ -22,12 +22,12 @@ function get_controller_params($url_params)
 function controller_exists($controller)
 {
     $controller = strtolower($controller);
-    return (is_file($_SERVER['DOCUMENT_ROOT'] . "app/controller/{$controller}.php"));
+    return (is_file(APPPATH . "app/controller/{$controller}.php"));
 }
 
 function display_page_error()
 {
-    $message = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "core/template/error.html");
+    $message = file_get_contents(APPPATH . "core/template/error.html");
     $message = printf($message, 'Warning', '404 Page Not Found', 'The page you requested was not found.');    
     //echo $message;
 }
