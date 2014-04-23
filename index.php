@@ -5,7 +5,7 @@
 $slash = '';
 if (substr($_SERVER['DOCUMENT_ROOT'], -1) != '/') $slash = '/';
 define('APPPATH', $_SERVER['DOCUMENT_ROOT'].$slash);
-var_dump(APPPATH);
+
 require(APPPATH.'core/core.php');
 require(APPPATH.'core/autoload.php');
 require(APPPATH.'core/helper.php');
