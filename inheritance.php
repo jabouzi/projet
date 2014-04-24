@@ -85,7 +85,7 @@ class Televesion extends Product {
     
     public function getName()
     {
-        return parent::getName();
+        return parent::getName().'_NEW';
     }
     
     public function getPrice()
