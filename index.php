@@ -31,7 +31,8 @@ session_set_save_handler(array(&$session, '_open'),
                          array(&$session, '_destroy'),
                          array(&$session, '_clean'));
 session_start();
-
+$encrpt = new encryption();
+var_dump($encrpt->encrypt('7024043'));
 $params = get_controller_params($_GET);
 
 if (isset($_GET['u']) and isset($params['lang']))
