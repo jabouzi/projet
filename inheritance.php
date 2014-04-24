@@ -104,10 +104,10 @@ class Televesion extends Product {
 }
 
 $prod_original = new Product('','','');
-var_dump($prod_original->getName());
-var_dump($prod_original->getPrice());
-var_dump($prod_original->getSerial());
-var_dump($prod_original->calculate_tax());
+//var_dump($prod_original->getName());
+//var_dump($prod_original->getPrice());
+//var_dump($prod_original->getSerial());
+//var_dump($prod_original->calculate_tax());
 $prod_original->addProduct($prod_original);
 
 $prod = new OldTelevesion('Sony1', 2000, '1111111111111121002193');
