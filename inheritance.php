@@ -110,21 +110,21 @@ var_dump($prod_original->getSerial());
 var_dump($prod_original->calculate_tax());
 $prod_original->addProduct($prod_original);
 
-$prod = new OldTelevesion('Sony', 2000, 'swekjqwnska21002193');
+$prod = new OldTelevesion('Sony1', 2000, '1111111111111121002193');
 var_dump($prod->getName());
 var_dump($prod->getPrice());
 var_dump($prod->getSerial());
 var_dump($prod->calculate_tax());
 $prod_original->addProduct($prod);
 
-$prod = new NewTelevesion('Sony', 2000, 'swekjqwnska21002193', 2010);
+$prod = new NewTelevesion('Sony2', 3000, '2222222222222221002193', 2010);
 var_dump($prod->getName());
 var_dump($prod->getPrice());
 var_dump($prod->getSerial());
 var_dump($prod->calculate_tax());
 $prod_original->addProduct($prod);
 
-$prod = new Televesion('Sony', 2000, 'swekjqwnska21002193', 2010);
+$prod = new Televesion('Sony3', 4000, '3333333333333321002193', 2014);
 var_dump($prod->getName());
 var_dump($prod->getPrice());
 var_dump($prod->getSerial());
