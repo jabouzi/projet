@@ -137,6 +137,7 @@ foreach ($prod_original->products as $prod)
     var_dump($prod->getPrice());
     var_dump($prod->getSerial());
     var_dump($prod->calculate_tax()); 
+    echo '<hr>';
 }
 
 var_dump(Product::$number);
