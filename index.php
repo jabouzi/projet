@@ -34,7 +34,8 @@ session_start();
 $encrpt = new encryption();
 $pass = $encrpt->encrypt('1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111');
 $pass2 = $encrpt->decrypt($pass);
-var_dump($pass, $pass2);
+var_dump($pass);
+var_dump($pass2);
 
 $params = get_controller_params($_GET);
 
