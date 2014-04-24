@@ -4,6 +4,7 @@ class Userprofile extends User {
 	
 	private user_password;
 	private user_group;
+	private user_vhosts = array();
 	
 	function __construct()
 	{
@@ -28,5 +29,15 @@ class Userprofile extends User {
 	public function get_user_group()
 	{
 		return $this->user_group;
+	}
+	
+	public function set_user_vhosts($user_vhosts = array())
+	{
+		$this->user_vhosts = $user_vhosts;
+	}
+
+	public function get_user_vhosts()
+	{
+		return $this->user_vhosts;
 	}
 }
