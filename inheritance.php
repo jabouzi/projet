@@ -52,9 +52,11 @@ class NewTelevesion extends Product {
     
     function __construct($name, $price, $serial, $year)
     {
-        $this->productName = $name;
-        $this->productPrice = $price;
-        $this->serialNumber = $serial;
+        //$this->productName = $name;
+        //$this->productPrice = $price;
+        //$this->serialNumber = $serial;
+        parent::__construct($name, $price, $serial);
+        parent::$number++;
         $this->yearMade = $year;
     }
     
