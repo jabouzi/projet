@@ -57,7 +57,7 @@ function __log($error, $errlvl)
 {
     if (strstr($_SERVER["SCRIPT_NAME"], 'index.php') || strstr($_SERVER["SCRIPT_NAME"], 'code.php'))
     {
-        $message = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "core/template/error.html");
+        $message = file_get_contents(APPPATH . "core/template/error.html");
         $message = printf($message, $errlvl, $error['msg'], $error['file']. ' : '.$error['ln']);    
     }    
 }
