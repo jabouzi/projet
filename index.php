@@ -36,10 +36,10 @@ $pass = $encrpt->encrypt('111111111111111111111111111111111111111111111111111111
 $pass2 = $encrpt->decrypt($pass);*/
 
 $memcached = new memcachedclass();
-var_dump($memcached->cache_info());
-$memcached->save('skander', 'jabouzi');
-var_dump($memcached->get_metadata('skander'));
-var_dump($memcached->get('skander'));
+//var_dump($memcached->cache_info());
+//$memcached->save('skander', 'jabouzi');
+//var_dump($memcached->get_metadata('skander'));
+//var_dump($memcached->get('skander'));
 
 
 $params = get_controller_params($_GET);
