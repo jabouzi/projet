@@ -11,53 +11,69 @@ class Userdao {
     
     public function insert($user)
     {
-        $args = array(
-                ':email' => $user->email, 
-                ':first_name' => $user->first_name, 
-                ':last_name' => $user->last_name,
+        $args_info = array(
                 ':user_name' => $user->user_name,
                 ':password' => $user->password
+                ':group' => $user->password
             );
             
-        $query = "INSERT INTO user_data VALUES ('', :email, :first_name, :last_name, :user_name, :password)";
+        $args_vhost = array(
+                ':user_name' => $user->user_name,
+                ':vhost' => $user->vhost
+            );
+            
+        $query = "INSERT INTO user_info VALUES (:user_name, encrypt(:password), :group)";
+        $insert = $this->db->query($query, $args_info);
+        
+        $query = "INSERT INTO user_vhosts VALUES (:user_name, :vhost)";
+        $insert += $this->db->query($query, $args_vhost);
+        
+        return $insert;
+
+    }
+    
+    public function update_info($user)
+    {
+        $args = array(
+                ':user_name' => $user->user_name,
+                ':password' => $user->password
+                ':group' => $user->password
+            );
+        
+        $query = "UPDATE user_info SET 
+                password = :password, group = :group 
+                WHERE user_name = :user_name";
+        return $this->db->query($query, $args);
+    }
+    
+    public function update_vhost($user)
+    {
+		foreach($user->vhost as $vhost)
+		{
+			$args_vhost = array(
+					':user_name' => $user->user_name,
+					':vhost' => $vhost
+				);
+			
+			$query = "UPDATE user_vhost SET 
+					vhost = :vhost
+					WHERE user_name = :user_name";
+			$update += $this->db->query($query, $args);
+		}
+		
+		return $update;
+    }
+    
+    public function delete_info($user)
+    {
+		$this->delete_vhost($user);
+        $query = "DELETE FROM user_data {$sql_where} ";
         $this->db->query($query, $args);
         return $this->db->lastInsertId();
     }
     
-    public function update($user, $where)
+    public function delete_vhost($user)
     {
-        $args = array(
-                ':email' => $user->email, 
-                ':first_name' => $user->first_name, 
-                ':last_name' => $user->last_name,
-                ':user_name' => $user->user_name,
-                ':password' => $user->password
-            );
-            
-        $i = 0;
-        foreach($where as $key => $value)
-        {
-            if (!$i) $where_sql = "WHERE :{$key} = {$key}";
-            else $where_sql .= " AND {$key} = {$key}";
-            $i++;
-        }
-        
-        $query = "UPDATE user_data SET 
-                email = :email, first_name = :first_name, last_name = :last_name, user_name = :user_name, password = :password 
-                {$sql_where} ";
-        return $this->db->query($query, $args);
-    }
-    
-    public function delete($where)
-    {
-        $i = 0;
-        foreach($where as $key => $value)
-        {
-            if (!$i) $where_sql = "WHERE :{$key} = {$key}";
-            else $where_sql .= " AND {$key} = {$key}";
-            $i++;
-        }
-        
         $query = "DELETE FROM user_data {$sql_where} ";
         $this->db->query($query, $args);
         return $this->db->lastInsertId();

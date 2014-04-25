@@ -1,12 +1,14 @@
 <?php
 
-class Userdao {
+class Useradmindao {
 
     private $db;
+    private $encrypt;
 	
 	function __construct()
 	{
 		$this->db = Database::getInstance();
+		$this->encrypt = encryption();
 	}
     
     public function insert($user)
@@ -16,7 +18,7 @@ class Userdao {
                 ':first_name' => $user->first_name, 
                 ':last_name' => $user->last_name,
                 ':user_name' => $user->user_name,
-                ':password' => $user->password
+                ':password' => $this->encrypt->encrypt($user->password)
             );
             
         $query = "INSERT INTO user_data VALUES ('', :email, :first_name, :last_name, :user_name, :password)";
@@ -31,7 +33,7 @@ class Userdao {
                 ':first_name' => $user->first_name, 
                 ':last_name' => $user->last_name,
                 ':user_name' => $user->user_name,
-                ':password' => $user->password
+                ':password' => $this->encrypt->encrypt($user->password)
             );
             
         $i = 0;
