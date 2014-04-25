@@ -15,7 +15,7 @@ class Memcachedclass {
 	{
 		$this->_memcached = new Memcached();
 		var_dump($this->_memcached->getServerList());
-		$this->_memcached->addServer($this->_memcache_conf['host'], $this->_memcache_conf['port'], $this->_memcache_conf['weight']);
+		$this->_memcached->connect($host , $port, $weight)($this->_memcache_conf['host'], $this->_memcache_conf['port'], $this->_memcache_conf['weight']);
 	}
 
 	public function get($id)
@@ -62,6 +62,14 @@ class Memcachedclass {
 			'data'		=> $data
 		);
 	}
+	
+	public function connect($host , $port, $weight){ 
+		$servers = $this->_memcached->getServerList(); 
+		if(is_array($servers)) { 
+			foreach ($servers as $server) if($server['host'] == $host and $server['port'] == $port) return true; 
+		} 
+		return $this->_memcached->addServer($host , $port, $weigh); 
+	} 
 
 }
 
