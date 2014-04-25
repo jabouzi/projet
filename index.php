@@ -31,11 +31,13 @@ session_set_save_handler(array(&$session, '_open'),
                          array(&$session, '_destroy'),
                          array(&$session, '_clean'));
 session_start();
-$encrpt = new encryption();
+/*$encrpt = new encryption();
 $pass = $encrpt->encrypt('1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111');
-$pass2 = $encrpt->decrypt($pass);
-var_dump($pass);
-var_dump($pass2);
+$pass2 = $encrpt->decrypt($pass);*/
+
+$memcached = new memcachedclass();
+var_dump($memcached->cache_info());
+
 
 $params = get_controller_params($_GET);
 
