@@ -6,15 +6,15 @@ class Memcachedclass {
 	private $_memcached;
 
 	private $_memcache_conf = array(
-					'default_host'		=> '127.0.0.1',
-					'default_port'		=> 11211,
-					'default_weight'	=> 1
+					'host'		=> '127.0.0.1',
+					'port'		=> 11211,
+					'weight'	=> 1
 				);
 
 	function __construct()
 	{
 		$this->_memcached = new Memcached();
-		$this->_memcached->addServer($this->_memcache_conf['hostname'], $this->_memcache_conf['port'], $this->_memcache_conf['weight']);
+		$this->_memcached->addServer($this->_memcache_conf['host'], $this->_memcache_conf['port'], $this->_memcache_conf['weight']);
 	}
 
 	public function get($id)
