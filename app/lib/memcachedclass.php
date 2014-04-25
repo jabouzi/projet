@@ -68,7 +68,7 @@ class Memcachedclass {
 		if(is_array($servers)) { 
 			foreach ($servers as $server) if($server['host'] == $host and $server['port'] == $port) return true; 
 		} 
-		return $this->_memcached->addServer($host , $port, $weigh); 
+		return $this->_memcached->addServer($host , $port, $weight); 
 	} 
 
 }
