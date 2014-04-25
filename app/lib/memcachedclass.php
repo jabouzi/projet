@@ -15,7 +15,7 @@ class Memcachedclass {
 	{
 		$this->_memcached = new Memcached();
 		var_dump($this->_memcached->getServerList());
-		$this->_memcached->connect($host , $port, $weight)($this->_memcache_conf['host'], $this->_memcache_conf['port'], $this->_memcache_conf['weight']);
+		$this->_memcached->connect($this->_memcache_conf['host'], $this->_memcache_conf['port'], $this->_memcache_conf['weight']);
 	}
 
 	public function get($id)
