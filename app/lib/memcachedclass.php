@@ -13,8 +13,8 @@ class Memcachedclass {
 
 	function __construct()
 	{
-		var_dump($this->_memcached->getServerList());
 		$this->_memcached = new Memcached();
+		var_dump($this->_memcached->getServerList());
 		$this->_memcached->addServer($this->_memcache_conf['host'], $this->_memcache_conf['port'], $this->_memcache_conf['weight']);
 	}
 
