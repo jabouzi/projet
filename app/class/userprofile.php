@@ -10,7 +10,17 @@ class Userprofile extends User {
 	{
 		parent::__construct();
 	}
-
+	
+	public function set_user_name($user_name)
+	{
+		parent::set_user_name($user_name);
+	}
+	
+	public function get_user_name()
+	{
+		return parent::get_user_name();
+	}
+	
 	public function set_user_password($user_password)
 	{
 		$this->user_password = $user_password;
@@ -31,7 +41,7 @@ class Userprofile extends User {
 		return $this->user_group;
 	}
 	
-	public function set_user_vhosts($user_vhosts = array())
+	public function set_user_vhosts($user_vhosts)
 	{
 		$this->user_vhosts = $user_vhosts;
 	}

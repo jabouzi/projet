@@ -2,127 +2,115 @@
 
 class Userdao {
 
-    private $db;
-	
+	private $db;
+
 	function __construct()
 	{
 		$this->db = Database::getInstance();
 	}
-    
-    public function insert($user)
-    {
-        $args_info = array(
-                ':user_name' => $user->user_name,
-                ':password' => $user->password
-                ':group' => $user->password
-            );
-            
-        $args_vhost = array(
-                ':user_name' => $user->user_name,
-                ':vhost' => $user->vhost
-            );
-            
-        $query = "INSERT INTO user_info VALUES (:user_name, encrypt(:password), :group)";
-        $insert = $this->db->query($query, $args_info);
-        
-        $query = "INSERT INTO user_vhosts VALUES (:user_name, :vhost)";
-        $insert += $this->db->query($query, $args_vhost);
-        
-        return $insert;
 
-    }
-    
-    public function update_info($user)
-    {
-        $args = array(
-                ':user_name' => $user->user_name,
-                ':password' => $user->password
-                ':group' => $user->password
-            );
-        
-        $query = "UPDATE user_info SET 
-                password = :password, group = :group 
-                WHERE user_name = :user_name";
-        return $this->db->query($query, $args);
-    }
-    
-    public function update_vhost($user)
-    {
-		foreach($user->vhost as $vhost)
+	public function insert_info($user)
+	{
+		$args_info = array(
+			':user_name' => $user->user_name,
+			':password' => $user->password
+			':group' => $user->password
+		);
+		$query = "INSERT INTO user_info VALUES (:user_name, encrypt(:password), :group)";
+		$insert = $this->db->query($query, $args_info);
+
+		return $insert;
+	}
+
+	public function insert_vhosts($user)
+	{
+		$insert = 0;
+		foreach($user->vhosts as $vhost)
 		{
 			$args_vhost = array(
-					':user_name' => $user->user_name,
-					':vhost' => $vhost
-				);
-			
-			$query = "UPDATE user_vhost SET 
-					vhost = :vhost
-					WHERE user_name = :user_name";
-			$update += $this->db->query($query, $args);
+				':user_name' => $user->user_name,
+				':vhost' => $host
+			);
+			$query = "INSERT INTO user_vhosts VALUES (:user_name, :vhost)";
+			$insert += $this->db->query($query, $args_vhost);
 		}
-		
+
+		return ($insert == count($user->vhosts));
+	}
+
+	public function update_info($user)
+	{
+		$args = array(
+			':user_name' => $user->user_name,
+			':password' => $user->password
+			':group' => $user->password
+		);
+		$query = "UPDATE user_info SET
+				password = :password, group = :group
+				WHERE user_name = :user_name";
+		return $this->db->query($query, $args);
+	}
+
+	public function update_vhost($user)
+	{
+		delete_vhost($user);
+		$update = insert_vhosts($user);
 		return $update;
-    }
-    
-    public function delete_info($user)
-    {
-		$this->delete_vhost($user);
-        $query = "DELETE FROM user_data {$sql_where} ";
-        $this->db->query($query, $args);
-        return $this->db->lastInsertId();
-    }
-    
-    public function delete_vhost($user)
-    {
-        $query = "DELETE FROM user_data {$sql_where} ";
-        $this->db->query($query, $args);
-        return $this->db->lastInsertId();
-    }
-    
-    public function select_all($select = array())
-    {
-        $args = array();
-        $sql_select = ' * ';
-        if (count($select)) $sql_select = implode(", ", $select);
-        $query = "SELECT {$sql_select} FROM user_data ";
-        $results = $this->db->query($query, $args);
-        foreach($results as $result)
-        {
-			$builder = new userbuilder($result);
+	}
+
+	public function delete_info($user)
+	{
+		$args = array(
+			':user_name' => $user_name
+		);
+		$query = "DELETE FROM user_info WHERE user_name = :user_name";
+		$delete = $this->db->query($query, $args);
+		$delete += delete_vhost($user_name);
+		return $delete;
+	}
+
+	public function delete_vhost($user_name)
+	{
+		$args = array(
+			':user_name' => $user_name
+		);
+		$query = "DELETE FROM user_vhosts WHERE user_name = :user_name";
+		$delete = $this->db->query($query, $args);
+		return $delete;
+	}
+
+	public function select_all()
+	{
+		$users = array();
+
+		$query = "SELECT * FROM user_info ";
+		$results = $this->db->query($query, array());
+		foreach($results as $result)
+		{
+			$builder = new userprofilebuilder($result);
 			$builder->build();
-            $users[] = $builder->getUser();
-        }
-        
-        return $users;
-    }
-    
-    public function select_user($where, $select = array())
-    {
-        $users = array();
-        $args = array();
-        foreach($where as $key => $value)
-        {
-            $args[':'.$key] = $value;
-        }
-        
-        $i = 0;
-        foreach($where as $key => $value)
-        {
-            if (!$i) $where_sql = "WHERE :{$key} = {$key}";
-            else $where_sql .= " AND {$key} = {$key}";
-            $i++;
-        }
-        
-        $sql_select = ' * ';
-        if (count($select)) $sql_select = implode(", ", $select);
-        $query = "SELECT {$sql_select} FROM user_data {$where_sql} ";
-        $results = $this->db->query($query, $args);
-        foreach($results as $result)
-        {
-            $users[] = new userbuilder($result);
-        }
-        
-        return $users;
-    }
+			$users[] = $builder->getUser();
+		}
+
+		return $users;
+	}
+
+	public function select_user($user_name)
+	{
+		$users = array();
+		$args = array(
+			':user_name' => $user_name
+		);
+		$query = "SELECT * FROM user_info WHERE user_name = :user_name";
+		$results = $this->db->query($query, $args);
+		foreach($results as $result)
+		{
+			$builder = new userprofilebuilder($result);
+			$builder->build();
+			$users[] = $builder->getUser();
+		}
+
+		return $users;
+	}
 
 }
