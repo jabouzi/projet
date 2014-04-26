@@ -1,46 +1,46 @@
 <?php
 class useriterator implements Iterator
 {
-    private $user;
+    private $users;
 
-    public function __construct($user)
+    public function __construct($users)
     {
-        $this->user = $user;
+        $this->users = $users;
     }
 
     public function rewind()
     {
         echo "rewinding\n";
-        reset($this->var);
+        reset($this->users);
     }
   
     public function current()
     {
-        $var = current($this->var);
-        echo "current: $var\n";
-        return $var;
+        $user = current($this->users);
+        echo "current: $user->user_name";
+        return $user;
     }
   
     public function key() 
     {
-        $var = key($this->var);
-        echo "key: $var\n";
-        return $var;
+        $user = key($this->users);
+        echo "key: $user->user_name";
+        return $user;
     }
   
     public function next() 
     {
-        $var = next($this->var);
-        echo "next: $var\n";
-        return $var;
+        $user = next($this->users);
+        echo "next: $user->user_name";
+        return $user;
     }
   
     public function valid()
     {
-        $key = key($this->var);
-        $var = ($key !== NULL && $key !== FALSE);
-        echo "valid: $var\n";
-        return $var;
+        $key = key($this->users);
+        $user = ($key !== NULL && $key !== FALSE);
+        echo "valid: $user->user_name";
+        return $user;
     }
 
 }
