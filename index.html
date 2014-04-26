@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>jQuery Dropdown CheckList</title>
+    <!-- Use a JQuery ThemeRoller theme, in this case 'smoothness' -->
+    <link rel="stylesheet" type="text/css" href="/public/css/smoothness-1.8.13/jquery-ui-1.8.13.custom.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/ui.dropdownchecklist.themeroller.css">
+    <style>
+table td { vertical-align: top }
+dd { padding-bottom: 15px }
+    </style>
+
+    <!-- Include the basic JQuery support (core and ui) -->
+    <script type="text/javascript" src="/public/js/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" src="/public/js/jquery-ui-1.8.13.custom.min.js"></script>
+    <script type="text/javascript" src="/public/js/ui.dropdownchecklist.js"></script>
+
+    <!-- Apply dropdown check list to the selected items  -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+        	$returnS5 = $('#returnS5');
+			$("#s5").dropdownchecklist({
+onItemClick: function(checkbox, selector){
+	var justChecked = checkbox.prop("checked");
+	var checkCount = (justChecked) ? 1 : -1;
+	for( i = 0; i < selector.options.length; i++ ){
+		if ( selector.options[i].selected ) checkCount += 1;
+	}
+}
+});
+       });
+    </script>
+</head>
+<body>
+<div id="content">
+    <h2>This example shows that the original select isn't automatically updated on the event onItemClick</h2>
+    <table>
+      <tr>
+      	<td>
+	        <select id="s5" multiple="multiple">
+	            <option>Coffee Chip</option>
+	            <option>Cookie Dough</option>
+	            <option>Cookies 'n Cream</option>
+	            <option>Dutch Chocolate</option>
+	            <option>Fudgee Peanut Butter Cup</option>
+	        </select>
+	    </td>
+      	<td id="returnS5">
+	    </td>
+	  </tr>
+    </table>
+
+</div>
+</body>
+</html>
