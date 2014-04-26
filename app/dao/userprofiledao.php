@@ -3,10 +3,12 @@
 class Userdao {
 
 	private $db;
+	private $cache;
 
 	function __construct()
 	{
 		$this->db = Database::getInstance();
+		$this->cache = new cachefactory();
 	}
 
 	public function insert_info($user)
@@ -18,7 +20,8 @@ class Userdao {
 		);
 		$query = "INSERT INTO user_info VALUES (:user_name, encrypt(:password), :group)";
 		$insert = $this->db->query($query, $args_info);
-
+		$this->cache->delete('select_profile_'.$user->user_name);
+		$this->cache->delete('select_profile_all');
 		return $insert;
 	}
 
@@ -34,7 +37,8 @@ class Userdao {
 			$query = "INSERT INTO user_vhosts VALUES (:user_name, :vhost)";
 			$insert += $this->db->query($query, $args_vhost);
 		}
-
+		$this->cache->delete('select_profile_'.$user->user_name);
+		$this->cache->delete('select_profile_all');
 		return ($insert == count($user->vhosts));
 	}
 
@@ -46,19 +50,24 @@ class Userdao {
 			':group' => $user->password
 		);
 		$query = "UPDATE user_info SET
-				password = :password, group = :group
+				password = encrypt(:password), group = :group
 				WHERE user_name = :user_name";
-		return $this->db->query($query, $args);
+		$update = $this->db->query($query, $args);
+		$this->cache->delete('select_profile_'.$user->user_name);
+		$this->cache->delete('select_profile_all');
+		return $update;
 	}
 
 	public function update_vhost($user)
 	{
 		delete_vhost($user);
 		$update = insert_vhosts($user);
+		$this->cache->delete('select_profile_'.$user->user_name);
+		$this->cache->delete('select_profile_all');
 		return $update;
 	}
 
-	public function delete_info($user)
+	public function delete_info($user_name)
 	{
 		$args = array(
 			':user_name' => $user_name
@@ -66,6 +75,8 @@ class Userdao {
 		$query = "DELETE FROM user_info WHERE user_name = :user_name";
 		$delete = $this->db->query($query, $args);
 		$delete += delete_vhost($user_name);
+		$this->cache->delete('select_profile_'.$uer_name);
+		$this->cache->delete('select_profile_all');
 		return $delete;
 	}
 
@@ -76,32 +87,17 @@ class Userdao {
 		);
 		$query = "DELETE FROM user_vhosts WHERE user_name = :user_name";
 		$delete = $this->db->query($query, $args);
+		$this->cache->delete('select_profile_'.$uer_name);
+		$this->cache->delete('select_profile_all');
 		return $delete;
 	}
 
 	public function select_all()
 	{
+		if ($this->cache->get('select_profile_all')) return $this->cache->get('select_profile_all');
+		$args = array();
 		$users = array();
-
-		$query = "SELECT * FROM user_info ";
-		$results = $this->db->query($query, array());
-		foreach($results as $result)
-		{
-			$builder = new userprofilebuilder($result);
-			$builder->build();
-			$users[] = $builder->getUser();
-		}
-
-		return $users;
-	}
-
-	public function select_user($user_name)
-	{
-		$users = array();
-		$args = array(
-			':user_name' => $user_name
-		);
-		$query = "SELECT * FROM user_info WHERE user_name = :user_name";
+		$query = "SELECT i.*, v.vhost FROM user_info i, user_vhosts v WHERE i.user_name = v. user_name";
 		$results = $this->db->query($query, $args);
 		foreach($results as $result)
 		{
@@ -109,7 +105,26 @@ class Userdao {
 			$builder->build();
 			$users[] = $builder->getUser();
 		}
+		$this->cache->save('select_profile_all');
+		return $users;
+	}
 
+	public function select_user($user_name)
+	{
+		if ($this->cache->get('select_profile_'.$user_name)) return $this->cache->get('select_profile_'.$user_name);
+		$users = array();
+		$args = array(
+			':user_name' => $user_name
+		);
+		$query = "SELECT i.*, v.vhost FROM user_info i, user_vhosts v WHERE i.user_name = :user_name AND i.user_name = v. user_name";
+		$results = $this->db->query($query, $args);
+		foreach($results as $result)
+		{
+			$builder = new userprofilebuilder($result);
+			$builder->build();
+			$users[] = $builder->getUser();
+		}
+		$this->cache->save('select_profile_'.$user_name, $user);
 		return $users;
 	}
 

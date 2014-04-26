@@ -3,13 +3,11 @@
 class Useradmindao {
 
 	private $db;
-	private $encrypt;
 	private $cache;
 
 	function __construct()
 	{
 		$this->db = Database::getInstance();
-		$this->encrypt = encryption();
 		$this->cache = new cachefactory();
 	}
 
@@ -20,12 +18,12 @@ class Useradmindao {
 				':first_name' => $user->first_name,
 				':last_name' => $user->last_name,
 				':user_name' => $user->user_name,
-				':password' => $this->encrypt->encrypt($user->password)
+				':password' => $user->password
 			);
 
 		$query = "INSERT INTO user_data VALUES ('', :email, :first_name, :last_name, :user_name, :password)";
 		$this->db->query($query, $args);
-		$this->cache->delete('select_'.$uer_name);
+		$this->cache->delete('select_admin_'.$user->user_name);
 		$this->cache->delete('select_admin_all');
 		return $this->db->lastInsertId();
 	}
@@ -37,14 +35,14 @@ class Useradmindao {
 				':first_name' => $user->first_name,
 				':last_name' => $user->last_name,
 				':user_name' => $user->user_name,
-				':password' => $this->encrypt->encrypt($user->password)
+				':password' => $user->password
 			);
 
 		$query = "UPDATE user_data SET
 				email = :email, first_name = :first_name, last_name = :last_name, password = :password
 				WHERE user_name = :user_name ";
 		$update = $this->db->query($query, $args);
-		$this->cache->delete('select_'.$uer_name);
+		$this->cache->delete('select_admin_'.$user->user_name);
 		$this->cache->delete('select_admin_all');
 		return $update;
 	}
@@ -56,7 +54,7 @@ class Useradmindao {
 		);
 		$query = "DELETE FROM user_data WHERE user_name = :user_name ";
 		$delete = $this->db->query($query, $args);
-		$this->cache->delete('select_'.$uer_name);
+		$this->cache->delete('select_admin_'.$uer_name);
 		$this->cache->delete('select_admin_all');
 		return $delete;
 	}
@@ -65,6 +63,7 @@ class Useradmindao {
 	{
 		if ($this->cache->get('select_admin_all')) return $this->cache->get('select_admin_all');
 		$args = array();
+		$users = array();
 		$query = "SELECT * FROM user_data ";
 		$results = $this->db->query($query, $args);
 		foreach($results as $result)
@@ -79,7 +78,7 @@ class Useradmindao {
 
 	public function select_user($user_name)
 	{
-		if ($this->cache->get('select_admin_'.$user->user_name)) return $this->cache->get('select_admin_'.$user->user_name);
+		if ($this->cache->get('select_admin_'.$user_name)) return $this->cache->get('select_admin_'.$user_name);
 		$args = array(
 			':user_name' => $user_name
 		);
@@ -88,8 +87,7 @@ class Useradmindao {
 		$builder = new useradminbuilder($result);
 		$builder->build();
 		$user = $builder->getUser();
-		$this->cache->save('select_admin_'.$user->user_name, $user);
-
+		$this->cache->save('select_admin_'.$user_name, $user);
 		return $user;
 	}
 
