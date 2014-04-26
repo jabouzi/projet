@@ -47,6 +47,45 @@ class Useradmindao {
 		return $update;
 	}
 
+	public function set_admin($uer_name, $is_admin)
+	{
+		$args = array(
+			':user_name' => $user_name,
+			':admin' => $admin
+		);
+		$query = "UPDATE user_data SET admin = :admin WHERE user_name = :user_name ";
+		$set = $this->db->query($query, $args);
+		$this->cache->delete('select_admin_'.$uer_name);
+		$this->cache->delete('select_admin_all');
+		return $set;
+	}
+	
+	public function set_profile($uer_name, $has_profile)
+	{
+		$args = array(
+			':user_name' => $user_name,
+			':profile' => $profile
+		);
+		$query = "UPDATE user_data SET profile = :profile WHERE user_name = :user_name ";
+		$set = $this->db->query($query, $args);
+		$this->cache->delete('select_admin_'.$uer_name);
+		$this->cache->delete('select_admin_all');
+		return $set;
+	}
+	
+	public function set_status($uer_name, $status)
+	{
+		$args = array(
+			':user_name' => $user_name,
+			':status' => $status
+		);
+		$query = "UPDATE user_data SET status = :status WHERE user_name = :user_name ";
+		$set = $this->db->query($query, $args);
+		$this->cache->delete('select_admin_'.$uer_name);
+		$this->cache->delete('select_admin_all');
+		return $set;
+	}
+	
 	public function delete($uer_name)
 	{
 		$args = array(

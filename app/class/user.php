@@ -7,6 +7,7 @@ class User {
 	private $last_name;
 	private $user_name;
 	private $password;
+	private $is_admin;
 
 	function __construct()
 	{
@@ -37,6 +38,11 @@ class User {
 	{
 		$this->password = $password;
 	}
+	
+	public function set_admin($admin = 0)
+	{
+		$this->is_admin = $admin;
+	}
 
 	public function get_email()
 	{
@@ -61,5 +67,10 @@ class User {
 	public function get_password()
 	{
 		return $this->password;
+	}
+	
+	public function get_admin()
+	{
+		return $this->is_admin;
 	}
 }
