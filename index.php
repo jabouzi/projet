@@ -35,7 +35,7 @@ session_start();
 $pass = $encrpt->encrypt('1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111');
 $pass2 = $encrpt->decrypt($pass);*/
 
-$memcached = new cache();
+$memcached = new cachefactory();
 //var_dump($memcached->cache_info());
 //$memcached->save('skander', 'jabouzi');
 //var_dump($memcached->get_metadata('skander'));
