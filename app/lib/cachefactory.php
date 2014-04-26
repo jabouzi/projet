@@ -68,7 +68,7 @@ class Cachefactory {
 		//if(is_array($servers)) { 
 			//foreach ($servers as $server) if($server['host'] == $host and $server['port'] == $port) return true; 
 		//} 
-		return $this->cache->addServer($host , $port; 
+		return $this->cache->addServer($host , $port); 
 	} 
 
 }
