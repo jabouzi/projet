@@ -124,7 +124,7 @@ class Userprofiledao {
 		);
 		$query = "SELECT * FROM user_profile WHERE email = :email";
 		$result = $this->db->query($query, $args);
-		$builder = new userprofilebuilder($result);
+		$builder = new userprofilebuilder($result[0]);
 		$builder->build();
 		$user = $builder->getUser();
 		$this->cache->save('select_profile_'.$email, $user);
