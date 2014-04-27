@@ -59,6 +59,7 @@ function item($array, $key)
 
 function isempty($string)
 {
+	var_dump($string);
 	$string = trim($string);
 	return (empty($string) || is_null($string)) ? true : false;
 }
