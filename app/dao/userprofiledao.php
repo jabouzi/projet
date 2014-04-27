@@ -123,7 +123,7 @@ class Userprofiledao {
 			':email' => $email
 		);
 		$query = "SELECT * FROM user_profile WHERE email = :email";
-		$results = $this->db->query($query, $args);
+		$result = $this->db->query($query, $args);
 		$builder = new userprofilebuilder($result);
 		$builder->build();
 		$user = $builder->getUser();
