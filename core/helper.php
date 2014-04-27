@@ -25,7 +25,7 @@ function ip_address()
 function get_site_lang()
 {
 	require(APPPATH.'/app/config/config.php');
-	if (!isset($_GET['u']) return $config['lang'];
+	if (!isset($_GET['u'])) return $config['lang'];
 	$params = explode('/',trim($_GET['u'],'/'));
 	if (is_valid_site_lang()) return $params[0];
 	return $config['lang'];
