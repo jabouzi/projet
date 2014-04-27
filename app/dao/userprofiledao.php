@@ -21,7 +21,7 @@ class Userprofiledao {
 				':password' => $user->password
 			);
 
-		$query = "INSERT INTO user_data VALUES ('', :email, :first_name, :last_name, :user_name, :password)";
+		$query = "INSERT INTO user_profile VALUES ('', :email, :first_name, :last_name, :user_name, :password)";
 		$this->db->query($query, $args);
 		$this->cache->delete('select_profile_'.$user->user_name);
 		$this->cache->delete('select_profile_all');
@@ -39,7 +39,7 @@ class Userprofiledao {
 				':old_email' => $email
 			);
 
-		$query = "UPDATE user_data SET
+		$query = "UPDATE user_profile SET
 				email = :email, first_name = :first_name, last_name = :last_name, user_name = :user_name, password = :password
 				WHERE email = :old_email";
 		$update = $this->db->query($query, $args);
@@ -54,7 +54,7 @@ class Userprofiledao {
 			':email' => $email,
 			':admin' => $is_admin
 		);
-		$query = "UPDATE user_data SET admin = :admin WHERE email = :email ";
+		$query = "UPDATE user_profile SET admin = :admin WHERE email = :email ";
 		$set = $this->db->query($query, $args);
 		$this->cache->delete('select_profile_'.$email);
 		$this->cache->delete('select_profile_all');
@@ -67,7 +67,7 @@ class Userprofiledao {
 			':email' => $email,
 			':profile' => $has_profile
 		);
-		$query = "UPDATE user_data SET profile = :profile WHERE email = :email ";
+		$query = "UPDATE user_profile SET profile = :profile WHERE email = :email ";
 		$set = $this->db->query($query, $args);
 		$this->cache->delete('select_profile_'.$email);
 		$this->cache->delete('select_profile_all');
@@ -80,7 +80,7 @@ class Userprofiledao {
 			':email' => $email,
 			':status' => $status
 		);
-		$query = "UPDATE user_data SET status = :status WHERE email = :email ";
+		$query = "UPDATE user_profile SET status = :status WHERE email = :email ";
 		$set = $this->db->query($query, $args);
 		$this->cache->delete('select_profile_'.$email);
 		$this->cache->delete('select_profile_all');
@@ -92,7 +92,7 @@ class Userprofiledao {
 		$args = array(
 			':email' => $email
 		);
-		$query = "DELETE FROM user_data WHERE email = :email ";
+		$query = "DELETE FROM user_profile WHERE email = :email ";
 		$delete = $this->db->query($query, $args);
 		$this->cache->delete('select_profile_'.$email);
 		$this->cache->delete('select_profile_all');
@@ -104,7 +104,7 @@ class Userprofiledao {
 		if ($this->cache->get('select_profile_all')) return $this->cache->get('select_profile_all');
 		$args = array();
 		$users = array();
-		$query = "SELECT * FROM user_data ";
+		$query = "SELECT * FROM user_profile ";
 		$results = $this->db->query($query, $args);
 		foreach($results as $result)
 		{
@@ -122,7 +122,7 @@ class Userprofiledao {
 		$args = array(
 			':email' => $email
 		);
-		$query = "SELECT * FROM user_data WHERE email = :email";
+		$query = "SELECT * FROM user_profile WHERE email = :email";
 		$results = $this->db->query($query, $args);
 		$builder = new userprofilebuilder($result);
 		$builder->build();
