@@ -61,5 +61,5 @@ function item($array, $key)
 function isempty($string)
 {
 	$string = trim($string);
-	return (empty($string) || is_null($string)) ? true : false;
+	return (empty($string)) ? true : false;
 }
