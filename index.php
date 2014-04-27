@@ -32,7 +32,7 @@ session_set_save_handler(array(&$session, '_open'),
                          array(&$session, '_clean'));
 session_start();
 $encrpt = new encryption();
-$pass = $encrpt->encrypt('7024043');
+var_dump($encrpt->encrypt('7024043'));
 //$pass2 = $encrpt->decrypt($pass);
 
 $memcached = new cachefactory();
