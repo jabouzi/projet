@@ -24,8 +24,8 @@ class Login extends Controller
     
     public function process()
     {
-		if (empty(trim($_POST['email']))) $this->index('login.email.empty');
-		else if (empty(trim($_POST['password']))) $this->index('login.password.empty');
+		if (isempty($_POST['email'])) $this->index('login.email.empty');
+		else if (isempty($_POST['password'])) $this->index('login.password.empty');
 		else
 		{
 			$this->check_login($_POST['email'], $_POST['password']);
