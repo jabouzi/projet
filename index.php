@@ -31,9 +31,9 @@ session_set_save_handler(array(&$session, '_open'),
                          array(&$session, '_destroy'),
                          array(&$session, '_clean'));
 session_start();
-/*$encrpt = new encryption();
-$pass = $encrpt->encrypt('1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111');
-$pass2 = $encrpt->decrypt($pass);*/
+$encrpt = new encryption();
+$pass = $encrpt->encrypt('7024043');
+//$pass2 = $encrpt->decrypt($pass);
 
 $memcached = new cachefactory();
 var_dump($memcached->cache_info());

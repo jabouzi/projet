@@ -42,7 +42,7 @@ class Encryption
 	function encrypt($object)
 	{
 		$message = json_encode($object);
-		$key = md5('promokey');
+		$key = md5('mysqlauth');
 		$pstr = $this->pkcs5Pad($message, 16);
 		$cstr = $this->getEncrypt($pstr, pack("H*", $key));
 		$string = urlencode($cstr);
@@ -51,7 +51,7 @@ class Encryption
 
 	function decrypt($string)
 	{
-		$key = md5('promokey');
+		$key = md5('mysqlauth');
 		$dstr = $this->getDecrypt(urldecode($string), pack("H*", $key));
 		$object = json_decode($this->pkcs5Unpad($dstr, 16));
 		return $object;
