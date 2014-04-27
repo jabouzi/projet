@@ -99,6 +99,7 @@ class Userdatadao {
 		$users = array();
 		$query = "SELECT i.*, v.vhost FROM user_info i, user_vhosts v WHERE i.user_name = v. user_name";
 		$results = $this->db->query($query, $args);
+		if (!count($results)) return false;
 		foreach($results as $result)
 		{
 			$builder = new userdatabuilder($result);
@@ -117,7 +118,8 @@ class Userdatadao {
 			':user_name' => $user_name
 		);
 		$query = "SELECT i.*, v.vhost FROM user_info i, user_vhosts v WHERE i.user_name = :user_name AND i.user_name = v. user_name";
-		$results = $this->db->query($query, $args);
+		$result = $this->db->query($query, $args);
+		if (!count($result)) return false;
 		foreach($results as $result)
 		{
 			$builder = new userdatabuilder($result);

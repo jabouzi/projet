@@ -24,15 +24,25 @@ class Login extends Controller
     
     public function process()
     {
-		$this->user = $this->userdao->select_user($_POST['email']);
-		if ($this->encrypt->decrypt($this->user->get_password()) == $_POST['password']) $this->index('login.failed');
-		else if (!$this->user->get_status()) $this->index('account.nonactive');
-		else redirect();
+		if (empty(trim($_POST['email']))) $this->index('login.email.empty');
+		else if (empty(trim($_POST['password']))) $this->index('login.password.empty');
+		else
+		{
+			$this->check_login($_POST['email'], $_POST['password']);
+		}
 	}
 	
 	public function logout()
 	{
 		unset($_SESSION['user_session']);
 		redirect('login');
+	}
+	
+	private function check_login($email, $password)
+	{
+		$this->user = $this->userdao->select_user($email);
+		if ($this->encrypt->decrypt($this->user->get_password()) == $password) $this->index('login.failed');
+		else if (!$this->user->get_status()) $this->index('account.nonactive');
+		else redirect();
 	}
 }

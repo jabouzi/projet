@@ -106,6 +106,7 @@ class Userprofiledao {
 		$users = array();
 		$query = "SELECT * FROM user_profile ";
 		$results = $this->db->query($query, $args);
+		if (!count($results)) return false;
 		foreach($results as $result)
 		{
 			$builder = new userprofilebuilder($result);
@@ -124,7 +125,7 @@ class Userprofiledao {
 		);
 		$query = "SELECT * FROM user_profile WHERE email = :email";
 		$result = $this->db->query($query, $args);
-		var_dump($result);
+		if (!count($result)) return false;
 		$builder = new userprofilebuilder($result[0]);
 		$builder->build();
 		$user = $builder->getUser();
