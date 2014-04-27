@@ -11,7 +11,7 @@ class Userdataebuilder
     }
     public function build()
     {
-        $this->user = new Userprofile();
+        $this->user = new Userdata();
         $this->user->set_user_name($this->user_data['user_name']);
         $this->user->set_user_password($this->user_data['password']);
         $this->user->set_user_group($this->user_data['email']);
