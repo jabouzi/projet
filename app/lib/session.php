@@ -49,7 +49,7 @@ class Session {
     {
         $old = time() - $max;
 		$args = array(':old' => $old);
-        $query = "DELETE FROM sessions  WHERE access < ':old'";
+        $query = "DELETE FROM sessions  WHERE last_activity < ':old'";
         return $this->db->query($query, $args);
     }
 
