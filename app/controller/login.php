@@ -43,8 +43,8 @@ class Login extends Controller
 	{
 		$this->user = $this->userdao->select_user($email);
 		if (!$this->user) $this->index('login.failed');
-		else if ($this->encrypt->decrypt($this->user->get_password()) == $password) $this->index(array('message' => 'login.failed', 'email' => $email, 'password' => $password));
 		else if (!$this->user->get_status()) $this->index(array('message' => 'login.account.nonactive', 'email' => $email, 'password' => $password));
+		else if ($this->encrypt->decrypt($this->user->get_password()) != $password) $this->index(array('message' => 'login.failed', 'email' => $email, 'password' => $password));
 		else redirect();
 	}
 }
