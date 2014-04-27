@@ -16,8 +16,9 @@ class Login extends Controller
     
     public function index($message = null)
     {
+		$data['message'] = $message;
 		view::load_view('default/standard/header');
-		view::load_view('default/login/form');
+		view::load_view('default/login/form', $data);
 		view::load_view('default/standard/footer');
     }
     
