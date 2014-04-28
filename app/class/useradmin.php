@@ -27,11 +27,6 @@ class Useradmin extends User {
 	{
 		$this->last_name = $last_name;
 	}
-    
-	public function set_user_name($user_name)
-	{
-		parent::set_user_name($user_name);
-	}
 
 	public function set_password($password)
 	{
@@ -61,11 +56,6 @@ class Useradmin extends User {
 	public function get_last_name()
 	{
 		return $this->last_name;
-	}
-    
-	public function get_user_name()
-	{
-		return parent::get_user_name();
 	}
 
 	public function get_password()

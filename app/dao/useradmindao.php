@@ -17,11 +17,10 @@ class Useradmindao {
 				':email' => $user->email,
 				':first_name' => $user->first_name,
 				':last_name' => $user->last_name,
-				':user_name' => $user->user_name,
 				':password' => $user->password
 			);
 
-		$query = "INSERT INTO user_admin VALUES ('', :email, :first_name, :last_name, :user_name, :password)";
+		$query = "INSERT INTO user_admin VALUES ('', :email, :first_name, :last_name, :password)";
 		$this->db->query($query, $args);
 		$this->cache->delete('select_admin_'.$user->user_name);
 		$this->cache->delete('select_admin_all');
@@ -34,13 +33,12 @@ class Useradmindao {
 				':email' => $user->email,
 				':first_name' => $user->first_name,
 				':last_name' => $user->last_name,
-				':user_name' => $user->user_name,
 				':password' => $user->password,
 				':old_email' => $email
 			);
 
 		$query = "UPDATE user_admin SET
-				email = :email, first_name = :first_name, last_name = :last_name, user_name = :user_name, password = :password
+				email = :email, first_name = :first_name, last_name = :last_name, password = :password
 				WHERE email = :old_email";
 		$update = $this->db->query($query, $args);
 		$this->cache->delete('select_admin_'.$email);
