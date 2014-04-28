@@ -45,7 +45,11 @@ class Login extends Controller
 		else if (!$this->user->get_status()) $this->index(array('message' => 'login.account.nonactive', 'email' => $email, 'password' => $password));
 		else if ($this->encrypt->decrypt($this->user->get_password()) != $password) $this->index(array('message' => 'login.failed', 'email' => $email, 'password' => $password));
 		else {
-			$_SESSION['user'] = $this->user;
+			unset($_SESSION['user']);
+			$_SESSION['user']['first_name'] = $this->user->get_first_name();
+			$_SESSION['user']['last_name'] = $this->user->get_last_name();
+			$_SESSION['user']['email'] = $this->user->get_email();
+			$_SESSION['user']['admin'] = $this->user->get_admin();
 			redirect('application');
 		}
 	}
