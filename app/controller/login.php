@@ -42,7 +42,6 @@ class Login extends Controller
 	private function check_login($email, $password)
 	{
 		$this->user = $this->userdao->select_user($email);
-		var_dump($this->user);
 		if (!$this->user) $this->index('login.failed');
 		else if (!$this->user->get_status()) $this->index(array('message' => 'login.account.nonactive', 'email' => $email, 'password' => $password));
 		else if ($this->encrypt->decrypt($this->user->get_password()) != $password) $this->index(array('message' => 'login.failed', 'email' => $email, 'password' => $password));
