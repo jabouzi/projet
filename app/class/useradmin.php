@@ -1,12 +1,11 @@
 <?php
 
-class Userprofile extends User {
+class Useradmin extends User {
 
 	private $email;
 	private $first_name;
 	private $last_name;
 	private $admin;
-	private $profile;
 	private $status;
 
 	function __construct()
@@ -44,11 +43,6 @@ class Userprofile extends User {
 		$this->admin = $admin;
 	}
 	
-	public function set_profile($profile = 0)
-	{
-		$this->profile = $profile;
-	}
-	
 	public function set_status($status = 1)
 	{
 		$this->status = $status;
@@ -83,12 +77,7 @@ class Userprofile extends User {
 	{
 		return $this->admin;
 	}
-	
-	public function get_profile()
-	{
-		return $this->profile;
-	}
-	
+
 	public function get_status()
 	{
 		return $this->status;
