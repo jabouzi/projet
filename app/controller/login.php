@@ -9,8 +9,8 @@ class Login extends Controller
     function __construct()
     {
         //$this->user_mdl = new User_model;
-        $this->user = new userprofile();
-        $this->userdao = new userprofiledao();
+        $this->user = new useradmin();
+        $this->userdao = new useradmindao();
         $this->encrypt = new encryption();
     }
 
