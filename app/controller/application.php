@@ -9,8 +9,6 @@ class Application extends Controller
 
 	function __construct()
 	{
-		//var_dump($_SESSION);
-		unset($_SESSION['user']);
 		if (!is_logged()) redirect('login');
 		//$this->user = new useradmin();
 		//$this->userdao = new useradmindao();
