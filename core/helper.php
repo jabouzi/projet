@@ -63,3 +63,8 @@ function isempty($string)
 	$string = trim($string);
 	return (empty($string)) ? true : false;
 }
+
+function is_logged()
+{
+	return (isset($_SESSION['user']));
+}
