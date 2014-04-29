@@ -19,7 +19,6 @@ class Useradminbuilder
 		$this->user->set_password($this->user_data['password']);
 		$this->user->set_admin($this->user_data['admin']);
 		$this->user->set_status($this->user_data['status']);
-
 	}
 
 	public function getUser()
