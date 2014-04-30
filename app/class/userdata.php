@@ -51,7 +51,7 @@ class Userdata extends User {
 
 	public function get_user_name()
 	{
-		return parent::get_user_name();
+		return $this->user_name;
 	}
 
 	public function get_user_password()
