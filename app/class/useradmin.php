@@ -32,12 +32,12 @@ class Useradmin extends User {
 	{
 		parent::set_password($password);
 	}
-	
+
 	public function set_admin($admin = 0)
 	{
 		$this->admin = $admin;
 	}
-	
+
 	public function set_status($status = 1)
 	{
 		$this->status = $status;
@@ -62,7 +62,7 @@ class Useradmin extends User {
 	{
 		return parent::get_password();
 	}
-	
+
 	public function get_admin()
 	{
 		return $this->admin;

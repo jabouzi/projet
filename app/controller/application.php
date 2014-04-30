@@ -32,4 +32,32 @@ class Application extends Controller
 		}
 		view::load_view('default/standard/footer');
 	}
+
+	public function add()
+	{
+		view::load_view('default/standard/header');
+		view::load_view('default/standard/menu');
+		view::load_view('default/contacts/add');
+		view::load_view('default/standard/footer');
+	}
+
+	public function edit($user_name)
+	{
+		$users = $this->accountdao->select_account($user_name);
+		$data['user'] = $user;
+		view::load_view('default/standard/header');
+		view::load_view('default/standard/menu');
+		view::load_view('default/contacts/edit', $data);
+		view::load_view('default/standard/footer');
+	}
+
+	public function processadd()
+	{
+
+	}
+
+	public function processedit()
+	{
+
+	}
 }

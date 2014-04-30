@@ -116,7 +116,7 @@ class Userdatadao {
 		return $users;
 	}
 
-	public function select_user($user_name)
+	public function select_account($user_name)
 	{
 		if ($this->cache->get('select_data_'.$user_name)) return $this->cache->get('select_data_'.$user_name);
 		$users = array();
