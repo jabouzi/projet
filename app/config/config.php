@@ -1,6 +1,6 @@
 <?php
 
-$config['default'] = 'login';
+$config['default'] = 'application';
 $config['lang'] = 'fr';
 $config['database'] = 'jabouzic_projet';
 $config['username'] = 'jabouzic_db';

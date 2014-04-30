@@ -4,7 +4,7 @@ if (islogged())
 {
 	$links = array('/'=>'Home',
 				   '/auth/add'=>'Add Account',
-				   '/auth/import'=>'Import Accounts',);
+				   '/auth/import'=>'Import Accounts',
 				   '/users/profile'=>'My profile');
 
 	if (isadmin()) {
