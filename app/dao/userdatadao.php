@@ -15,10 +15,13 @@ class Userdatadao {
 	{
 		$args_info = array(
 			':user_name' => $user->user_name,
-			':password' => $user->password
-			':group' => $user->password
+			':password' => $user->password,
+			':group' => $user->group,
+			':email' => $user->email,
+			':first_name' => $user->first_name,
+			':last_name' => $user->last_name,
 		);
-		$query = "INSERT INTO user_info VALUES (:user_name, encrypt(:password), :group)";
+		$query = "INSERT INTO user_info VALUES (:user_name, encrypt(:password), :group, :email, :first_name, :last_name)";
 		$insert = $this->db->query($query, $args_info);
 		$this->cache->delete('select_data_'.$user->user_name);
 		$this->cache->delete('select_data_all');
@@ -46,11 +49,14 @@ class Userdatadao {
 	{
 		$args = array(
 			':user_name' => $user->user_name,
-			':password' => $user->password
-			':group' => $user->password
+			':password' => $user->password,
+			':group' => $user->group,
+			':email' => $user->email,
+			':first_name' => $user->first_name,
+			':last_name' => $user->last_name,
 		);
 		$query = "UPDATE user_info SET
-				password = encrypt(:password), group = :group
+				password = encrypt(:password), group = :group, email = :email, first_name = :first_name, last_name = :last_name
 				WHERE user_name = :user_name";
 		$update = $this->db->query($query, $args);
 		$this->cache->delete('select_data_'.$user->user_name);

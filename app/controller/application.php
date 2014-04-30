@@ -10,16 +10,24 @@ class Application extends Controller
 	function __construct()
 	{
 		if (!islogged()) redirect('login');
-		//$this->user = new useradmin();
-		//$this->userdao = new useradmindao();
+		$this->user = new useradmin();
+		$this->userdao = new useradmindao();
 	}
 
 	public function index($message = null)
 	{
-		
+		$users = $this->user->select_all();
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
-		view::load_view('default/index/welcome');
+		if ($users)
+		{
+			$data['users'] = $users
+			view::load_view('default/contatcs/browse', $data);
+		}
+		else
+		{
+			view::load_view('default/index/welcome');
+		}
 		view::load_view('default/standard/footer');
 	}
 }

@@ -22,7 +22,7 @@ class Useradmindao {
 
 		$query = "INSERT INTO user_admin VALUES ('', :email, :first_name, :last_name, :password)";
 		$this->db->query($query, $args);
-		$this->cache->delete('select_admin_'.$user->user_name);
+		$this->cache->delete('select_admin_'.$user->email);
 		$this->cache->delete('select_admin_all');
 		return $this->db->lastInsertId();
 	}

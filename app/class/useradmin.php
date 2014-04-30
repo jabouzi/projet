@@ -15,17 +15,17 @@ class Useradmin extends User {
 
 	public function set_email($email)
 	{
-		$this->email = $email;
+		parent::set_email($email);
 	}
 
 	public function set_first_name($first_name)
 	{
-		$this->first_name = $first_name;
+		parent::set_first_name($first_name);
 	}
 
 	public function set_last_name($last_name)
 	{
-		$this->last_name = $last_name;
+		parent::set_last_name($last_name);
 	}
 
 	public function set_password($password)
@@ -45,17 +45,17 @@ class Useradmin extends User {
 
 	public function get_email()
 	{
-		return $this->email;
+		return parent::get_email();
 	}
 
 	public function get_first_name()
 	{
-		return $this->first_name;
+		return parent::get_first_name();
 	}
 
 	public function get_last_name()
 	{
-		return $this->last_name;
+		return parent::get_last_name();
 	}
 
 	public function get_password()

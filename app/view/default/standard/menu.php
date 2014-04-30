@@ -3,12 +3,12 @@
 if (islogged())
 {
 	$links = array('/'=>'Home',
-				   '/auth/add'=>'Add Account',
-				   '/auth/import'=>'Import Accounts',
-				   '/users/profile'=>'My profile');
+				   '/application/add'=>'Add Account',
+				   '/application/import'=>'Import Accounts',
+				   '/application/profile'=>'My profile');
 
 	if (isadmin()) {
-		$links['/users/admins'] = 'Admins';
+		$links['/application/admins'] = 'Admins';
 	}
 	$links['/login/logout'] = 'Log Out';
 

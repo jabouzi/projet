@@ -1,12 +1,10 @@
-<h1>Your Contacts</h1>
+<h1>Accounts</h1>
 <div id="browsecontacts">
 <?php 
-    foreach ($view['contacts'] as $contact) {
-        echo view::show('contacts/small', array('contact'=>$contact));
+    foreach ($users as $user) {
+        echo '<a href="/contacts/edit/' . $user->id . '">';
+		echo $user->get_first_name() . " " . $user->get_last_name()
+		echo '</a>';
     }
     echo '</div>';
-    
-    if (!isset($contact)) {
-        echo view::show('index/welcome');
-    }
 ?>
