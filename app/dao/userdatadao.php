@@ -126,12 +126,9 @@ class Userdatadao {
 		$query = "SELECT i.*, v.user_vhost FROM user_info i, user_vhost v WHERE i.user_name = :user_name AND i.user_name = v. user_name";
 		$result = $this->db->query($query, $args);
 		if (!count($result)) return false;
-		foreach($results as $result)
-		{
-			$builder = new userdatabuilder($result);
-			$builder->build();
-			$users[] = $builder->getUser();
-		}
+		$builder = new userdatabuilder($result[0]);
+		$builder->build();
+		$user = $builder->getUser();
 		$this->cache->save('select_data_'.$user_name, $user);
 		return $users;
 	}
