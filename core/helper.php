@@ -80,11 +80,6 @@ function display_message()
 	unset($_SESSION['message']);
 }
 
-function set_array(&$array, $key, $value)
-{
-	if (isset($value)) &$array[$key] = $value;
-}
-
 function get_item($array, $key)
 {
 	return (isset($array[$key])) ? $array[$key] : false;
