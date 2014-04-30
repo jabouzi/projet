@@ -21,7 +21,7 @@ class Application extends Controller
 		view::load_view('default/standard/menu');
 		if ($users)
 		{
-			$data['users'] = $users
+			$data['users'] = $users;
 			view::load_view('default/contatcs/browse', $data);
 		}
 		else
