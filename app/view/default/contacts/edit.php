@@ -25,7 +25,7 @@
 		<label for="lastname">Last Name:</label>
 		<input name="lastname" id="lastname" value="Jabouzi" />
 	</div>
-	<div class="row">
+	<div>
 		<input id="submit" type="submit" value="Edit Account" class="submitbutton">
 	</div>
 </form>
