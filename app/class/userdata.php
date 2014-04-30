@@ -2,9 +2,6 @@
 
 class Userdata extends User {
 
-	private $email;
-	private $first_name;
-	private $last_name;
 	private $user_name;
 	private $user_group;
 	private $user_vhosts = array();
