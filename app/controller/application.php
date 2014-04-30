@@ -43,7 +43,7 @@ class Application extends Controller
 
 	public function edit($user_name)
 	{
-		$users = $this->accountdao->select_account($user_name);
+		$user = $this->accountdao->select_account($user_name);
 		$data['user'] = $user;
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
