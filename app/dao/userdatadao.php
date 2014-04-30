@@ -103,7 +103,7 @@ class Userdatadao {
 		if ($this->cache->get('select_data_all')) return $this->cache->get('select_data_all');
 		$args = array();
 		$users = array();
-		$query = "SELECT i.*, v.vhost FROM user_info i, user_vhost v WHERE i.user_name = v. user_name";
+		$query = "SELECT i.*, v.user_vhost FROM user_info i, user_vhost v WHERE i.user_name = v. user_name";
 		$results = $this->db->query($query, $args);
 		if (!count($results)) return false;
 		foreach($results as $result)
@@ -123,7 +123,7 @@ class Userdatadao {
 		$args = array(
 			':user_name' => $user_name
 		);
-		$query = "SELECT i.*, v.vhost FROM user_info i, user_vhost v WHERE i.user_name = :user_name AND i.user_name = v. user_name";
+		$query = "SELECT i.*, v.user_vhost FROM user_info i, user_vhost v WHERE i.user_name = :user_name AND i.user_name = v. user_name";
 		$result = $this->db->query($query, $args);
 		if (!count($result)) return false;
 		foreach($results as $result)
