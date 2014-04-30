@@ -2,7 +2,7 @@
 <div id="browsecontacts">
 <?php
 	foreach ($users as $user) {
-		echo '<a href="/application/edit/' . $user['user_name'] . '">';
+		echo '<a href="/'.get_site_lang().'/application/edit/' . $user['user_name'] . '">';
 		echo $user['user_first_name'] . " " . $user['user_last_name'];
 		echo '</a>';
 	}
