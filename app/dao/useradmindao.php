@@ -98,7 +98,7 @@ class Useradmindao {
 			$builder->build();
 			$users[] = $builder->getUser();
 		}
-		$this->cache->save('select_admin_all');
+		$this->cache->save('select_admin_all', $results);
 		return $users;
 	}
 
