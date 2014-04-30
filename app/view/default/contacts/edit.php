@@ -26,6 +26,6 @@
 		<input name="lastname" id="lastname" value="Jabouzi" />
 	</div>
 	<div class="row">
-		<input type="submit" value="save">
+		<input id="submit" type="submit" value="Edit Account" class="submitbutton">
 	</div>
 </form>
