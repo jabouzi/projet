@@ -9,6 +9,7 @@ class Application extends Controller
 
 	function __construct()
 	{
+		unset($_SESSION['message']);
 		if (!islogged()) redirect('login');
 		$this->user = new useradmin();
 		$this->userdao = new useradmindao();
@@ -44,6 +45,7 @@ class Application extends Controller
 
 	public function edit($user_name)
 	{
+		$_SESSION['message']  = 'TEST MESSAGE';
 		//username no change
 		$user = $this->accountdao->select_account($user_name);
 		$data['user'] = $user;
