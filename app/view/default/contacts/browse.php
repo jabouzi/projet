@@ -2,7 +2,6 @@
 <div id="browsecontacts">
 <?php 
     foreach ($users as $user) {
-		var_dump($user);
         echo '<a href="/contacts/edit/' . $user['user_name'] . '">';
 		echo $user['user_first_name'] . " " . $user['user_last_name'];
 		echo '</a>';
