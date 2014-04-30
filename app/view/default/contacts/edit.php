@@ -9,7 +9,8 @@
             
         </div>
 
-    <div><label for="submit"> </label>
+    <div><div class="row"><label for="submit"> </label>
          <input id="submit" type="submit" value="Edit Contact" class="submitbutton" />
+    </div>
     </div>
 </form>
