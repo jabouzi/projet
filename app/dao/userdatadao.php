@@ -112,7 +112,7 @@ class Userdatadao {
 			$builder->build();
 			$users[] = $builder->getUser();
 		}
-		$this->cache->save('select_data_all', $results);
+		$this->cache->save('select_data_all', $users);
 		return $users;
 	}
 
