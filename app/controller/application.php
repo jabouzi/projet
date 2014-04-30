@@ -55,12 +55,12 @@ class Application extends Controller
 
 	public function processadd()
 	{
-		$_SESSION['message']  = 'TEST MESSAGE';
-		redirect('application/edit');
+
 	}
 
 	public function processedit()
 	{
-
+		$_SESSION['message']  = 'TEST MESSAGE';
+		redirect('application/edit');
 	}
 }
