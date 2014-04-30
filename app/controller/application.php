@@ -18,6 +18,7 @@ class Application extends Controller
 
 	public function index($message = null)
 	{
+		//menu decorator
 		$users = $this->accountdao->select_all();
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
@@ -43,6 +44,7 @@ class Application extends Controller
 
 	public function edit($user_name)
 	{
+		//username no change
 		$user = $this->accountdao->select_account($user_name);
 		$data['user'] = $user;
 		view::load_view('default/standard/header');
