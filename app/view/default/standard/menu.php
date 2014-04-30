@@ -8,7 +8,7 @@ if (islogged())
 				   '/users/profile'=>'My profile');
 
 	if (isadmin()) {
-		$links['/users/admins'] = 'User Admin';
+		$links['/users/admins'] = 'Admins';
 	}
 	$links['/login/logout'] = 'Log Out';
 
