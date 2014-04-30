@@ -56,7 +56,7 @@ class Userdatadao {
 			':last_name' => $user->last_name,
 		);
 		$query = "UPDATE user_info SET
-				password = encrypt(:password), group = :group, email = :email, first_name = :first_name, last_name = :last_name
+				password = encrypt(:password), group = :group, user_email = :email, user_first_name = :first_name, user_last_name = :last_name
 				WHERE user_name = :user_name";
 		$update = $this->db->query($query, $args);
 		$this->cache->delete('select_data_'.$user->user_name);
