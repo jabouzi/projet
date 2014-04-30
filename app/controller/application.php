@@ -61,6 +61,6 @@ class Application extends Controller
 	public function processedit()
 	{
 		$_SESSION['message']  = 'TEST MESSAGE';
-		redirect('application/edit');
+		redirect('application/edit/hugo');
 	}
 }
