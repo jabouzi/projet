@@ -1,7 +1,7 @@
 <div id="loginbox">
 	<h1>Login</h1>
 	<?php if ($message) : ?>
-		<ul class="error"><li><?php echo $message; ?></li></ul>
+		<ul class="error"><li><?php display_message(); ?></li></ul>
 	<?php endif; ?>
 	<form action="/<?php echo get_site_lang(); ?>/login/process" method="post">
 		<div class="row"><label for="email">Username:</label><input type="text" name="email" id="email" value="<?php if (isset($email)) echo $email; ?>"/></div>
