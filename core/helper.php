@@ -71,5 +71,5 @@ function islogged()
 
 function isadmin()
 {
-	return $_SESSION['admin'];
+	return $_SESSION['user']['admin'];
 }
