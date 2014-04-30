@@ -15,8 +15,8 @@ class Login extends Controller
 
 	public function index()
 	{
-		$data['email'] = $_POST['email'];
-		$data['password'] = $_POST['password'];
+		$data['email'] = get_item($_POST, 'email');
+		$data['password'] = get_item($_POST, 'password');
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
 		view::load_view('default/login/form', $data);
