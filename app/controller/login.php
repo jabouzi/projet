@@ -13,10 +13,9 @@ class Login extends Controller
 		$this->encrypt = new encryption();
 	}
 
-	public function index($message = null)
+	public function index()
 	{
-		if (is_array($message)) $data = $message;
-		else $data['message'] = $message;
+		$data['email'] = $_POST['email'], $data['password'] = $_POST['password'];
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
 		view::load_view('default/login/form', $data);
@@ -50,10 +49,23 @@ class Login extends Controller
 	private function check_login($email, $password)
 	{
 		$this->user = $this->userdao->select_user($email);
-		if (!$this->user) $this->index('login.failed');
-		else if (!$this->user->get_status()) $this->index(array('message' => 'login.account.nonactive', 'email' => $email, 'password' => $password));
-		else if ($this->encrypt->decrypt($this->user->get_password()) != $password) $this->index(array('message' => 'login.failed', 'email' => $email, 'password' => $password));
-		else {
+		if (!$this->user)
+		{
+			$_SESSION['message'] = 'login.failed';
+			redirect('login');
+		}
+		else if (!$this->user->get_status())
+		{
+			$_SESSION['message'] = 'login.account.nonactive';
+			redirect('login');
+		}
+		else if ($this->encrypt->decrypt($this->user->get_password()) != $password)
+		{
+			$_SESSION['message'] = 'login.failed';
+			redirect('login');
+		}
+		else 
+		{
 			unset($_SESSION['user']);
 			$_SESSION['user']['first_name'] = $this->user->get_first_name();
 			$_SESSION['user']['last_name'] = $this->user->get_last_name();
