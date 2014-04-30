@@ -7,5 +7,4 @@
     <script type="text/javascript" src="/public/js/jquery-1.3.2.min.js"></script>
 </head>
 <body>
-    <div id="header"></div>
-    <div id="body">
+    

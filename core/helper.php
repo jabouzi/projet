@@ -64,7 +64,12 @@ function isempty($string)
 	return (empty($string)) ? true : false;
 }
 
-function is_logged()
+function islogged()
 {
 	return (isset($_SESSION['user']));
+}
+
+function isadmin()
+{
+	return $_SESSION['admin'];
 }

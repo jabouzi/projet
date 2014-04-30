@@ -9,7 +9,7 @@ class Application extends Controller
 
 	function __construct()
 	{
-		if (!is_logged()) redirect('login');
+		if (!islogged()) redirect('login');
 		//$this->user = new useradmin();
 		//$this->userdao = new useradmindao();
 	}
@@ -18,6 +18,7 @@ class Application extends Controller
 	{
 		
 		view::load_view('default/standard/header');
+		view::load_view('default/standard/menu');
 		view::load_view('default/index/welcome');
 		view::load_view('default/standard/footer');
 	}
