@@ -130,7 +130,7 @@ class Userdatadao {
 		$builder->build();
 		$user = $builder->getUser();
 		$this->cache->save('select_data_'.$user_name, $user);
-		return $users;
+		return $user;
 	}
 
 }
