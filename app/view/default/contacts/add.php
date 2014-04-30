@@ -1,5 +1,5 @@
 <h2>Add Contact</h2>
-<form action="/application/processadd" method="post" id="editform">
+<form action="/<?php echo get_site_lang(); ?>/application/processadd" method="post" id="editform">
 	<input type="hidden" name="id" value="3" />
 	<div class="row">
 		<label for="firstname">First Name:</label>
