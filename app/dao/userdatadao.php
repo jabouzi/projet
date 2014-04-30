@@ -37,7 +37,7 @@ class Userdatadao {
 				':user_name' => $user->user_name,
 				':vhost' => $host
 			);
-			$query = "INSERT INTO user_vhosts VALUES (:user_name, :vhost)";
+			$query = "INSERT INTO user_vhost VALUES (:user_name, :vhost)";
 			$insert += $this->db->query($query, $args_vhost);
 		}
 		$this->cache->delete('select_data_'.$user->user_name);
@@ -91,7 +91,7 @@ class Userdatadao {
 		$args = array(
 			':user_name' => $user_name
 		);
-		$query = "DELETE FROM user_vhosts WHERE user_name = :user_name";
+		$query = "DELETE FROM user_vhost WHERE user_name = :user_name";
 		$delete = $this->db->query($query, $args);
 		$this->cache->delete('select_data_'.$uer_name);
 		$this->cache->delete('select_data_all');
@@ -103,7 +103,7 @@ class Userdatadao {
 		if ($this->cache->get('select_data_all')) return $this->cache->get('select_data_all');
 		$args = array();
 		$users = array();
-		$query = "SELECT i.*, v.vhost FROM user_info i, user_vhosts v WHERE i.user_name = v. user_name";
+		$query = "SELECT i.*, v.vhost FROM user_info i, user_vhost v WHERE i.user_name = v. user_name";
 		$results = $this->db->query($query, $args);
 		if (!count($results)) return false;
 		foreach($results as $result)
@@ -123,7 +123,7 @@ class Userdatadao {
 		$args = array(
 			':user_name' => $user_name
 		);
-		$query = "SELECT i.*, v.vhost FROM user_info i, user_vhosts v WHERE i.user_name = :user_name AND i.user_name = v. user_name";
+		$query = "SELECT i.*, v.vhost FROM user_info i, user_vhost v WHERE i.user_name = :user_name AND i.user_name = v. user_name";
 		$result = $this->db->query($query, $args);
 		if (!count($result)) return false;
 		foreach($results as $result)
