@@ -73,3 +73,9 @@ function isadmin()
 {
 	return $_SESSION['user']['admin'];
 }
+
+function display_message()
+{
+	if (isset($_SESSION['message']) ? echo $_SESSION['message'] : echo '';
+	unset($_SESSION['message']);
+}
