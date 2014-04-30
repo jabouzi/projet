@@ -4,19 +4,21 @@ class Application extends Controller
 {
 	private $user;
 	private $userdao;
-	private $admin;
-	private $admindao;
+	private $account;
+	private $accountdao;
 
 	function __construct()
 	{
 		if (!islogged()) redirect('login');
 		$this->user = new useradmin();
 		$this->userdao = new useradmindao();
+		$this->account = new userdata();
+		$this->accountdao = new userdatadao();
 	}
 
 	public function index($message = null)
 	{
-		$users = $this->user->select_all();
+		$users = $this->accountdao->select_all();
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
 		if ($users)
