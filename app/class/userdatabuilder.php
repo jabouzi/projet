@@ -1,6 +1,6 @@
 <?php
 
-class Userdataebuilder
+class Userdatabuilder
 {
     protected $user = NULL;
     protected $user_data = array();
