@@ -18,6 +18,7 @@ class Login extends Controller
 		if (is_array($message)) $data = $message;
 		else $data['message'] = $message;
 		view::load_view('default/standard/header');
+		view::load_view('default/standard/menu');
 		view::load_view('default/login/form', $data);
 		view::load_view('default/standard/footer');
 	}
