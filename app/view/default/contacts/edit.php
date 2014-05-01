@@ -4,7 +4,7 @@
     <input type="hidden" name="id" value="3" />
     <div class="row">
 		<label for="user_name">User Name:</label>
-		<input type="text" name="user_name" id="user_name" value="<?php echo $user->get_user_name(); ?>" />
+		<input type="text" name="user_name" id="user_name" value="<?php echo $user->get_user_name(); ?>" readonly />
 	</div>
     <div class="row">
 		<label for="email">Email:</label>
