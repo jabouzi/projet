@@ -3,14 +3,14 @@
 if (islogged())
 {
 	$links = array('/'=>'Home',
-				   '/application/add'=>'Add Account',
-				   '/application/import'=>'Import Accounts',
-				   '/application/profile'=>'My profile');
+				   '/'.get_site_lang().'/application/add'=>'Add Account',
+				   '/'.get_site_lang().'/application/import'=>'Import Accounts',
+				   '/'.get_site_lang().'/application/profile'=>'My profile');
 
 	if (isadmin()) {
-		$links['/application/admins'] = 'Admins';
+		$links['/'.get_site_lang().'/application/admins'] = 'Admins';
 	}
-	$links['/login/logout'] = 'Log Out';
+	$links['/'.get_site_lang().'/login/logout'] = 'Log Out';
 
 	echo '<ul>';
 	foreach ($links as $link=>$title) {
