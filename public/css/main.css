@@ -63,6 +63,14 @@ input.submitbutton {
 	font-weight: bold;
 	width: auto;
 }
+input.deletebutton {
+	border: 2px solid #333;
+	background-color: #BE1313;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+	width: auto;
+}
 input.radio {
     width: auto;
     border: none;
