@@ -52,6 +52,11 @@ class Application extends Controller
 		view::load_view('default/contacts/edit', $data);
 		view::load_view('default/standard/footer');
 	}
+	
+	public function delete()
+	{
+		
+	}
 
 	public function processadd()
 	{
@@ -60,7 +65,8 @@ class Application extends Controller
 
 	public function processedit()
 	{
-		$_SESSION['message']  = 'TEST MESSAGE';
-		redirect('application/edit/hugo');
+		var_dump($_POST);
+		//$_SESSION['message']  = 'TEST MESSAGE';
+		//redirect('application/edit/hugo');
 	}
 }
