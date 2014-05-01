@@ -23,7 +23,7 @@
 	</div>
     <div class="row">
 		<label for="password">password:</label>
-		<input type="password" name="password" id="password" value="<?php echo $user->get_password(); ?>" />
+		<input type="password" name="password" id="password" value="" />
 	</div>
     <div class="row">
 		<label for="firs_tname">First Name:</label>
