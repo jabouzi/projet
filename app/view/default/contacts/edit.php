@@ -6,6 +6,11 @@
          <input id="submit" type="submit" value="Delete Contact" class="deletebutton" />
     </div>
 </div>
+<div>
+	<div class="row"><label for="submit"> </label>
+         
+    </div>
+</div>
 </form>
 <form action="/<?php echo get_site_lang(); ?>/application/processedit" method="post" id="editform">
     <input type="hidden" name="id" value="3" />
