@@ -6,7 +6,7 @@ function get_projects($user_projects = array())
     $projects = $sClient->getlist();
     $selected = '';
     if (in_array('*', $user_projects)) $selected = 'selected'; 
-    echo '<select id="_projects" name="_projects" multiple="multiple"><option value="*" '.$selected.'>All</option>';
+    echo '<select id="_projects" name="_projects[]" multiple="multiple"><option value="*" '.$selected.'>All</option>';
     foreach($projects as $project)
     {
 		$selected = '';
