@@ -1,4 +1,4 @@
-<?php display_message(); ?>
+<?php display_message(); var_dump($user);?>
 <h2>Edit Account</h2>
 <form action="/<?php echo get_site_lang(); ?>/application/processedit" method="post" id="editform">
     <input type="hidden" name="id" value="3" />
