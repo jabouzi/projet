@@ -2,6 +2,7 @@
 
 function get_projects($user_projects)
 {
+	var_dump($user_projects);
     $sClient = new SoapClient('http://svn.tgiprojects.com/wsdl/usvnws.wsdl', array('trace' => 1));
     $projects = $sClient->getlist();
     echo '<select id="_projects" name="_projects" multiple="multiple"><option value="*">All</option>';
