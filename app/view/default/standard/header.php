@@ -9,18 +9,18 @@
 	<script type="text/javascript" src="/public/js/jquery-ui-1.8.13.custom.min.js"></script>
 	<script type="text/javascript" src="/public/js/ui.dropdownchecklist-1.4-min.js"></script>
 	<script type="text/javascript">
-		        $(document).ready(function() {
-        	$returnS5 = $('#returnS5');
-			$("#s5").dropdownchecklist({
-onItemClick: function(checkbox, selector){
-	var justChecked = checkbox.prop("checked");
-	var checkCount = (justChecked) ? 1 : -1;
-	for( i = 0; i < selector.options.length; i++ ){
-		if ( selector.options[i].selected ) checkCount += 1;
-	}
-}
-});
-       });
+		$(document).ready(function() {
+			$returnS5 = $('#projects');
+			$("#_projects").dropdownchecklist({
+				onItemClick: function(checkbox, selector){
+					var justChecked = checkbox.prop("checked");
+					var checkCount = (justChecked) ? 1 : -1;
+					for( i = 0; i < selector.options.length; i++ ){
+						if ( selector.options[i].selected ) checkCount += 1;
+					}
+				}
+			});
+	   });
 	</script>
 	<title>Acme Company Contact Manager</title>
 </head>
