@@ -103,7 +103,7 @@ class Userdatadao {
 		if ($this->cache->get('select_data_all')) return $this->cache->get('select_data_all');
 		$args = array();
 		$users = array();
-		$query = "SELECT i.*, v.user_vhost FROM user_info i, user_vhost v WHERE i.user_name = v. user_name";
+		$query = "SELECT * FROM user_info WHERE 1 ORDER BY user_name ASC";
 		$results = $this->db->query($query, $args);
 		if (!count($results)) return false;
 		foreach($results as $result)
