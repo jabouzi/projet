@@ -16,21 +16,8 @@
 	</div>
 	<div>
 	<div class="row">
-		<table>
-      <tr>
-      	<td>
-	        <select id="s5" multiple="multiple">
-	            <option>Coffee Chip</option>
-	            <option>Cookie Dough</option>
-	            <option>Cookies 'n Cream</option>
-	            <option>Dutch Chocolate</option>
-	            <option>Fudgee Peanut Butter Cup</option>
-	        </select>
-	    </td>
-      	<td id="returnS5">
-	    </td>
-	  </tr>
-    </table>
+		<label>Info:</label>
+		<?php get_projects(); ?>
 	</div>
     <div><div class="row"><label for="submit"> </label>
          <input id="submit" type="submit" value="Edit Contact" class="submitbutton" />
