@@ -1,5 +1,12 @@
 <?php display_message();?>
 <h2>Edit Account</h2>
+<form>    
+<div>
+	<div class="row"><label for="submit"> </label>
+         <input id="submit" type="submit" value="Edit Contact" class="submitbutton" />
+    </div>
+</div>
+</form>
 <form action="/<?php echo get_site_lang(); ?>/application/processedit" method="post" id="editform">
     <input type="hidden" name="id" value="3" />
     <div class="row">
@@ -31,11 +38,4 @@
 			<input id="submit" type="submit" value="Edit Contact" class="submitbutton" />
 		</div>
     </div>
-</form>
-<form>    
-<div>
-	<div class="row"><label for="submit"> </label>
-         <input id="submit" type="submit" value="Edit Contact" class="submitbutton" />
-    </div>
-</div>
 </form>
