@@ -3,9 +3,10 @@
 <form>    
 <div>
 	<div class="row"><label for="submit"> </label>
-         <input id="submit" type="submit" value="Edit Contact" class="deletebutton" />
+         <input id="submit" type="submit" value="Delete Contact" class="deletebutton" />
     </div>
 </div>
+<br />
 </form>
 <form action="/<?php echo get_site_lang(); ?>/application/processedit" method="post" id="editform">
     <input type="hidden" name="id" value="3" />
