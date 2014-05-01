@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<?php/*<link rel="stylesheet" type="text/css" href="/public/css/smoothness-1.8.13/jquery-ui-1.8.13.custom.css">
+	<?/*<link rel="stylesheet" type="text/css" href="/public/css/smoothness-1.8.13/jquery-ui-1.8.13.custom.css">
 	<link rel="stylesheet" type="text/css" href="/public/css/ui.dropdownchecklist.themeroller.css">*/?>
 	<link rel="stylesheet" type="text/css" href="/public/css/main.css" />
 	<script type="text/javascript" src="/public/js/jquery-1.6.1.min.js"></script>
-	<?php/*<script type="text/javascript" src="/public/js/jquery-ui-1.8.13.custom.min.js"></script>
+	<?/*<script type="text/javascript" src="/public/js/jquery-ui-1.8.13.custom.min.js"></script>
 	<script type="text/javascript" src="/public/js/ui.dropdownchecklist-1.4-min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
