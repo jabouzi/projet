@@ -7,7 +7,7 @@ function get_projects()
     echo '<select id="_projects" name="projects"><option value="*">All</option>';
     foreach($projects as $project)
     {
-        echo '<option value="'.$project['projects_sitestaging'].'">'.$project['projects_sitestaging']).'</option>';
+        echo '<option value="'.$project['projects_sitestaging'].'">'.$project['projects_sitestaging'].'</option>';
     }
     echo '</select>
     <span id="projects">
