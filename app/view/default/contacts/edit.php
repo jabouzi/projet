@@ -1,16 +1,15 @@
 <?php display_message();?>
 <h2>Edit Account</h2>
-<form>    
+<form action="/<?php echo get_site_lang(); ?>/application/delete" method="post" id="deleteform">    
 <div>
 	<div class="row"><label for="submit"> </label>
          <input id="submit" type="submit" value="Delete Contact" class="deletebutton" />
     </div>
-</div>
-<div>
 	<div class="row"><label for="submit"> </label>
-         
+        <input type="hidden" name="user_name" id="user_name" value="<?php echo $user->get_user_name(); ?>"/> 
     </div>
 </div>
+
 </form>
 <form action="/<?php echo get_site_lang(); ?>/application/processedit" method="post" id="editform">
     <input type="hidden" name="id" value="3" />
