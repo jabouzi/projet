@@ -1,6 +1,6 @@
 <?php
 
-function get_projects($user_projects)
+function get_projects($user_projects = array())
 {
     $sClient = new SoapClient('http://svn.tgiprojects.com/wsdl/usvnws.wsdl', array('trace' => 1));
     $projects = $sClient->getlist();
