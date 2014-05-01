@@ -44,6 +44,7 @@ class Application extends Controller
 
 	public function edit($user_name)
 	{
+		get_projects();
 		//username no change
 		$user = $this->accountdao->select_account($user_name);
 		$data['user'] = $user;
