@@ -123,9 +123,13 @@ class Userdatadao {
 		$args = array(
 			':user_name' => $user_name
 		);
-		$query = "SELECT i.*, v.user_vhost FROM user_info i, user_vhost v WHERE i.user_name = :user_name AND i.user_name = v. user_name";
+		//$query = "SELECT i.*, v.user_vhost FROM user_info i, user_vhost v WHERE i.user_name = :user_name AND i.user_name = v. user_name";
+		$query = "SELECT *, FROM user_info WHERE user_name = :user_name";
 		$result = $this->db->query($query, $args);
 		if (!count($result)) return false;
+		$query = "SELECT user_vhost FROM user_vhost WHERE user_name = :user_name";
+		$result2 = $this->db->query($query, $args);
+		$result[0]['user_vhost'] = $result2[0];
 		$builder = new userdatabuilder($result[0]);
 		$builder->build();
 		$user = $builder->getUser();
