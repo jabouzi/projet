@@ -131,7 +131,7 @@ class Userdatadao {
 		$result2 = $this->db->query($query, $args);
 		foreach($result2 as $res)
 		{
-			$result[0]['user_vhost'] = $res['user_vhost'];
+			$result[0]['user_vhost'][] = $res['user_vhost'];
 		}
 		$builder = new userdatabuilder($result[0]);
 		$builder->build();
