@@ -129,7 +129,10 @@ class Userdatadao {
 		if (!count($result)) return false;
 		$query = "SELECT user_vhost FROM user_vhost WHERE user_name = :user_name";
 		$result2 = $this->db->query($query, $args);
-		$result[0]['user_vhost'] = $result2;
+		foreach($result2 as $res)
+		{
+			$result[0]['user_vhost'] = $res['user_vhost'];
+		}
 		$builder = new userdatabuilder($result[0]);
 		$builder->build();
 		$user = $builder->getUser();
