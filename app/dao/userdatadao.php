@@ -108,6 +108,7 @@ class Userdatadao {
 		if (!count($results)) return false;
 		foreach($results as $result)
 		{
+			$result['user_vhost'] = array();
 			$builder = new userdatabuilder($result);
 			$builder->build();
 			$users[] = $builder->getUser();
