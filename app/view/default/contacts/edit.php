@@ -3,7 +3,7 @@
 <form>    
 <div>
 	<div class="row"><label for="submit"> </label>
-         <input id="submit" type="submit" value="Edit Contact" class="submitbutton" />
+         <input id="submit" type="submit" value="Edit Contact" class="deletebutton" />
     </div>
 </div>
 </form>
