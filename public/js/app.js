@@ -1,8 +1,18 @@
 $(document).ready(function() {
+	var timer;
 	$('#delete').click(function()
 	{
-		$('#delete_message').show();
-		$.wait( function(){ submit_form($(this).closest("form").id()) }, 5);
+		console.log('SET TIMEOUT');
+		timer = window.setTimeout( window.location.reload,  5000 );
+		//$('#delete_message').show();
+		//$.wait( function(){ submit_form($(this).closest("form").id()) }, 5);
+	});
+	$('#cancel').click(function()
+	{
+		console.log('CLEAR TIMEOUT');
+		clearTimeout(timer);
+		//$('#delete_message').show();
+		//$.wait( function(){ submit_form($(this).closest("form").id()) }, 5);
 	});
 	
 	//$('#deleteform').submit(function() {
