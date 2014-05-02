@@ -3,7 +3,7 @@ $(document).ready(function() {
 	$('#delete').click(function()
 	{
 		//console.log('SET TIMEOUT');
-		timer = window.setTimeout( submit_form('null'),  100000 );
+		timer = window.setTimeout( submit_form,  5000);
 		//$('#delete_message').show();
 		//$.wait( function(){ submit_form($(this).closest("form").id()) }, 5);
 	});
@@ -27,8 +27,8 @@ $.wait = function( callback, seconds){
    return window.setTimeout( callback, seconds * 1000 );
 }
 
-function submit_form(id) {
-	console.log(id);
+function submit_form() {
+	console.log('submit');
 	//$('#'+id).submit();
 }
 
