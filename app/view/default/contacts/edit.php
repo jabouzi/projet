@@ -4,7 +4,7 @@
 <div>
 	<div class="row"><label for="submit"> </label>
          <input id="delete" type="button" value="Delete Contact" class="deletebutton" />
-         <input id="cancel" type="button" value="Delete Contact" class="deletebutton" />
+         <input id="cancel" type="button" value="Cancel Delete" class="deletebutton" />
     </div>
 	<div class="row"><label for="submit"> </label>
         <input type="hidden" name="user_name" id="user_name" value="<?php echo $user->get_user_name(); ?>"/> 
