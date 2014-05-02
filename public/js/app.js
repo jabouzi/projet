@@ -3,10 +3,11 @@ $(document).ready(function() {
 	$('#delete').click(function()
 	{
 		console.log('SET TIMEOUT');
-		timer = setTimeout( submit_form('null'),  10000 );
+		timer = window.setTimeout( submit_form('null'),  100000 );
 		//$('#delete_message').show();
 		//$.wait( function(){ submit_form($(this).closest("form").id()) }, 5);
 	});
+	
 	$('#cancel').click(function()
 	{
 		console.log('CLEAR TIMEOUT');
