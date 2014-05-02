@@ -6,11 +6,11 @@ $(document).ready(function() {
 		//$.wait( function(){ submit_form($(this).closest("form").id()) }, 5);
 	});
 	
-	$('#deleteform').submit(function() {
-		var data = $("#login_form :input").serializeArray();
-		alert('Handler for .submit() called.');
-		return false;  // <- cancel event
-	});
+	//$('#deleteform').submit(function() {
+		//var data = $("#login_form :input").serializeArray();
+		//alert('Handler for .submit() called.');
+		//return false;  // <- cancel event
+	//});
 });
 
 $.wait = function( callback, seconds){
