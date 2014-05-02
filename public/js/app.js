@@ -1,8 +1,9 @@
 $(document).ready(function() {
 	$('#delete').click(function()
 	{
+		console.log(id);
 		$('#delete_message').show();
-		$.wait( function(){ submit_form($(this).closest("form").id()) }, 5);
+		//$.wait( function(){ submit_form($(this).closest("form").id()) }, 5);
 	});
 	
 	$('#deleteform').submit(function() {
