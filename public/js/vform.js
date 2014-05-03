@@ -3,7 +3,6 @@ function validate_from(form_id)
     var required = 0;
     $('input').removeClass('error_input');
     $("#" + form_id).find('[data-validate]').each(function() {
-		console.log($(this));
         required += validate_element($(this));
     });
         
@@ -25,6 +24,7 @@ function process_validated_form(required, form_id)
 
 function validate_element(element)
 {
+	console.log(element.val());
     var required = 0;
     if (element.attr('data-type') == 'email')
     {
@@ -40,7 +40,6 @@ function validate_element(element)
 
 function isValidEmailAddress(element) 
 {
-	console.log(element.val());
     var isValid = false;
     var emailAddress = element.val();
     if (element.attr('data-validate') == 'validate' && emailAddress == '') isValid = true;
