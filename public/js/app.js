@@ -24,7 +24,7 @@ $(document).ready(function() {
 function submit_form() {
 	//console.log($(this).closest("form").attr('id'));
 	//$('#deleteform').submit();
-	$("#addform").submit();
+	$("#editform").submit();
 }
 
 function show_countdown()
