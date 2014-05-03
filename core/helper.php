@@ -91,7 +91,7 @@ function isadmin()
 
 function display_message()
 {
-	echo (isset($_SESSION['message'])) ? $_SESSION['message'] : '';
+	echo (isset($_SESSION['message'])) ? '<label></label>'.$_SESSION['message'] : '';
 	unset($_SESSION['message']);
 }
 
