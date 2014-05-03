@@ -21,7 +21,7 @@ function submit_form() {
 
 function show_countdown()
 {
-	var timer = setInterval(function() {
+	var timer2 = setInterval(function() {
 		$("#count_num").html(function(i,html) {
 			if(parseInt(html)>0)
 			{
@@ -29,7 +29,7 @@ function show_countdown()
 			}
 			else
 			{
-				clearTimeout(timer);
+				clearTimeout(timer2);
 			}
 		});
 	},1000);
