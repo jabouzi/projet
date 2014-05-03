@@ -18,3 +18,12 @@ function get_projects($user_projects = array())
 	<span id="projects">
 	</span>';
 }
+
+function adjust_vhosts($vhosts)
+{
+	$sClient = new SoapClient('http://svn.tgiprojects.com/wsdl/usvnws.wsdl', array('trace' => 1));
+	$projects = $sClient->getlist();
+	if (in_array('*', $vhosts)) return array('*');
+	else if (!in_array('*', $vhosts) && count($vhosts) == count($projects)) return array('*');
+	else return $vhosts;
+}
