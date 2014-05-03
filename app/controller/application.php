@@ -49,7 +49,7 @@ class Application extends Controller
 		view::load_view('default/contacts/edit', $data);
 		view::load_view('default/standard/footer');
 	}
-	
+
 	public function delete()
 	{
 		var_dump($_POST);
@@ -62,12 +62,11 @@ class Application extends Controller
 		{
 			$_SESSION['message'] = 'account.email.exists';
 		}
-		
 		else if ($this->user_model->user_name_exists($_POST['user_name']))
 		{
 			$_SESSION['message'] = 'account.user_name.exists';
 		}
-		
+
 		redirect('application/add');
 	}
 
