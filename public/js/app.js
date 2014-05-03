@@ -17,13 +17,14 @@ $(document).ready(function() {
 	$('#submit').click(function()
 	{
 		//validate_from($(this).closest("form").attr('id'));
-		submit_form();
+		submit_form()
 	});
 });
 
 function submit_form() {
-	console.log($(this).closest("form").attr('id'));
+	//console.log($(this).closest("form").attr('id'));
 	//$('#deleteform').submit();
+	$("#addform").submit();
 }
 
 function show_countdown()
