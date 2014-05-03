@@ -93,7 +93,8 @@ input.radio {
 	color: #fff;
 	cursor: pointer;
 	font-weight: bold;
-	dislay: none;
+	display: none;
+	width: 100px;
 	text-decoration: underline;
 }
 #header {
