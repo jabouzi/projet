@@ -64,9 +64,9 @@ class Userdatadao {
 		return $update;
 	}
 
-	public function update_vhost($user)
+	public function update_vhosts($user)
 	{
-		delete_vhost($user);
+		$this->delete_vhosts($user);
 		$update = insert_vhosts($user);
 		$this->cache->delete('select_data_'.$user->get_user_name());
 		$this->cache->delete('select_data_all');
@@ -80,13 +80,13 @@ class Userdatadao {
 		);
 		$query = "DELETE FROM user_info WHERE user_name = :user_name";
 		$delete = $this->db->query($query, $args);
-		$delete += delete_vhost($user_name);
+		$delete += $this->delete_vhosts($user_name);
 		$this->cache->delete('select_data_'.$uer_name);
 		$this->cache->delete('select_data_all');
 		return $delete;
 	}
 
-	public function delete_vhost($user_name)
+	public function delete_vhosts($user_name)
 	{
 		$args = array(
 			':user_name' => $user_name
