@@ -67,7 +67,7 @@ class Userdatadao {
 	public function update_vhosts($user)
 	{
 		$this->delete_vhosts($user);
-		$update = insert_vhosts($user);
+		$update = $this->insert_vhosts($user);
 		$this->cache->delete('select_data_'.$user->get_user_name());
 		$this->cache->delete('select_data_all');
 		return $update;
