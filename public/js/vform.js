@@ -12,6 +12,7 @@ function validate_from(form_id)
 
 function process_validated_form(required, form_id)
 {
+	console.log(required);
     if (required)
     {
         $('.error_form_msg').show();  
