@@ -1,25 +1,28 @@
 <div class="row error"><label></label><?php display_message(); ?></div>
 <h2>Add Account</h2>
 <form action="/<?php echo get_site_lang(); ?>/application/processadd" method="post" id="addform" name="addform">
+	<div class="row">
+        <input type="hidden" name="user_group" id="user_group" value=""/> 
+    </div>
     <div class="row">
 		<label for="user_name">User Name:</label>
 		<input type="text" name="user_name" id="user_name" value="<?php print_post_text('user_name'); ?>" data-validate="required" />
 	</div>
 	<div class="row">
-		<label for="password">password:</label>
-		<input type="password" name="password" id="password" value="" data-validate="required" />
+		<label for="user_password">password:</label>
+		<input type="password" name="user_password" id="user_password" value="" data-validate="required" />
 	</div>
     <div class="row">
 		<label for="email">Email:</label>
-		<input type="text" name="email" id="email" value="<?php print_post_text('email'); ?>" data-validate="required" />
+		<input type="text" name="user_email" id="user_email" value="<?php print_post_text('user_email'); ?>" data-validate="required" />
 	</div>
     <div class="row">
 		<label for="first_tname">First Name:</label>
-		<input type="text" name="first_tname" id="first_tname" value="<?php print_post_text('first_tname'); ?>" data-validate="required"  />
+		<input type="text" name="user_first_tname" id="user_first_tname" value="<?php print_post_text('user_first_tname'); ?>" data-validate="required"  />
 	</div>
 	<div class="row">
 		<label for="last_tname">Last Name:</label>
-		<input type="text" name="last_tname" id="last_tname" value="<?php print_post_text('last_tname'); ?>" data-validate="required" />
+		<input type="text" name="user_last_tname" id="user_last_tname" value="<?php print_post_text('user_last_tname'); ?>" data-validate="required" />
 	</div>
 	<div class="row">
 		<label>Info:</label>

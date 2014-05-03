@@ -73,6 +73,11 @@ class Application extends Controller
 			$_SESSION['message'] = 'account.user_name.exists';
 			redirect('application/add');
 		}
+		else
+		{
+			$this->user_model->insert($_POST);
+			redirect('/');
+		}
 	}
 
 	public function processedit()
