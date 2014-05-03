@@ -8,6 +8,7 @@ $(document).ready(function() {
 	
 	$('#cancel').click(function()
 	{
+		$('.dissmiss').hide();
 		clearTimeout(timer);
 	});
 });
