@@ -3,6 +3,7 @@ function validate_from(form_id)
     var required = 0;
     $('input').removeClass('error_input');
     $("#" + form_id).find('[data-validate]').each(function() {
+		console.log($(this));
         required += validate_element($(this));
     });
         
