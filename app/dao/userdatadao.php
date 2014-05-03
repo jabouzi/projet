@@ -81,7 +81,7 @@ class Userdatadao {
 		$query = "DELETE FROM user_info WHERE user_name = :user_name";
 		$delete = $this->db->query($query, $args);
 		$delete += $this->delete_vhosts($user_name);
-		$this->cache->delete('select_data_'.$uer_name);
+		$this->cache->delete('select_data_'.$user_name);
 		$this->cache->delete('select_data_all');
 		return $delete;
 	}
