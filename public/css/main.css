@@ -80,7 +80,20 @@ input.radio {
     margin-right: 10px;
 }
 .error {
-	color: #f00;
+	border: 1px solid #7F7F7F;
+	background-color: #E43737;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+	width: auto;
+}
+.dissmiss {
+	border: 1px solid #7F7F7F;
+	background-color: #FF0000;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+	width: auto;
 }
 #header {
     border-bottom: 1px solid #ccc;

@@ -1,4 +1,4 @@
-<?php display_message();?>
+<div class="row error"><label></label><?php display_message(); ?></div>
 <h2>Add Account</h2>
 <form action="/<?php echo get_site_lang(); ?>/application/processadd" method="post" id="editform">
     <input type="hidden" name="id" value="3" />

@@ -1,10 +1,10 @@
-<?php display_message();?>
+<div class="row dissmiss"><label></label><a id="cancel">Cancel delete</a></div>
+<div class="row error"><label></label><?php display_message(); ?></div>
 <h2>Edit Account</h2>
 <form action="/<?php echo get_site_lang(); ?>/application/delete" method="post" id="deleteform">    
 <div>
 	<div class="row"><label for="submit"> </label>
          <input id="delete" type="button" value="Delete Contact" class="deletebutton" />
-         <input id="cancel" type="button" value="Cancel Delete" class="deletebutton" />
     </div>
 	<div class="row"><label for="submit"> </label>
         <input type="hidden" name="user_name" id="user_name" value="<?php echo $user->get_user_name(); ?>"/> 
