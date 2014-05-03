@@ -22,6 +22,16 @@ class User_model extends Model
 		$this->accountdao->insert_vhosts($user);
     }
     
+    public function update_user($user)
+    {
+		if (!isset($user['user_vhost'])) $user['user_vhost'] = array();
+        $builder = new userdatabuilder($user);
+		$builder->build();
+		$user = $builder->getUser();
+		$this->accountdao->update_info($user);
+		$this->accountdao->update_vhost($user);
+    }
+    
     public function get_user($user_name)
     {
         return $this->accountdao->select_account($user_name);

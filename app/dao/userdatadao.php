@@ -21,7 +21,7 @@ class Userdatadao {
 			':first_name' => $user->get_user_first_name(),
 			':last_name' => $user->get_user_last_name()
 		);
-		$query = "INSERT INTO user_info VALUES (:user_name, encrypt(:password), :group, :email, :first_name, :last_name)";
+		$query = "INSERT INTO user_info VALUES (:user_name, encrypt(:password), :group, :first_name, :last_name, :email)";
 		$insert = $this->db->query($query, $args_info);
 		$this->cache->delete('select_data_'.$user->get_user_name());
 		$this->cache->delete('select_data_all');

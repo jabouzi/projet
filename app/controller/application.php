@@ -59,8 +59,6 @@ class Application extends Controller
 
 	public function processadd()
 	{
-		var_dump($_POST);
-		
 		if ($this->user_model->user_email_exists($_POST['user_email']))
 		{
 			$_SESSION['request'] = $_POST;
@@ -82,10 +80,16 @@ class Application extends Controller
 
 	public function processedit()
 	{
-		var_dump($_POST);
-		var_dump($this->user_model->user_email_exists($_POST['user_email']));
-		var_dump($this->user_model->user_name_exists($_POST['user_name']));
-		//$_SESSION['message']  = 'TEST MESSAGE';
-		//redirect('application/edit/hugo');
+		if ($this->user_model->user_email_exists($_POST['user_email']))
+		{
+			$_SESSION['request'] = $_POST;
+			$_SESSION['message'] = 'account.email.exists';
+			redirect('application/add');
+		}
+		else
+		{
+			$this->user_model->update_user($_POST);
+			redirect('/');
+		}
 	}
 }
