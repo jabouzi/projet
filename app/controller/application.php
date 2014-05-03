@@ -37,6 +37,7 @@ class Application extends Controller
 		view::load_view('default/standard/menu');
 		view::load_view('default/contacts/add');
 		view::load_view('default/standard/footer');
+		unset($_SESSION['request']);
 	}
 
 	public function edit($user_name)
@@ -48,6 +49,7 @@ class Application extends Controller
 		view::load_view('default/standard/menu');
 		view::load_view('default/contacts/edit', $data);
 		view::load_view('default/standard/footer');
+		unset($_SESSION['request']);
 	}
 
 	public function delete()
@@ -58,16 +60,19 @@ class Application extends Controller
 	public function processadd()
 	{
 		//var_dump($_POST);
+		
 		if ($this->user_model->user_email_exists($_POST['email']))
 		{
+			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'account.email.exists';
+			redirect('application/add');
 		}
 		else if ($this->user_model->user_name_exists($_POST['user_name']))
 		{
+			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'account.user_name.exists';
+			redirect('application/add');
 		}
-
-		redirect('application/add');
 	}
 
 	public function processedit()
