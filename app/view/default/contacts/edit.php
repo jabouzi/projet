@@ -15,19 +15,19 @@
 <form action="/<?php echo get_site_lang(); ?>/application/processedit" method="post" id="editform">
     <div class="row">
 		<label for="user_name">User Name:</label>
-		<input type="text" name="user_name" id="user_name" value="<?php print_text($user->get_user_name()); ?>" readonly />
+		<input type="text" name="user_name" id="user_name" value="<?php print_post_text('user_name', $user->get_user_name()); ?>" readonly />
 	</div>
     <div class="row">
 		<label for="email">Email:</label>
-		<input type="text" name="email" id="email" value="<?php print_text($user->get_email()); ?>" data-validate="required" />
+		<input type="text" name="email" id="email" value="<?php print_post_text('email', $user->get_email()); ?>" data-validate="required" />
 	</div>
     <div class="row">
-		<label for="firs_tname">First Name:</label>
-		<input type="text" name="firs_tname" id="firs_tname" value="<?php print_text($user->get_first_name()); ?>" data-validate="required"  />
+		<label for="first_tname">First Name:</label>
+		<input type="text" name="first_tname" id="first_tname" value="<?php print_post_text('first_tname', $user->get_first_name()); ?>" data-validate="required"  />
 	</div>
 	<div class="row">
-		<label for="las_tname">Last Name:</label>
-		<input type="text" name="las_tname" id="las_tname" value="<?php print_text($user->get_last_name()); ?>" data-validate="required" />
+		<label for="last_tname">Last Name:</label>
+		<input type="text" name="last_tname" id="last_tname" value="<?php print_post_text('last_tname', $user->get_last_name()); ?>" data-validate="required" />
 	</div>
 	<div class="row">
 		<label>Info:</label>

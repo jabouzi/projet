@@ -100,7 +100,9 @@ function get_item($array, $key)
 	return (isset($array[$key])) ? $array[$key] : false;
 }
 
-function print_text($text)
+function print_post_text($key, $othertext = '')
 {
-	echo (isset($text)) ? $text : '';
+	if (isset($_POST[$key])) echo $_POST[$key];
+	else if ($othertext != '') echo $othertext;
+	else echo '';
 }
