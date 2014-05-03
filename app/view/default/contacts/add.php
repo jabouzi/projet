@@ -6,13 +6,13 @@
 		<label for="user_name">User Name:</label>
 		<input type="text" name="user_name" id="user_name" value="" />
 	</div>
+	<div class="row">
+		<label for="password">password:</label>
+		<input type="password" name="password" id="password" value="" />
+	</div>
     <div class="row">
 		<label for="email">Email:</label>
 		<input type="text" name="email" id="email" value="" />
-	</div>
-    <div class="row">
-		<label for="password">password:</label>
-		<input type="password" name="password" id="password" value="" />
 	</div>
     <div class="row">
 		<label for="firs_tname">First Name:</label>

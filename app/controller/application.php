@@ -19,7 +19,7 @@ class Application extends Controller
 	public function index($message = null)
 	{
 		//menu decorator
-		$users = $this->accountdao->select_all();
+		$users = new useriterator($this->accountdao->select_all());
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
 		if ($users)
