@@ -24,7 +24,6 @@ function submit_form() {
 	$('#deleteform').submit();
 }
 
-
 function show_countdown()
 {
 	var timer2 = setInterval(function() {
