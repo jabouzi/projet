@@ -1,6 +1,6 @@
 <?php
 
-require('prepend.php');
+//require('prepend.php');
 
 function get_controller_params($url_params)
 {
