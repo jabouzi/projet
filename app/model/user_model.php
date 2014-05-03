@@ -27,7 +27,7 @@ class User_model extends Model
 		$builder->build();
 		$user = $builder->getUser();
 		$this->accountdao->update_info($user);
-		$this->accountdao->update_vhost($user);
+		$this->accountdao->update_vhosts($user);
 	}
 
 	public function get_user($user_name)
