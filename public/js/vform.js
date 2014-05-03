@@ -1,5 +1,7 @@
 function validate_from(form_id)
 {
+	
+	console.log(form_id);
 	 $("#" + form_id).submit();
 
 	//console.log(form_id);
