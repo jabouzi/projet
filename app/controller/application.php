@@ -63,7 +63,7 @@ class Application extends Controller
 			$_SESSION['message'] = 'account.email.exists';
 		}
 		
-		if ($this->user_model->user_name_exists($_POST['user_name']))
+		else if ($this->user_model->user_name_exists($_POST['user_name']))
 		{
 			$_SESSION['message'] = 'account.user_name.exists';
 		}
