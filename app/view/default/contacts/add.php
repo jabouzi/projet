@@ -28,7 +28,7 @@
 	</div>
     <div>
 		<div class="row"><label for="submit"> </label>
-			<input id="submit" type="button" value="Add Contact" class="submitbutton" onclick="validate_from('addform')" />
+			<input id="submitadd" type="button" value="Add Contact" class="submitbutton" onclick="validate_from('addform')" />
 		</div>
 		<div class="row error error_form_msg"><label></label>
 			Check required fields

@@ -14,18 +14,14 @@ $(document).ready(function() {
 		clearTimeout(timer);
 	});
 	
-	//$('#submit').click(function()
-	//{
-		//validate_from($(this).closest("form").attr('id'));
-		//submit_form()
-	//});
+	$('#submit').click(function()
+	{
+		validate_from($(this).closest("form").attr('id'));
+	});
 });
 
 function submit_form() {
-	//console.log($(this).closest("form").attr('id'));
-	//$('#deleteform').submit();
-	//$("#editform").submit();
-	$('[name="addform"]').submit();
+	$('#deleteform').submit();
 }
 
 function show_countdown()
