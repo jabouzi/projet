@@ -80,7 +80,7 @@ class Application extends Controller
 
 	public function processedit()
 	{
-		if ($this->user_model->user_email_exists($_POST['user_email'], $_POST['user_name'])
+		if ($this->user_model->user_email_exists($_POST['user_email'], $_POST['user_name']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'account.email.exists';
