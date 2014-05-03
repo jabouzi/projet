@@ -80,7 +80,6 @@ input.radio {
     margin-right: 10px;
 }
 .error {
-	border: 1px solid #C5BABA;
 	background-color: #E43737;
 	color: #fff;
 	cursor: pointer;
@@ -88,7 +87,6 @@ input.radio {
 	width: auto;
 }
 .dissmiss {
-	border: 1px solid #C5BABA;
 	background-color: #FF0000;
 	color: #fff;
 	cursor: pointer;

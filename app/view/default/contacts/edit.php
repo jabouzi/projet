@@ -1,4 +1,4 @@
-<div class="row dissmiss"><label><a id="cancel">Cancel delete</a></label></div>
+<div class="row dissmiss"><a id="cancel">Cancel delete</a></div>
 <div class="row error"><?php display_message(); ?></div>
 <h2>Edit Account</h2>
 <form action="/<?php echo get_site_lang(); ?>/application/delete" method="post" id="deleteform">    
