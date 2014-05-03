@@ -19,7 +19,7 @@ class User_model extends Model
     
     public function get_user($user_name)
     {
-        return $this->select('user', array('id' => $id));
+        return $this->accountdao->select_account($user_name);
     }
     
     public function get_users()
