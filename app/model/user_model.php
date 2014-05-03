@@ -23,6 +23,7 @@ class User_model extends Model
 
 	public function update_user($user)
 	{
+		var_dump($user);
 		$builder = new userdatabuilder($user);
 		$builder->build();
 		$user = $builder->getUser();
