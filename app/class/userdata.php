@@ -26,17 +26,17 @@ class Userdata extends User {
 		$this->user_group = $user_group;
 	}
 
-	public function set_email($email)
+	public function set_user_email($email)
 	{
 		parent::set_email($email);
 	}
 
-	public function set_first_name($first_name)
+	public function set_user_first_name($first_name)
 	{
 		parent::set_first_name($first_name);
 	}
 
-	public function set_last_name($last_name)
+	public function set_user_last_name($last_name)
 	{
 		parent::set_last_name($last_name);
 	}
@@ -66,17 +66,17 @@ class Userdata extends User {
 		return $this->user_group;
 	}
 
-	public function get_email()
+	public function get_user_email()
 	{
 		return parent::get_email();
 	}
 
-	public function get_first_name()
+	public function get_user_first_name()
 	{
 		return parent::get_first_name();
 	}
 
-	public function get_last_name()
+	public function get_user_last_name()
 	{
 		return parent::get_last_name();
 	}

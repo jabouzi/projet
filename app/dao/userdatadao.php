@@ -14,16 +14,16 @@ class Userdatadao {
 	public function insert_info($user)
 	{
 		$args_info = array(
-			':user_name' => $user->user_name,
-			':password' => $user->password,
-			':group' => $user->group,
-			':email' => $user->email,
-			':first_name' => $user->first_name,
-			':last_name' => $user->last_name,
+			':user_name' => $user->get_user_name(),
+			':password' => $user->get_puser_assword(),
+			':group' => $user->get_user_group(),
+			':email' => $user->get_user_email(),
+			':first_name' => $user->get_user_first_name(),
+			':last_name' => $user->get_user_last_name,()
 		);
 		$query = "INSERT INTO user_info VALUES (:user_name, encrypt(:password), :group, :email, :first_name, :last_name)";
 		$insert = $this->db->query($query, $args_info);
-		$this->cache->delete('select_data_'.$user->user_name);
+		$this->cache->delete('select_data_'.$user->get_user_name());
 		$this->cache->delete('select_data_all');
 		return $insert;
 	}
@@ -31,35 +31,35 @@ class Userdatadao {
 	public function insert_vhosts($user)
 	{
 		$insert = 0;
-		foreach($user->vhosts as $vhost)
+		foreach($user->get_user_vhosts() as $vhost)
 		{
 			$args_vhost = array(
-				':user_name' => $user->user_name,
+				':user_name' => $user->get_user_name,
 				':vhost' => $host
 			);
 			$query = "INSERT INTO user_vhost VALUES (:user_name, :vhost)";
 			$insert += $this->db->query($query, $args_vhost);
 		}
-		$this->cache->delete('select_data_'.$user->user_name);
+		$this->cache->delete('select_data_'.$user->get_user_name);
 		$this->cache->delete('select_data_all');
-		return ($insert == count($user->vhosts));
+		return ($insert == count($user->get_vhosts));
 	}
 
 	public function update_info($user)
 	{
 		$args = array(
-			':user_name' => $user->user_name,
-			':password' => $user->password,
-			':group' => $user->group,
-			':email' => $user->email,
-			':first_name' => $user->first_name,
-			':last_name' => $user->last_name,
+			':user_name' => $user->get_user_name(),
+			':password' => $user->get_user_password(),
+			':group' => $user->get_user_group(),
+			':email' => $user->get_user_email(),
+			':first_name' => $user->get_user_first_name(),
+			':last_name' => $user->get_user_last_name(),
 		);
 		$query = "UPDATE user_info SET
 				password = encrypt(:password), group = :group, user_email = :email, user_first_name = :first_name, user_last_name = :last_name
 				WHERE user_name = :user_name";
 		$update = $this->db->query($query, $args);
-		$this->cache->delete('select_data_'.$user->user_name);
+		$this->cache->delete('select_data_'.$user->get_user_name());
 		$this->cache->delete('select_data_all');
 		return $update;
 	}
@@ -68,7 +68,7 @@ class Userdatadao {
 	{
 		delete_vhost($user);
 		$update = insert_vhosts($user);
-		$this->cache->delete('select_data_'.$user->user_name);
+		$this->cache->delete('select_data_'.$user->get_user_name());
 		$this->cache->delete('select_data_all');
 		return $update;
 	}
