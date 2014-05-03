@@ -1,7 +1,5 @@
 <?php
 
-require_once('interfacedb.php');
-
 class Model implements Interfacedb
 {
     private $bd = null;
