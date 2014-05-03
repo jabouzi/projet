@@ -94,6 +94,7 @@ input.radio {
 	cursor: pointer;
 	font-weight: bold;
 	width: auto;
+	dislay:none;
 }
 #header {
     border-bottom: 1px solid #ccc;
