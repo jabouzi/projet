@@ -31,7 +31,7 @@ class User_model extends Model
 	}
 	
 	public function delete_user($user_name)
-	
+	{
 		$this->accountdao->delete_info($user_name);
 	}
 
