@@ -75,7 +75,7 @@ input.radio {
     border: none;
     float: none;
 }
-input.error_input {
+.error_input {
 	border: 2px solid #FF0000;
 }
 .radiooption {
