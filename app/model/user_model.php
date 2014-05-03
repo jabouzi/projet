@@ -54,6 +54,7 @@ class User_model extends Model
 			$args[':user_name'] = $user_name;
 			$and = ' AND user_name != :user_name';
 		}
+		var_dump($args);
 		$query = "SELECT count(*) as count FROM user_info WHERE user_email = :user_email {$and} ";
 		$count = $this->db->query($query, $args);
 		return intval($count[0]['count']);
