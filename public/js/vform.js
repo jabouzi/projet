@@ -33,7 +33,7 @@ function validate_element(element)
 	}
 	else if (element.attr('data-validate') == 'required')
 	{
-		if (element.val() == '') { element.addClass('error_input'); required++; }
+		if (element.val() == '' || element.val() == null) { element.addClass('error_input'); required++; }
 	}
 
 	return required;
