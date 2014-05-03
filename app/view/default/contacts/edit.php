@@ -1,6 +1,7 @@
-<h2>Edit Account</h2>
-<form action="/<?php echo get_site_lang(); ?>/application/delete" method="post" id="deleteform">
 <div class="row dissmiss"><label></label><a id="cancel">Cancel delete <span id="count_num">3</span></a></div>
+<div class="row error"><?php display_message(); ?></div>
+<h2>Edit Account</h2>
+<form action="/<?php echo get_site_lang(); ?>/application/delete" method="post" id="deleteform">    
 <div>
 	<div class="row"><label for="submit"> </label>
          <input id="delete" type="button" value="Delete Contact" class="deletebutton" />
@@ -12,7 +13,6 @@
 </form>
 
 <form action="/<?php echo get_site_lang(); ?>/application/processedit" method="post" id="editform">
-	<div class="row error"><?php display_message(); ?></div>
     <div class="row">
 		<label for="user_name">User Name:</label>
 		<input type="text" name="user_name" id="user_name" value="<?php echo $user->get_user_name(); ?>" readonly />
