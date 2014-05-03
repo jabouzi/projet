@@ -54,7 +54,9 @@ class Application extends Controller
 
 	public function delete()
 	{
-		var_dump($_POST);
+		$this->user_model->delete_user($_POST['user_name']);
+		$_SESSION['message'] = 'account.user_delete';
+		redirect('/');
 	}
 
 	public function processadd()
@@ -74,6 +76,7 @@ class Application extends Controller
 		else
 		{
 			$this->user_model->add_user($_POST);
+			$_SESSION['message'] = 'account.user_added';
 			redirect('/');
 		}
 	}
@@ -89,7 +92,8 @@ class Application extends Controller
 		else
 		{
 			$this->user_model->update_user($_POST);
-			redirect('/');
+			$_SESSION['message'] = 'account.user_updated';
+			redirect('application/edit/'.$_POST['user_name']);
 		}
 	}
 }

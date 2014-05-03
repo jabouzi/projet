@@ -29,6 +29,11 @@ class User_model extends Model
 		$this->accountdao->update_info($user);
 		$this->accountdao->update_vhosts($user);
 	}
+	
+	public function delete_user($user_name)
+	
+		$this->accountdao->delete_info($user_name);
+	}
 
 	public function get_user($user_name)
 	{
