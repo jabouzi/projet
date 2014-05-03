@@ -15,7 +15,7 @@ class Userdatadao {
 	{
 		$args_info = array(
 			':user_name' => $user->get_user_name(),
-			':password' => $user->get_puser_assword(),
+			':password' => $user->get_user_password(),
 			':group' => $user->get_user_group(),
 			':email' => $user->get_user_email(),
 			':first_name' => $user->get_user_first_name(),
