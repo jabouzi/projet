@@ -94,8 +94,8 @@ input.radio {
 	cursor: pointer;
 	font-weight: bold;
 	width: auto;
-	dislay:none;
-	text-decoration:underline;
+	dislay: none;
+	text-decoration: underline;
 }
 #header {
     border-bottom: 1px solid #ccc;
