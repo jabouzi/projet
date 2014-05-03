@@ -44,7 +44,7 @@ class User_model extends Model
 	{
 		if ($user_name == '')
 		{
-			$where = '';
+			$and = '';
 			$args = array(
 				':user_email' => $user_email
 			);
@@ -52,9 +52,9 @@ class User_model extends Model
 		else
 		{
 			$args['user_name'] = $user_name;
-			$where = ' WHERE user_name != :user_name';
+			$and = ' AND user_name != :user_name';
 		}
-		$query = "SELECT count(*) as count FROM user_info WHERE user_email = :user_email {$where} ";
+		$query = "SELECT count(*) as count FROM user_info WHERE user_email = :user_email {$and} ";
 		$count = $this->db->query($query, $args);
 		return intval($count[0]['count']);
 	}
