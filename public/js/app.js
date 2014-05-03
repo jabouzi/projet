@@ -3,6 +3,7 @@ $(document).ready(function() {
 	$('#delete').click(function()
 	{
 		$('.dissmiss').show();
+		$("#count_num").html(3);
 		timer = window.setTimeout( submit_form,  3000);
 		show_countdown();
 	});
