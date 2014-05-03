@@ -42,19 +42,15 @@ class User_model extends Model
 
 	public function user_email_exists($user_email, $user_name = '')
 	{
-		if ($user_name == '')
-		{
-			$and = '';
-			$args = array(
-				':user_email' => $user_email
-			);
-		}
-		else
+		$and = '';
+		$args = array(
+			':user_email' => $user_email
+		);
+		if ($user_name != '')
 		{
 			$args[':user_name'] = $user_name;
 			$and = ' AND user_name != :user_name';
 		}
-		var_dump($args);
 		$query = "SELECT count(*) as count FROM user_info WHERE user_email = :user_email {$and} ";
 		$count = $this->db->query($query, $args);
 		return intval($count[0]['count']);
