@@ -75,7 +75,7 @@ class Application extends Controller
 		}
 		else
 		{
-			$this->user_model->insert($_POST);
+			$this->user_model->add_user($_POST);
 			redirect('/');
 		}
 	}
