@@ -59,6 +59,7 @@ class Application extends Controller
 
 	public function processadd()
 	{
+		var_dump($_POST);
 		if ($this->user_model->user_email_exists($_POST['user_email']))
 		{
 			$_SESSION['request'] = $_POST;
