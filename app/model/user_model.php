@@ -14,8 +14,8 @@ class User_model extends Model
 	
     public function add_user($user)
     {
-		if (!isset($_POST['user_vhosts'])) $_POST['user_vhosts'] = '';
-        $builder = new userdatabuilder($_POST);
+		if (!isset($user['user_vhosts'])) $user['user_vhosts'] = '';
+        $builder = new userdatabuilder($user);
 		$builder->build();
 		$user = $builder->getUser();
 		$this->accountdao->insert_info($user);
