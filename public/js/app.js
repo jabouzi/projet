@@ -14,11 +14,11 @@ $(document).ready(function() {
 		clearTimeout(timer);
 	});
 	
-	$('#submit').click(function()
-	{
-		//validate_from($(this).closest("form").attr('id'));
-		submit_form()
-	});
+	//$('#submit').click(function()
+	//{
+		validate_from($(this).closest("form").attr('id'));
+		//submit_form()
+	//});
 });
 
 function submit_form() {
