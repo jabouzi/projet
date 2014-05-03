@@ -29,7 +29,6 @@ fieldset {
 }
 form div.row {
     clear: left;
-    display: block;
     margin: 5px 0 0;
     padding: 1px 3px;
 }
@@ -76,7 +75,7 @@ input.radio {
     border: none;
     float: none;
 }
-input.error {
+input.error_input {
 	border: 2px solid #FF0000;
 }
 .radiooption {

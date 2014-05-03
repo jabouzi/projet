@@ -31,7 +31,7 @@
 			<input id="submit" type="submit" value="Edit Contact" class="submitbutton" />
 		</div>
 		<div class="row error error_form_msg"><label for="submit"> </label>
-			check required fields
+			Check required fields
 		</div>
     </div>
 </form>

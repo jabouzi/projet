@@ -1,7 +1,7 @@
 function validate_from(form_id)
 {
     var required = 0;
-    $('input').removeClass('error');
+    $('input').removeClass('error_input');
     $("#" + form_id).find('[data-validate]').each(function() {
         required += validate_element($(this));
     });
@@ -27,11 +27,11 @@ function validate_element(element)
     var required = 0;
     if (element.attr('data-type') == 'email')
     {
-        if (!isValidEmailAddress(element)) {  element.addClass('error'); required++; }
+        if (!isValidEmailAddress(element)) {  element.addClass('error_input'); required++; }
     }        
     else if (element.attr('data-validate') == 'required') 
     {
-        if (element.val() == '') { element.addClass('error'); required++; }
+        if (element.val() == '') { element.addClass('error_input'); required++; }
     }
     
     return required;
