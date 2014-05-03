@@ -5,7 +5,7 @@ class User_model extends Model
 	private $account;
 	private $accountdao;
 	
-	public function __construct($users)
+	public function __construct()
     {
         parent::__construct();
         $this->account = new userdata();
