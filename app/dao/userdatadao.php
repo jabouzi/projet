@@ -35,7 +35,7 @@ class Userdatadao {
 		{
 			$args_vhost = array(
 				':user_name' => $user->get_user_name(),
-				':vhost' => $host
+				':vhost' => $vhost
 			);
 			$query = "INSERT INTO user_vhost VALUES (:user_name, :vhost)";
 			$insert += $this->db->query($query, $args_vhost);
