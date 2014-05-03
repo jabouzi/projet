@@ -3,7 +3,7 @@
 <form action="/<?php echo get_site_lang(); ?>/application/processadd" method="post" id="addform" name="addform">
     <div class="row">
 		<label for="user_name">User Name:</label>
-		<input type="text" name="user_name" id="user_name" value="<?php print_post_text('user_name'); ?>" readonly />
+		<input type="text" name="user_name" id="user_name" value="<?php print_post_text('user_name'); ?>" data-validate="required" />
 	</div>
 	<div class="row">
 		<label for="password">password:</label>
