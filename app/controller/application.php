@@ -43,7 +43,7 @@ class Application extends Controller
 	public function edit($user_name)
 	{
 		//username no change
-		$user = $this->user_model->get_users($user_name);
+		$user = $this->user_model->get_user($user_name);
 		$data['user'] = $user;
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
