@@ -25,12 +25,12 @@
 		<input type="text" name="user_email" id="user_email" value="<?php print_post_text('user_email', $user->get_email()); ?>" data-validate="required" />
 	</div>
     <div class="row">
-		<label for="first_tname">First Name:</label>
-		<input type="text" name="first_tname" id="first_tname" value="<?php print_post_text('user_first_tname', $user->get_first_name()); ?>" data-validate="required"  />
+		<label for="user_first_name">First Name:</label>
+		<input type="text" name="user_first_name" id="user_first_name" value="<?php print_post_text('user_first_name', $user->get_first_name()); ?>" data-validate="required"  />
 	</div>
 	<div class="row">
-		<label for="last_tname">Last Name:</label>
-		<input type="text" name="user_last_tname" id="user_last_tname" value="<?php print_post_text('user_last_tname', $user->get_last_name()); ?>" data-validate="required" />
+		<label for="user_last_tname">Last Name:</label>
+		<input type="text" name="user_last_name" id="user_last_name" value="<?php print_post_text('user_last_name', $user->get_last_name()); ?>" data-validate="required" />
 	</div>
 	<div class="row">
 		<label>Info:</label>
