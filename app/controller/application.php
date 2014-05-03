@@ -60,7 +60,7 @@ class Application extends Controller
 
 	public function processadd()
 	{
-
+		var_dump($_POST);
 	}
 
 	public function processedit()
