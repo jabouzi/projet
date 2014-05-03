@@ -5,7 +5,7 @@
 	<?/*<link rel="stylesheet" type="text/css" href="/public/css/smoothness-1.8.13/jquery-ui-1.8.13.custom.css">
 	<link rel="stylesheet" type="text/css" href="/public/css/ui.dropdownchecklist.themeroller.css">*/?>
 	<link rel="stylesheet" type="text/css" href="/public/css/main.css" />
-	<script type="text/javascript" src="/public/js/jquery-1.6.1.min.js"></script>
+	<script type="text/javascript" src="/public/js/jquery.min.js"></script>
 <!--
 	<script type="text/javascript" src="/public/js/vform.js"></script>
 -->
