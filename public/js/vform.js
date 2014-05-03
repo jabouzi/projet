@@ -18,7 +18,7 @@ function process_validated_form(required, form_id)
     }
     else
     {   
-        $("#" + form_id).submit();
+        //$("#" + form_id).submit();
     }
 }
 
