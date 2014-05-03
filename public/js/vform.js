@@ -18,13 +18,12 @@ function process_validated_form(required, form_id)
     }
     else
     {   
-        //$("#" + form_id).submit();
+        $("#" + form_id).submit();
     }
 }
 
 function validate_element(element)
 {
-	console.log(element.attr('id'));
     var required = 0;
     if (element.attr('data-type') == 'email')
     {
