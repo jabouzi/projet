@@ -13,6 +13,7 @@ $(document).ready(function() {
 		$('.dissmiss').hide();
 		clearTimeout(timer);
 	});
+	
 	$('#submit').click(function()
 	{
 		validate_from($(this).closest("form").attr('id'));

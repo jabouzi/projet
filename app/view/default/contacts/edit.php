@@ -39,7 +39,7 @@
 	</div>
     <div>
 		<div class="row"><label for="submit"> </label>
-			<input id="submit" type="submit" value="Edit Contact" class="submitbutton" />
+			<input id="submit" type="button" value="Edit Contact" class="submitbutton" />
 		</div>
     </div>
 </form>
