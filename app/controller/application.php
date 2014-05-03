@@ -59,7 +59,7 @@ class Application extends Controller
 
 	public function processadd()
 	{
-		//var_dump($_POST);
+		var_dump($_POST);
 		
 		if ($this->user_model->user_email_exists($_POST['email']))
 		{
