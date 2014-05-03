@@ -17,7 +17,7 @@ $(document).ready(function() {
 	$('#submit').click(function()
 	{
 		//validate_from($(this).closest("form").attr('id'));
-		$("#" + $(this).closest("form").attr('id')).submit();
+		$("#addform").submit();
 	});
 });
 
