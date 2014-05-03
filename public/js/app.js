@@ -2,7 +2,7 @@ $(document).ready(function() {
 	var timer;
 	$('#delete').click(function()
 	{
-		$('#dissmiss').show();
+		$('.dissmiss').show();
 		timer = window.setTimeout( submit_form,  5000);
 	});
 	
