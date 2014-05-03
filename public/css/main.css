@@ -95,6 +95,9 @@ input.radio {
 	width: auto;
 	text-decoration: underline;
 }
+#count_num {
+    text-decoration: none;
+}
 #header {
     border-bottom: 1px solid #ccc;
 }
