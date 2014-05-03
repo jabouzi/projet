@@ -31,21 +31,18 @@ class Userdatadao {
 	public function insert_vhosts($user)
 	{
 		$insert = 0;
-		if (count($user->get_user_vhosts()))
+		foreach($user->get_user_vhosts() as $vhost)
 		{
-			foreach($user->get_user_vhosts() as $vhost)
-			{
-				$args_vhost = array(
-					':user_name' => $user->get_user_name(),
-					':vhost' => $host
-				);
-				$query = "INSERT INTO user_vhost VALUES (:user_name, :vhost)";
-				$insert += $this->db->query($query, $args_vhost);
-			}
-			$this->cache->delete('select_data_'.$user->get_user_name());
-			$this->cache->delete('select_data_all');
-			return ($insert == count($user->get_vhosts));
+			$args_vhost = array(
+				':user_name' => $user->get_user_name(),
+				':vhost' => $host
+			);
+			$query = "INSERT INTO user_vhost VALUES (:user_name, :vhost)";
+			$insert += $this->db->query($query, $args_vhost);
 		}
+		$this->cache->delete('select_data_'.$user->get_user_name());
+		$this->cache->delete('select_data_all');
+		return ($insert == count($user->get_vhosts()));
 	}
 
 	public function update_info($user)
