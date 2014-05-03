@@ -14,6 +14,7 @@ class User_model extends Model
 	
     public function add_user($user)
     {
+		if (!isset($_POST['user_vhosts'])) $_POST['user_vhosts'] = '';
         $builder = new userdatabuilder($_POST);
 		$builder->build();
 		$user = $builder->getUser();
