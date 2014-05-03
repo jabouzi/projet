@@ -63,13 +63,13 @@ class Application extends Controller
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'account.email.exists';
-			redirect('application/add');
+			redirect('application/edit/'.$_POST['user_name']);
 		}
 		else if ($this->user_model->user_name_exists($_POST['user_name']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'account.user_name.exists';
-			redirect('application/add');
+			redirect('application/edit/'.$_POST['user_name']);
 		}
 		else
 		{
