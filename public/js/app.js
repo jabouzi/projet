@@ -16,7 +16,7 @@ $(document).ready(function() {
 	
 	$("form").submit(function(e){
         e.preventDefault();
-        console.log($(this).attr('id'))
+        validate_from($(this).attr('id'));
     });
 });
 

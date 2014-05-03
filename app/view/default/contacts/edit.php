@@ -23,11 +23,11 @@
 	</div>
     <div class="row">
 		<label for="firs_tname">First Name:</label>
-		<input type="text" name="firs_tname" id="firs_tname" value="<?php echo $user->get_first_name(); ?>" />
+		<input type="text" name="firs_tname" id="firs_tname" value="<?php echo $user->get_first_name(); ?>" data-validate="required"  />
 	</div>
 	<div class="row">
 		<label for="las_tname">Last Name:</label>
-		<input type="text" name="las_tname" id="las_tname" value="<?php echo $user->get_last_name(); ?>" />
+		<input type="text" name="las_tname" id="las_tname" value="<?php echo $user->get_last_name(); ?>" data-validate="required" />
 	</div>
 	<div class="row">
 		<label>Info:</label>
