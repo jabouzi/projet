@@ -7,7 +7,7 @@
          <input id="delete" type="button" value="Delete Contact" class="deletebutton" />
     </div>
 	<div class="row"><label for="submit"> </label>
-        <input type="hidden" name="user_name" id="user_name" value="<?php print_text($user->get_user_name()); ?>"/> 
+        <input type="hidden" name="user_name" id="user_name" value="<?php echo $user->get_user_name(); ?>"/> 
     </div>
 </div>
 </form>
