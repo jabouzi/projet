@@ -55,7 +55,7 @@ class Application extends Controller
 	
 	public function delete()
 	{
-		
+		var_dump($_POST);
 	}
 
 	public function processadd()
