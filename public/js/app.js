@@ -17,12 +17,13 @@ $(document).ready(function() {
 	$('#submit').click(function()
 	{
 		//validate_from($(this).closest("form").attr('id'));
-		$("#addform").submit();
+		submit_form();
 	});
 });
 
 function submit_form() {
-	$('#deleteform').submit();
+	console.log($(this).closest("form").attr('id'));
+	//$('#deleteform').submit();
 }
 
 function show_countdown()
