@@ -3,9 +3,10 @@ $(document).ready(function() {
 	$('#delete').click(function()
 	{
 		$('.dissmiss').show();
-		timer = window.setTimeout( submit_form,  5000);
+		timer = window.setTimeout( submit_form,  3000);
+		show_countdown();
 	});
-	
+
 	$('#cancel').click(function()
 	{
 		$('.dissmiss').hide();
@@ -17,4 +18,20 @@ function submit_form() {
 	$('#deleteform').submit();
 }
 
+
+function show_countdown()
+{
+	var timer = setInterval(function() {
+		$("#count_num").html(function(i,html) {
+			if(parseInt(html)>0)
+			{
+				return parseInt(html)-1;
+			}
+			else
+			{
+				clearTimeout(timer);
+			}
+		});
+	},1000);
+}
 
