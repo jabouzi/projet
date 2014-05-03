@@ -60,6 +60,7 @@ class Userdatadao {
 				password = encrypt(:password), group = :group, user_email = :email, user_first_name = :first_name, user_last_name = :last_name
 				WHERE user_name = :user_name";
 		$update = $this->db->query($query, $args);
+		var_dump($update);
 		$this->cache->delete('select_data_'.$user->get_user_name());
 		$this->cache->delete('select_data_all');
 		return $update;
