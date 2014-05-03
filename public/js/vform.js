@@ -24,7 +24,7 @@ function process_validated_form(required, form_id)
 
 function validate_element(element)
 {
-	console.log(element.id());
+	console.log(element.attr('id'));
     var required = 0;
     if (element.attr('data-type') == 'email')
     {
