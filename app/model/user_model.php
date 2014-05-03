@@ -14,6 +14,7 @@ class User_model extends Model
 
 	public function add_user($user)
 	{
+		$user['user_vhost'] = adjust_vhosts($user['user_vhost']);
 		$builder = new userdatabuilder($user);
 		$builder->build();
 		$user = $builder->getUser();
@@ -23,6 +24,7 @@ class User_model extends Model
 
 	public function update_user($user)
 	{
+		$user['user_vhost'] = adjust_vhosts($user['user_vhost']);
 		$builder = new userdatabuilder($user);
 		$builder->build();
 		$user = $builder->getUser();
