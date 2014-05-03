@@ -13,6 +13,11 @@ $(document).ready(function() {
 		$('.dissmiss').hide();
 		clearTimeout(timer);
 	});
+	
+	$("form").submit(function(e){
+        e.preventDefault();
+        console.log($(this).attr('id'))
+    });
 });
 
 function submit_form() {

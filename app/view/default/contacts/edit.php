@@ -19,7 +19,7 @@
 	</div>
     <div class="row">
 		<label for="email">Email:</label>
-		<input type="text" name="email" id="email" value="<?php echo $user->get_email(); ?>" />
+		<input type="text" name="email" id="email" value="<?php echo $user->get_email(); ?>" data-validate="required" />
 	</div>
     <div class="row">
 		<label for="firs_tname">First Name:</label>
