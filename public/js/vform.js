@@ -1,13 +1,15 @@
 function validate_from(form_id)
 {
+	 $("#" + form_id).submit();
+
 	//console.log(form_id);
-    var required = 0;
-    $('input').removeClass('error_input');
-    $("#" + form_id).find('[data-validate]').each(function(element) {
-        required += validate_element($(this));
-    });
-        
-    process_validated_form(required, form_id);
+    //var required = 0;
+    //$('input').removeClass('error_input');
+    //$("#" + form_id).find('[data-validate]').each(function(element) {
+        //required += validate_element($(this));
+    //});
+        //
+    //process_validated_form(required, form_id);
 }
 
 function process_validated_form(required, form_id)
