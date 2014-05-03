@@ -14,7 +14,7 @@ $(document).ready(function() {
 		clearTimeout(timer);
 	});
 	
-	$('#submit').click(function()
+	$('.submitbutton').click(function()
 	{
 		validate_from($(this).closest("form").attr('id'));
 	});
