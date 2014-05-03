@@ -30,7 +30,7 @@ class User_model extends Model
 	public function user_email_exists($user_email)
 	{
 		$args = array(
-			':user_email' => $email
+			':user_email' => $user_email
 		);
 		$query = "SELECT count(*) as count FROM user_info WHERE user_email = :user_email";
 		$count = $this->db->query($query, $args);
