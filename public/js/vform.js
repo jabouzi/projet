@@ -39,7 +39,7 @@ function validate_element(element)
 
 function isValidEmailAddress(element) 
 {
-	console.log(element);
+	console.log(element.val());
     var isValid = false;
     var emailAddress = element.val();
     if (element.attr('data-validate') == 'validate' && emailAddress == '') isValid = true;
