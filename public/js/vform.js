@@ -19,7 +19,7 @@ function process_validated_form(required, form_id)
         blinkit('error_form_msg');
     }
     else
-    {   
+    {   $('.error_form_msg').hide();  
         $("#" + form_id).submit();
     }
 }
