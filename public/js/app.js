@@ -13,11 +13,10 @@ $(document).ready(function() {
 		$('.dissmiss').hide();
 		clearTimeout(timer);
 	});
-	
-	$("form").submit(function(e){
-        e.preventDefault();
-        validate_from($(this).attr('id'));
-    });
+	$('#submit').click(function()
+	{
+		validate_from($(this).closest("form").attr('id'));
+	});
 });
 
 function submit_form() {
