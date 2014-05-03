@@ -37,8 +37,8 @@
 		<?php get_projects($user->get_user_vhosts()); ?>
 	</div>
 	<div class="row">
-		<label for="password">password:</label>
-		<input type="password" name="password" id="password" value="" />
+		<label for="user_password">password:</label>
+		<input type="user_password" name="user_password" id="user_password" value="<?php print_post_text('user_password', $user->get_user_password()); ?>" />
 	</div>
     <div>
 		<div class="row"><label for="submit"> </label>
