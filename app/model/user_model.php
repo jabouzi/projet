@@ -40,12 +40,21 @@ class User_model extends Model
 		return $this->accountdao->select_all();
 	}
 
-	public function user_email_exists($user_email)
+	public function user_email_exists($user_email, $user_name = '')
 	{
-		$args = array(
-			':user_email' => $user_email
-		);
-		$query = "SELECT count(*) as count FROM user_info WHERE user_email = :user_email";
+		if ($user_name == '')
+		{
+			$where = '';
+			$args = array(
+				':user_email' => $user_email
+			);
+		}
+		else
+		{
+			$args['user_name'] = $user_name;
+			$where = ' WHERE user_name != :user_name';
+		}
+		$query = "SELECT count(*) as count FROM user_info WHERE user_email = :user_email {$where} ";
 		$count = $this->db->query($query, $args);
 		return intval($count[0]['count']);
 	}
