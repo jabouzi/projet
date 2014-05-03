@@ -99,3 +99,8 @@ function get_item($array, $key)
 {
 	return (isset($array[$key])) ? $array[$key] : false;
 }
+
+function print_text($text)
+{
+	echo (isset($text)) ? $text : '';
+}

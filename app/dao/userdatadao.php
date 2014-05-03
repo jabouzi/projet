@@ -124,7 +124,6 @@ class Userdatadao {
 		$args = array(
 			':user_name' => $user_name
 		);
-		//$query = "SELECT i.*, v.user_vhost FROM user_info i, user_vhost v WHERE i.user_name = :user_name AND i.user_name = v. user_name";
 		$query = "SELECT * FROM user_info WHERE user_name = :user_name";
 		$result = $this->db->query($query, $args);
 		if (!count($result)) return false;
@@ -140,5 +139,4 @@ class Userdatadao {
 		$this->cache->save('select_data_'.$user_name, $user);
 		return $user;
 	}
-
 }

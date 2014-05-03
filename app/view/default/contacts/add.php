@@ -1,7 +1,6 @@
 <div class="row error"><label></label><?php display_message(); ?></div>
 <h2>Add Account</h2>
 <form action="/<?php echo get_site_lang(); ?>/application/processadd" method="post" id="addform" name="addform">
-    <input type="hidden" name="id" value="3" />
     <div class="row">
 		<label for="user_name">User Name:</label>
 		<input type="text" name="user_name" id="user_name" value="" data-validate="required" />

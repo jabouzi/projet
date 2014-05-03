@@ -2,24 +2,22 @@
 
 class Application extends Controller
 {
-	private $user;
-	private $userdao;
-	private $account;
-	private $accountdao;
+	//private $user;
+	//private $userdao;
+	private $user_model;
+
 
 	function __construct()
 	{
 		if (!islogged()) redirect('login');
-		$this->user = new useradmin();
-		$this->userdao = new useradmindao();
-		$this->account = new userdata();
-		$this->accountdao = new userdatadao();
+		$this->user_model = new User_model();
+		//$this->userdao = new useradmindao();
 	}
 
 	public function index($message = null)
 	{
 		//menu decorator
-		$users = new useriterator($this->accountdao->select_all());
+		$users = new useriterator($this->user_model->get_users());
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
 		if ($users)
@@ -45,7 +43,7 @@ class Application extends Controller
 	public function edit($user_name)
 	{
 		//username no change
-		$user = $this->accountdao->select_account($user_name);
+		$user = $this->user_model->get_users($user_name);
 		$data['user'] = $user;
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
@@ -61,11 +59,15 @@ class Application extends Controller
 	public function processadd()
 	{
 		var_dump($_POST);
+		var_dump($this->user_model->user_email_exists($_POST['email']));
+		var_dump($this->user_model->user_name_exists($_POST['user_name']));
 	}
 
 	public function processedit()
 	{
 		var_dump($_POST);
+		var_dump($this->user_model->user_email_exists($_POST['email']));
+		var_dump($this->user_model->user_name_exists($_POST['user_name']));
 		//$_SESSION['message']  = 'TEST MESSAGE';
 		//redirect('application/edit/hugo');
 	}

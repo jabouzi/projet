@@ -38,5 +38,4 @@ class useriterator implements Iterator
         $user = ($key !== NULL && $key !== FALSE);
         return $user;
     }
-
 }
