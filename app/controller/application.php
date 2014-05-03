@@ -11,7 +11,6 @@ class Application extends Controller
 	{
 		if (!islogged()) redirect('login');
 		$this->user_model = new User_model();
-		//$this->userdao = new useradmindao();
 	}
 
 	public function index($message = null)
@@ -58,9 +57,18 @@ class Application extends Controller
 
 	public function processadd()
 	{
-		var_dump($_POST);
-		var_dump($this->user_model->user_email_exists($_POST['email']));
-		var_dump($this->user_model->user_name_exists($_POST['user_name']));
+		//var_dump($_POST);
+		if ($this->user_model->user_email_exists($_POST['email']))
+		{
+			$_SESSION['message'] = 'account.email.exists';
+		}
+		
+		if ($this->user_model->user_name_exists($_POST['user_name']))
+		{
+			$_SESSION['message'] = 'account.user_name.exists';
+		}
+		
+		redirect('application/add');
 	}
 
 	public function processedit()
