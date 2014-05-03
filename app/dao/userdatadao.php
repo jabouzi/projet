@@ -42,7 +42,7 @@ class Userdatadao {
 		}
 		$this->cache->delete('select_data_'.$user->get_user_name());
 		$this->cache->delete('select_data_all');
-		return ($insert == count($user->get_vhosts()));
+		return ($insert == count($user->get_user_vhosts()));
 	}
 
 	public function update_info($user)
