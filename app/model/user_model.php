@@ -51,7 +51,7 @@ class User_model extends Model
 		}
 		else
 		{
-			$args['user_name'] = $user_name;
+			$args[':user_name'] = $user_name;
 			$and = ' AND user_name != :user_name';
 		}
 		$query = "SELECT count(*) as count FROM user_info WHERE user_email = :user_email {$and} ";
