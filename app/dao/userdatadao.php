@@ -95,7 +95,6 @@ class Userdatadao {
 		$delete = $this->db->query($query, $args);
 		$this->cache->delete('select_data_'.$user_name);
 		$this->cache->delete('select_data_all');
-		var_dump($delete);
 		return $delete;
 	}
 
