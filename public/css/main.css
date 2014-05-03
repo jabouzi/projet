@@ -95,6 +95,7 @@ input.radio {
 	font-weight: bold;
 	width: auto;
 	dislay:none;
+	text-decoration:underline;
 }
 #header {
     border-bottom: 1px solid #ccc;
