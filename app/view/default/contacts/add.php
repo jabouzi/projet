@@ -6,7 +6,7 @@
     </div>
     <div class="row">
 		<label for="user_name">User Name:</label>
-		<input type="text" name="user_name" id="user_name" value="<?php print_post_text('user_name'); ?>" data-validate="required" />
+		<input type="text" name="user_name" id="user_name" value="<?php echo print_post_text('user_name'); ?>" data-validate="required" />
 	</div>
 	<div class="row">
 		<label for="user_password">password:</label>
@@ -14,15 +14,15 @@
 	</div>
     <div class="row">
 		<label for="email">Email:</label>
-		<input type="text" name="user_email" id="user_email" value="<?php print_post_text('user_email'); ?>" data-validate="required" />
+		<input type="text" name="user_email" id="user_email" value="<?php echo print_post_text('user_email'); ?>" data-validate="required" />
 	</div>
     <div class="row">
 		<label for="first_name">First Name:</label>
-		<input type="text" name="user_first_name" id="user_first_name" value="<?php print_post_text('user_first_name'); ?>" data-validate="required"  />
+		<input type="text" name="user_first_name" id="user_first_name" value="<?php echo print_post_text('user_first_name'); ?>" data-validate="required"  />
 	</div>
 	<div class="row">
 		<label for="last_name">Last Name:</label>
-		<input type="text" name="user_last_name" id="user_last_name" value="<?php print_post_text('user_last_name'); ?>" data-validate="required" />
+		<input type="text" name="user_last_name" id="user_last_name" value="<?php echo print_post_text('user_last_name'); ?>" data-validate="required" />
 	</div>
 	<div class="row">
 		<label>Hosts:</label>

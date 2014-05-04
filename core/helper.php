@@ -102,7 +102,7 @@ function get_item($array, $key)
 
 function print_post_text($key, $othertext = '')
 {
-	if (isset($_SESSION['request'][$key])) echo $_SESSION['request'][$key];
-	else if ($othertext != '') echo $othertext;
-	else echo '';
+	if (isset($_SESSION['request'][$key])) return $_SESSION['request'][$key];
+	else if ($othertext != '') return $othertext;
+	else return '';
 }
