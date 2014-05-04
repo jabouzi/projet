@@ -60,7 +60,8 @@ class Admin_model extends Model
 			':id' => $id
 		);
 		$query = "SELECT email FROM user_admin WHERE id = :id";
-		$count = $this->db->query($query, $args);
-		return intval($count[0]['email']);
+		$email = $this->db->query($query, $args);
+		var_dump($email);
+		return intval($email[0]['email']);
 	}
 }
