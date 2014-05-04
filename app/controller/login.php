@@ -43,7 +43,7 @@ class Login extends Controller
 
 	public function logout()
 	{
-		unset($_SESSION['user_session']);
+		unset($_SESSION);
 		redirect('login');
 	}
 
@@ -67,7 +67,6 @@ class Login extends Controller
 		}
 		else 
 		{
-			unset($_SESSION);
 			$_SESSION['user']['first_name'] = $this->user->get_first_name();
 			$_SESSION['user']['last_name'] = $this->user->get_last_name();
 			$_SESSION['user']['email'] = $this->user->get_email();
