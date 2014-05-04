@@ -12,20 +12,20 @@ class User_model extends Model
 		$this->accountdao = new userdatadao();
 	}
 
-	public function add_user($user)
+	public function add_user($userdata)
 	{
-		$user['user_vhost'] = adjust_vhosts($user['user_vhost']);
-		$builder = new userdatabuilder($user);
+		$userdata['user_vhost'] = adjust_vhosts($userdata['user_vhost']);
+		$builder = new userdatabuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
 		$this->accountdao->insert_info($user);
 		$this->accountdao->insert_vhosts($user);
 	}
 
-	public function update_user($user)
+	public function update_user($userdata)
 	{
-		$user['user_vhost'] = adjust_vhosts($user['user_vhost']);
-		$builder = new userdatabuilder($user);
+		$userdata['user_vhost'] = adjust_vhosts($userdata['user_vhost']);
+		$builder = new userdatabuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
 		$this->accountdao->update_info($user);

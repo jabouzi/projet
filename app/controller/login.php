@@ -67,7 +67,7 @@ class Login extends Controller
 		}
 		else 
 		{
-			unset($_SESSION['user']);
+			unset($_SESSION);
 			$_SESSION['user']['first_name'] = $this->user->get_first_name();
 			$_SESSION['user']['last_name'] = $this->user->get_last_name();
 			$_SESSION['user']['email'] = $this->user->get_email();

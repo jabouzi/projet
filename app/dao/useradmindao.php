@@ -14,27 +14,27 @@ class Useradmindao {
 	public function insert($user)
 	{
 		$args = array(
-				':email' => $user->email,
-				':first_name' => $user->first_name,
-				':last_name' => $user->last_name,
-				':password' => $user->password
+				':email' => $user->get_email(),
+				':first_name' => $user->get_first_name(),
+				':last_name' => $user->get_last_name(),
+				':password' => $user->get_password()
 			);
 
 		$query = "INSERT INTO user_admin VALUES ('', :email, :first_name, :last_name, :password)";
 		$this->db->query($query, $args);
-		$this->cache->delete('select_admin_'.$user->email);
+		$this->cache->delete('select_admin_'.$user->get_email());
 		$this->cache->delete('select_admin_all');
 		return $this->db->lastInsertId();
 	}
 
-	public function update($user, $email)
+	public function update($user, $old_email)
 	{
 		$args = array(
-				':email' => $user->email,
-				':first_name' => $user->first_name,
-				':last_name' => $user->last_name,
-				':password' => $user->password,
-				':old_email' => $email
+				':email' => $user->get_email(),
+				':first_name' => $user->get_first_name(),
+				':last_name' => $user->get_last_name(),
+				':password' => $user->get_password(),
+				':old_email' => $old_email
 			);
 
 		$query = "UPDATE user_admin SET

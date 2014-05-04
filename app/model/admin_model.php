@@ -1,74 +1,58 @@
 <?php
 
-class User_model extends Model
+class Admin_model extends Model
 {
-	private $account;
-	private $accountdao;
+	private $admin;
+	private $admindao;
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->account = new userdata();
-		$this->accountdao = new userdatadao();
+		$this->admin = new useradmin();
+		$this->admindao = new useradmindao();
 	}
 
 	public function add_user($user)
 	{
-		$user['user_vhost'] = adjust_vhosts($user['user_vhost']);
-		$builder = new userdatabuilder($user);
+		$builder = new useradminbuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
-		$this->accountdao->insert_info($user);
-		$this->accountdao->insert_vhosts($user);
+		$this->admindao->insert($user);
+		$this->admindao->set_admin($userdata['email'], $userdata['admin']);
+		$this->admindao->set_status($userdata['email'], $userdata['status']);
 	}
 
-	public function update_user($user)
+	public function update_user($userdata)
 	{
-		$user['user_vhost'] = adjust_vhosts($user['user_vhost']);
-		$builder = new userdatabuilder($user);
+		$builder = new useradminbuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
-		$this->accountdao->update_info($user);
-		$this->accountdao->update_vhosts($user);
+		$this->admindao->update($user, $userdata['old_email']);
+		$this->admindao->set_admin($userdata['email'], $userdata['admin']);
+		$this->admindao->set_status($userdata['email'], $userdata['status']);
 	}
 	
-	public function delete_user($user_name)
+	public function delete_user($email)
 	{
-		$this->accountdao->delete_info($user_name);
+		$this->admindao->delete($email);
 	}
 
-	public function get_user($user_name)
+	public function get_user($email)
 	{
-		return $this->accountdao->select_account($user_name);
+		return $this->admindao->select_user($email);
 	}
 
 	public function get_users()
 	{
-		return $this->accountdao->select_all();
+		return $this->admindao->select_all();
 	}
 
-	public function user_email_exists($user_email, $user_name = '')
-	{
-		$and = '';
-		$args = array(
-			':user_email' => $user_email
-		);
-		if ($user_name != '')
-		{
-			$args[':user_name'] = $user_name;
-			$and = ' AND user_name != :user_name';
-		}
-		$query = "SELECT count(*) as count FROM user_info WHERE user_email = :user_email {$and} ";
-		$count = $this->db->query($query, $args);
-		return intval($count[0]['count']);
-	}
-
-	public function user_name_exists($user_name)
+	public function email_exists($email)
 	{
 		$args = array(
-			':user_name' => $user_name
+			':email' => $email
 		);
-		$query = "SELECT count(*) as count FROM user_info WHERE user_name = :user_name";
+		$query = "SELECT count(*) as count FROM user_admin WHERE email = :email";
 		$count = $this->db->query($query, $args);
 		return intval($count[0]['count']);
 	}

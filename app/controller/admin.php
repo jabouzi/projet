@@ -1,28 +1,25 @@
 <?php
 
-class Application extends Controller
+class Admin extends Controller
 {
-	//private $user;
-	//private $userdao;
 	private $user_model;
-
 
 	function __construct()
 	{
 		if (!islogged()) redirect('login');
-		$this->user_model = new User_model();
+		$this->admin_model = new Admin_model();
 	}
 
 	public function index($message = null)
 	{
 		//menu decorator
-		$users = new useriterator($this->user_model->get_users());
+		$users = new useriterator($this->admin_model->get_users());
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
 		if ($users)
 		{
 			$data['users'] = $users;
-			view::load_view('default/contacts/userslist', $data);
+			view::load_view('default/admins/adminslist', $data);
 		}
 		else
 		{
@@ -35,65 +32,64 @@ class Application extends Controller
 	{
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
-		view::load_view('default/contacts/add');
+		view::load_view('default/admins/add');
 		view::load_view('default/standard/footer');
 		unset($_SESSION['request']);
 	}
 
-	public function edit($user_name)
+	public function edit($email)
 	{
-		//username no change
-		$user = $this->user_model->get_user($user_name);
+		$user = $this->admin_model->get_user($admin);
 		$data['user'] = $user;
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
-		view::load_view('default/contacts/edit', $data);
+		view::load_view('default/admins/edit', $data);
 		view::load_view('default/standard/footer');
 		unset($_SESSION['request']);
 	}
 
 	public function delete()
 	{
-		$this->user_model->delete_user($_POST['user_name']);
-		$_SESSION['message'] = 'account.user_delete';
+		$this->admin_model->delete_user($_POST['email']);
+		$_SESSION['message'] = 'admin.user_delete';
 		redirect('/');
 	}
 
 	public function processadd()
 	{
-		if ($this->user_model->user_email_exists($_POST['user_email']))
+		if ($this->admin_model->email_exists($_POST['email']))
 		{
 			$_SESSION['request'] = $_POST;
-			$_SESSION['message'] = 'account.email.exists';
-			redirect('application/add');
-		}
-		else if ($this->user_model->user_name_exists($_POST['user_name']))
-		{
-			$_SESSION['request'] = $_POST;
-			$_SESSION['message'] = 'account.user_name.exists';
+			$_SESSION['message'] = 'admin.email.exists';
 			redirect('application/add');
 		}
 		else
 		{
-			$this->user_model->add_user($_POST);
-			$_SESSION['message'] = 'account.user_added';
+			$this->admin_model->add_user($_POST);
+			$_SESSION['message'] = 'admin.user_added';
 			redirect('/');
 		}
 	}
 
 	public function processedit()
 	{
-		if ($this->user_model->user_email_exists($_POST['user_email'], $_POST['user_name']))
+		if ($_POST['email'] == $_POST['old_email'])
+		{
+			$this->admin_model->update_user($_POST);
+			$_SESSION['message'] = 'admin.user_updated';
+			redirect('application/edit/'.$_POST['email']);
+		}
+		else if ($this->admin_model->email_exists($_POST['email'])
 		{
 			$_SESSION['request'] = $_POST;
-			$_SESSION['message'] = 'account.email.exists';
-			redirect('application/edit/'.$_POST['user_name']);
+			$_SESSION['message'] = 'admin.email.exists';
+			redirect('application/edit/'.$_POST['email']);
 		}
 		else
 		{
-			$this->user_model->update_user($_POST);
-			$_SESSION['message'] = 'account.user_updated';
-			redirect('application/edit/'.$_POST['user_name']);
+			$this->admin_model->update_user($_POST);
+			$_SESSION['message'] = 'admin.user_updated';
+			redirect('application/edit/'.$_POST['email']);
 		}
 	}
 }

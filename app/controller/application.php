@@ -2,10 +2,7 @@
 
 class Application extends Controller
 {
-	//private $user;
-	//private $userdao;
 	private $user_model;
-
 
 	function __construct()
 	{
@@ -42,9 +39,9 @@ class Application extends Controller
 
 	public function edit($user_name)
 	{
-		//username no change
 		$user = $this->user_model->get_user($user_name);
 		$data['user'] = $user;
+		$_SESSION['edit']['user_name'] = $user->get_user_name();
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
 		view::load_view('default/contacts/edit', $data);
@@ -83,7 +80,11 @@ class Application extends Controller
 
 	public function processedit()
 	{
-		if ($this->user_model->user_email_exists($_POST['user_email'], $_POST['user_name']))
+		if ($_SESSION['edit']['user_name'] != $_POST['user_name'])
+		{
+			redirect('application/edit/'.$_SESSION['edit']['user_name']);
+		}
+		else if ($this->user_model->user_email_exists($_POST['user_email'], $_POST['user_name']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'account.email.exists';
