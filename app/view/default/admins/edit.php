@@ -29,7 +29,7 @@
 		<input type="text" name="last_name" id="last_name" value="<?php print_post_text('last_name', $user->get_last_name()); ?>" data-validate="required" />
 	</div>
 	<div class="row">
-		<label>Info:</label>
+		<label>Hosts:</label>
 		<?php get_projects($user->get_vhosts()); ?>
 	</div>
 	<div class="row">

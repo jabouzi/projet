@@ -24,10 +24,6 @@
 		<label for="last_name">Last Name:</label>
 		<input type="text" name="user_last_name" id="user_last_name" value="<?php print_post_text('user_last_name'); ?>" data-validate="required" />
 	</div>
-	<div class="row">
-		<label>Info:</label>
-		<?php get_projects(); ?>
-	</div>
     <div>
 		<div class="row"><label for="submit"> </label>
 			<input id="submitadd" type="button" value="Add Contact" class="submitbutton"/>
