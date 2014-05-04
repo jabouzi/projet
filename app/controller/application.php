@@ -82,6 +82,7 @@ class Application extends Controller
 	{
 		if ($_SESSION['edit']['user_name'] != $_POST['user_name'])
 		{
+			$_SESSION['message'] = 'account.security.detected';
 			redirect('application/edit/'.$_SESSION['edit']['user_name']);
 		}
 		else if ($this->user_model->user_email_exists($_POST['user_email'], $_POST['user_name']))
