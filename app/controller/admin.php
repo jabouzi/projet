@@ -7,6 +7,7 @@ class Admin extends Controller
 	function __construct()
 	{
 		if (!islogged()) redirect('login');
+		if (!isadmin()) redirect('/');
 		$this->admin_model = new Admin_model();
 	}
 
