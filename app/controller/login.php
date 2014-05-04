@@ -43,8 +43,8 @@ class Login extends Controller
 
 	public function logout()
 	{
-		foreach($_SESSION as $key => $value) var_dump($value, $key);
-		//redirect('login');
+		foreach($_SESSION as $key => $value) unset($_SESSION[$key]);
+		redirect('login');
 	}
 
 	private function check_login($email, $password)
