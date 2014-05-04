@@ -7,7 +7,7 @@
          <input id="delete" type="button" value="Delete Contact" class="deletebutton" />
     </div>
 	<div class="row"><label for="submit"> </label>
-        <input type="hidden" name="user_name" id="user_name" value="<?php echo $user->get_user_name(); ?>"/> 
+        <input type="hidden" name="email" id="email" value="<?php echo $user->get_email(); ?>"/> 
     </div>
 </div>
 </form>
@@ -16,10 +16,6 @@
 	<div class="row">
         <input type="hidden" name="user_group" id="user_group" value=""/> 
     </div>
-    <div class="row">
-		<label for="user_name">User Name:</label>
-		<input type="text" name="user_name" id="user_name" value="<?php print_post_text('user_name', $user->get_user_name()); ?>" readonly />
-	</div>
     <div class="row">
 		<label for="email">Email:</label>
 		<input type="text" name="user_email" id="user_email" value="<?php print_post_text('user_email', $user->get_email()); ?>" data-validate="required" />
