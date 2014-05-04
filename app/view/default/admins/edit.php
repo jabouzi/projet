@@ -4,7 +4,7 @@
 <form action="/<?php echo get_site_lang(); ?>/application/delete" method="post" id="deleteform">    
 <div>
 	<div class="row"><label for="submit"> </label>
-         <input id="delete" type="button" value="Delete Contact" class="deletebutton" />
+         <input id="delete" type="button" value="Delete Admin" class="deletebutton" />
     </div>
 	<div class="row"><label for="submit"> </label>
         <input type="hidden" name="email" id="email" value="<?php echo $user->get_email(); ?>"/> 
@@ -38,7 +38,7 @@
 	</div>
     <div>
 		<div class="row"><label for="submit"> </label>
-			<input id="submitedit" type="button" value="Edit Contact" class="submitbutton" />
+			<input id="submitedit" type="button" value="Edit Admin" class="submitbutton" />
 		</div>
     </div>
 </form>
