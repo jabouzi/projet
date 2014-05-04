@@ -2,7 +2,7 @@
 
 class Admin extends Controller
 {
-	private $user_model;
+	private $admin_model;
 
 	function __construct()
 	{
@@ -39,7 +39,7 @@ class Admin extends Controller
 
 	public function edit($email)
 	{
-		$user = $this->admin_model->get_user($admin);
+		$user = $this->admin_model->get_user($email);
 		$data['user'] = $user;
 		$_SESSION['edit']['email'] = $user->get_email();
 		view::load_view('default/standard/header');
