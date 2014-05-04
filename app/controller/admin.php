@@ -79,7 +79,7 @@ class Admin extends Controller
 			$_SESSION['message'] = 'admin.user_updated';
 			redirect('application/edit/'.$_POST['email']);
 		}
-		else if ($this->admin_model->email_exists($_POST['email'])
+		else if ($this->admin_model->email_exists($_POST['email']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'admin.email.exists';
