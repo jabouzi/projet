@@ -61,7 +61,6 @@ class Admin_model extends Model
 		);
 		$query = "SELECT email FROM user_admin WHERE id = :id";
 		$email = $this->db->query($query, $args);
-		var_dump($email);
-		return intval($email[0]['email']);
+		return $email[0]['email'];
 	}
 }
