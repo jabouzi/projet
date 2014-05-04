@@ -75,12 +75,12 @@ class Userdatadao {
 
 	public function delete_info($user_name)
 	{
+		$delete = $this->delete_vhosts($user_name);
 		$args = array(
 			':user_name' => $user_name
 		);
 		$query = "DELETE FROM user_info WHERE user_name = :user_name";
-		$delete = $this->db->query($query, $args);
-		$delete += $this->delete_vhosts($user_name);
+		$delete += $this->db->query($query, $args);		
 		$this->cache->delete('select_data_'.$user_name);
 		$this->cache->delete('select_data_all');
 		return $delete;
