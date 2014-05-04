@@ -13,6 +13,7 @@ class Useradminbuilder
 	public function build()
 	{
 		$this->user = new Useradmin();
+		$this->user->set_id($this->user_data['id']);
 		$this->user->set_email($this->user_data['email']);
 		$this->user->set_first_name($this->user_data['first_name']);
 		$this->user->set_last_name($this->user_data['last_name']);

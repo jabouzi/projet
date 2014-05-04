@@ -18,8 +18,6 @@ class Admin_model extends Model
 		$builder->build();
 		$user = $builder->getUser();
 		$this->admindao->insert($user);
-		$this->admindao->set_admin($userdata['email'], $userdata['admin']);
-		$this->admindao->set_status($userdata['email'], $userdata['status']);
 	}
 
 	public function update_user($userdata)
@@ -27,9 +25,7 @@ class Admin_model extends Model
 		$builder = new useradminbuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
-		$this->admindao->update($user, $userdata['old_email']);
-		$this->admindao->set_admin($userdata['email'], $userdata['admin']);
-		$this->admindao->set_status($userdata['email'], $userdata['status']);
+		$this->admindao->update($user);
 	}
 	
 	public function delete_user($email)
@@ -47,13 +43,24 @@ class Admin_model extends Model
 		return $this->admindao->select_all();
 	}
 
-	public function email_exists($email)
+	public function email_exists($email, $id)
 	{
 		$args = array(
-			':email' => $email
+			':email' => $email,
+			':id' => $id
 		);
-		$query = "SELECT count(*) as count FROM user_admin WHERE email = :email";
+		$query = "SELECT count(*) as count FROM user_admin WHERE email = :email AND id != :id";
 		$count = $this->db->query($query, $args);
 		return intval($count[0]['count']);
+	}
+	
+	public function get_email_by_id($id)
+	{
+		$args = array(
+			':id' => $id
+		);
+		$query = "SELECT email FROM user_admin WHERE id = :id";
+		$count = $this->db->query($query, $args);
+		return intval($count[0]['email']);
 	}
 }

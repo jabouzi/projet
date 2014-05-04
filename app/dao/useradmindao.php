@@ -17,10 +17,12 @@ class Useradmindao {
 				':email' => $user->get_email(),
 				':first_name' => $user->get_first_name(),
 				':last_name' => $user->get_last_name(),
-				':password' => $user->get_password()
+				':password' => $user->get_password(),
+				':admin' => $user->get_admin(),
+				':status' => $user->get_status()
 			);
 
-		$query = "INSERT INTO user_admin VALUES ('', :email, :first_name, :last_name, :password)";
+		$query = "INSERT INTO user_admin VALUES ('', :email, :first_name, :last_name, :password, :admin, :status)";
 		$this->db->query($query, $args);
 		$this->cache->delete('select_admin_'.$user->get_email());
 		$this->cache->delete('select_admin_all');
@@ -34,42 +36,18 @@ class Useradmindao {
 				':first_name' => $user->get_first_name(),
 				':last_name' => $user->get_last_name(),
 				':password' => $user->get_password(),
-				':old_email' => $old_email
+				':admin' => $user->get_admin(),
+				':status' => $user->get_status(),
+				':id' => $user->get_id()
 			);
 
 		$query = "UPDATE user_admin SET
-				email = :email, first_name = :first_name, last_name = :last_name, password = :password
-				WHERE email = :old_email";
+				email = :email, first_name = :first_name, last_name = :last_name, password = :password, admin = :admin, status = :status
+				WHERE id = :id";
 		$update = $this->db->query($query, $args);
 		$this->cache->delete('select_admin_'.$email);
 		$this->cache->delete('select_admin_all');
 		return $update;
-	}
-
-	public function set_admin($email, $is_admin)
-	{
-		$args = array(
-			':email' => $email,
-			':admin' => $is_admin
-		);
-		$query = "UPDATE user_admin SET admin = :admin WHERE email = :email ";
-		$set = $this->db->query($query, $args);
-		$this->cache->delete('select_admin_'.$email);
-		$this->cache->delete('select_admin_all');
-		return $set;
-	}
-
-	public function set_status($email, $status)
-	{
-		$args = array(
-			':email' => $email,
-			':status' => $status
-		);
-		$query = "UPDATE user_admin SET status = :status WHERE email = :email ";
-		$set = $this->db->query($query, $args);
-		$this->cache->delete('select_admin_'.$email);
-		$this->cache->delete('select_admin_all');
-		return $set;
 	}
 
 	public function delete($email)

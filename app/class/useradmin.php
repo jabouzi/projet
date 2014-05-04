@@ -2,6 +2,7 @@
 
 class Useradmin extends User {
 
+	private $id;
 	private $email;
 	private $first_name;
 	private $last_name;
@@ -11,6 +12,11 @@ class Useradmin extends User {
 	function __construct()
 	{
 
+	}
+
+	public function set_id($id)
+	{
+		$this->id = $id;
 	}
 
 	public function set_email($email)
@@ -41,6 +47,11 @@ class Useradmin extends User {
 	public function set_status($status = 1)
 	{
 		$this->status = $status;
+	}
+
+	public function get_id()
+	{
+		return $this->id;
 	}
 
 	public function get_email()

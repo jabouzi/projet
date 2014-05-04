@@ -37,9 +37,9 @@ class Admin extends Controller
 		unset($_SESSION['request']);
 	}
 
-	public function edit($email)
+	public function edit($id)
 	{
-		$user = $this->admin_model->get_user($email);
+		$user = $this->admin_model->get_user($this->admin_model->get_email_by_id($id));
 		$data['user'] = $user;
 		$_SESSION['edit']['email'] = $user->get_email();
 		view::load_view('default/standard/header');
