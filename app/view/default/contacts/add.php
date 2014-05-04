@@ -25,7 +25,7 @@
 		<input type="text" name="user_last_name" id="user_last_name" value="<?php print_post_text('user_last_name'); ?>" data-validate="required" />
 	</div>
 	<div class="row">
-		<label>Info:</label>
+		<label>Hosts:</label>
 		<?php get_projects(); ?>
 	</div>
     <div>
