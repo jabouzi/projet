@@ -8,7 +8,7 @@ if (islogged())
 				   '/'.get_site_lang().'/application/profile'=>'My profile');
 
 	if (isadmin()) {
-		$links['/'.get_site_lang().'/application/admins'] = 'Admins';
+		$links['/'.get_site_lang().'/admin'] = 'Admins';
 	}
 	$links['/'.get_site_lang().'/login/logout'] = 'Log Out';
 
