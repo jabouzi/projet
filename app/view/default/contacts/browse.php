@@ -1,3 +1,4 @@
+<div class="row error"><label></label><?php display_message(); ?></div>
 <h1>Accounts</h1>
 <div id="browsecontacts">
 <?php
