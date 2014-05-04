@@ -22,11 +22,11 @@
 	</div>
     <div class="row">
 		<label for="email">Email:</label>
-		<input type="text" name="user_email" id="user_email" value="<?php print_post_text('user_email', $user->get_user_email()); ?>" data-validate="required" />
+		<input type="text" name="user_email" id="user_email" value="<?php print_post_text('user_email', $user->get_user_email()); ?>" data-validate="required" data-type="email" />
 	</div>
     <div class="row">
 		<label for="user_first_name">First Name:</label>
-		<input type="text" name="user_first_name" id="user_first_name" value="<?php print_post_text('user_first_name', $user->get_user_first_name()); ?>" data-validate="required"  />
+		<input type="text" name="user_first_name" id="user_first_name" value="<?php print_post_text('user_first_name', $user->get_user_first_name()); ?>" data-validate="required" />
 	</div>
 	<div class="row">
 		<label for="user_last_tname">Last Name:</label>

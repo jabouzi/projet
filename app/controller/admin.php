@@ -41,6 +41,7 @@ class Admin extends Controller
 	{
 		$user = $this->admin_model->get_user($admin);
 		$data['user'] = $user;
+		$_SESSION['edit']['email'] = $user->get_email();
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
 		view::load_view('default/admins/edit', $data);
@@ -50,6 +51,11 @@ class Admin extends Controller
 
 	public function delete()
 	{
+		if ($_SESSION['edit']['email'] != $_POST['old_email'])
+		{
+			$_SESSION['message'] = 'account.security.detected';
+			redirect('admins/edit/'.$_SESSION['edit']['email']);
+		}
 		$this->admin_model->delete_user($_POST['email']);
 		$_SESSION['message'] = 'admin.user_delete';
 		redirect('/');
@@ -73,7 +79,12 @@ class Admin extends Controller
 
 	public function processedit()
 	{
-		if ($_POST['email'] == $_POST['old_email'])
+		if ($_SESSION['edit']['email'] != $_POST['old_email'])
+		{
+			$_SESSION['message'] = 'account.security.detected';
+			redirect('admins/edit/'.$_SESSION['edit']['email']);
+		}		
+		else if ($_POST['email'] == $_POST['old_email'])
 		{
 			$this->admin_model->update_user($_POST);
 			$_SESSION['message'] = 'admin.user_updated';
