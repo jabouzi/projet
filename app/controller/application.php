@@ -22,7 +22,7 @@ class Application extends Controller
 		if ($users)
 		{
 			$data['users'] = $users;
-			view::load_view('default/contacts/browse', $data);
+			view::load_view('default/contacts/userslist', $data);
 		}
 		else
 		{
