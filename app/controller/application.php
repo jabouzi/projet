@@ -51,6 +51,11 @@ class Application extends Controller
 
 	public function delete()
 	{
+		if ($_SESSION['edit']['user_name'] != $_POST['user_name'])
+		{
+			$_SESSION['message'] = 'account.security.detected';
+			redirect('application/edit/'.$_SESSION['edit']['user_name']);
+		}
 		$this->user_model->delete_user($_POST['user_name']);
 		$_SESSION['message'] = 'account.user_delete';
 		redirect('/');
