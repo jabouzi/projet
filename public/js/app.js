@@ -2,6 +2,7 @@ $(document).ready(function() {
 	var timer;
 	$('#delete').click(function()
 	{
+		$('.error').html('');
 		$('.dissmiss').show();
 		$("#count_num").html(3);
 		timer = window.setTimeout( submit_form,  3000);
