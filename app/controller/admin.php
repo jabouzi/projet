@@ -113,7 +113,6 @@ class Admin extends Controller
 	
 	public function processprofile()
 	{
-		var_dump($_POST);
 		if ($_SESSION['edit']['id'] != $_POST['id'])
 		{
 			$_SESSION['message'] = 'account.security.detected';
