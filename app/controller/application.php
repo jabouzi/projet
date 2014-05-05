@@ -114,9 +114,24 @@ class Application extends Controller
 	
 	public function processimport()
 	{
-		var_dump($_POST, $_FILES);
 		$path = $_FILES['accountsfile']['name'];
 		$ext = pathinfo($path, PATHINFO_EXTENSION);
-		var_dump($ext);
+		if ($error != UPLOAD_ERR_OK) 
+		{
+			$_SESSION['message'] = 'account.error.fileupload';
+			redirect('application/import');
+		}
+		else if (!in_array($ext, array('csv', 'xml', 'json', 'xls', 'xlsx')))
+		{
+			$_SESSION['message'] = 'account.wrong.filetype';
+			redirect('application/import');
+		}
+		else
+		{
+			var_dump($_POST, $_FILES);
+			$tmp_name = $_FILES["accountsfile"]["tmp_name"];
+			$name = $_FILES["accountsfile"]["name"];
+			move_uploaded_file($tmp_name, "/tmp/$name");
+		}
 	}
 }
