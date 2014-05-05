@@ -68,7 +68,7 @@ class Admin extends Controller
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'admin.email.exists';
-			redirect('application/add');
+			redirect('admin/add');
 		}
 		else
 		{
@@ -89,13 +89,13 @@ class Admin extends Controller
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'admin.email.exists';
-			redirect('application/edit/'.$_POST['email']);
+			redirect('admin/edit/'.$_POST['email']);
 		}
 		else
 		{
 			$this->admin_model->update_user($_POST);
 			$_SESSION['message'] = 'admin.user_updated';
-			redirect('application/edit/'.$_POST['email']);
+			redirect('admin/edit/'.$_POST['email']);
 		}
 	}
 }
