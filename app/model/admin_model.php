@@ -27,7 +27,7 @@ class Admin_model extends Model
 
 	public function update_user($userdata)
 	{
-		$userdata['password']
+		var_dump($userdata['password']);
 		if (!isset($userdata['admin'])) $userdata['admin'] = 0;
 		if (!isset($userdata['status'])) $userdata['status'] = 0;
 		$userdata['password'] = $this->encrypt->encrypt($userdata['password']);
