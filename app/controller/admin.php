@@ -42,7 +42,7 @@ class Admin extends Controller
 	{
 		$user = $this->admin_model->get_user($this->admin_model->get_email_by_id($id));
 		$data['user'] = $user;
-		$_SESSION['edit']['email'] = $user->get_email();
+		$_SESSION['edit']['id'] = $user->get_id();
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
 		view::load_view('default/admins/edit', $data);
@@ -52,7 +52,7 @@ class Admin extends Controller
 
 	public function delete()
 	{
-		if ($_SESSION['edit']['email'] != $_POST['old_email'])
+		if ($_SESSION['edit']['id'] != $_POST['id'])
 		{
 			$_SESSION['message'] = 'account.security.detected';
 			redirect('admins/edit/'.$_SESSION['edit']['email']);
@@ -64,7 +64,7 @@ class Admin extends Controller
 
 	public function processadd()
 	{
-		if ($this->admin_model->email_exists($_POST['email']))
+		if ($this->admin_model->email_exists($_POST['email'] $_POST['id']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'admin.email.exists';
@@ -80,18 +80,12 @@ class Admin extends Controller
 
 	public function processedit()
 	{
-		if ($_SESSION['edit']['email'] != $_POST['old_email'])
+		if ($_SESSION['edit']['id'] != $_POST['id'])
 		{
 			$_SESSION['message'] = 'account.security.detected';
 			redirect('admins/edit/'.$_SESSION['edit']['email']);
-		}		
-		else if ($_POST['email'] == $_POST['old_email'])
-		{
-			$this->admin_model->update_user($_POST);
-			$_SESSION['message'] = 'admin.user_updated';
-			redirect('application/edit/'.$_POST['email']);
 		}
-		else if ($this->admin_model->email_exists($_POST['email']))
+		else if ($this->admin_model->email_exists($_POST['email'], $_POST['id']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'admin.email.exists';

@@ -14,7 +14,7 @@
 
 <form action="/<?php echo get_site_lang(); ?>/admin/processedit" method="post" id="editform">	
 	<div class="row">
-        <input type="hidden" name="old_email" id="old_email" value="<?php echo $user->get_email(); ?>"/> 
+        <input type="hidden" name="id" id="id" value="<?php echo $user->get_id(); ?>"/> 
     </div>
     <div class="row">
 		<label for="email">Email:</label>
