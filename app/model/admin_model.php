@@ -12,7 +12,7 @@ class Admin_model extends Model
 		$this->admindao = new useradmindao();
 	}
 
-	public function add_user($user)
+	public function add_user($userdata)
 	{
 		$builder = new useradminbuilder($userdata);
 		$builder->build();
