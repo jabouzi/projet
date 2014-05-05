@@ -45,7 +45,7 @@ class Useradmindao {
 				email = :email, first_name = :first_name, last_name = :last_name, password = :password, admin = :admin, status = :status
 				WHERE id = :id";
 		$update = $this->db->query($query, $args);
-		$this->cache->delete('select_admin_'.$email);
+		$this->cache->delete('select_admin_'.$user->get_email());
 		$this->cache->delete('select_admin_all');
 		return $update;
 	}
