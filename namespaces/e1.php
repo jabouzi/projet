@@ -1,6 +1,6 @@
 <?php
 
-namespace e1;
+namespace space1;
 
 class test1
 {

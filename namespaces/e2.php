@@ -1,5 +1,5 @@
 <?php 
 
-namespace e2;
+namespace space2;
 
-\e1\e1::show();
+\space1\e1::show();
