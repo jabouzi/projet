@@ -42,7 +42,7 @@ class Useradmindao {
 			);
 		if (!isempty($user->get_password()))
 		{
-			$args[':password'] == $user->get_password();
+			$args[':password'] = $user->get_password();
 			$password = ', password = :password';
 		}
 		$query = "UPDATE user_admin SET
