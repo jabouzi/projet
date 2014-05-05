@@ -25,11 +25,11 @@
 		<input type="text" name="user_last_name" id="user_last_name" value="<?php echo print_post_text('user_last_name'); ?>" data-validate="required" />
 	</div>
 	<div class="row">
-		<input type="checkbox" name="admin" value="1" <?php if (intval(print_post_text('admin') == 1) echo 'checked'; ?> >
+		<input type="checkbox" name="admin" value="1" <?php if (intval(print_post_text('admin')) == 1)) echo 'checked'; ?> >
 		<label for="password">Is Admin:</label>
     </div>
 	<div class="row">
-		<input type="checkbox" name="status" value="1" <?php if (intval(print_post_text('status') == 1) echo 'checked'; ?>>
+		<input type="checkbox" name="status" value="1" <?php if (intval(print_post_text('status')) == 1) echo 'checked'; ?>>
 		<label for="password">Active:</label>
     </div>
     <div>
