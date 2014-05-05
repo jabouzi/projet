@@ -14,6 +14,8 @@ class Admin_model extends Model
 
 	public function add_user($userdata)
 	{
+		if (!isset($userdata['admin'])) $userdata['admin'] = 0;
+		if (!isset($userdata['status'])) $userdata['status'] = 0;
 		$builder = new useradminbuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
@@ -22,6 +24,8 @@ class Admin_model extends Model
 
 	public function update_user($userdata)
 	{
+		if (!isset($userdata['admin'])) $userdata['admin'] = 0;
+		if (!isset($userdata['status'])) $userdata['status'] = 0;
 		$builder = new useradminbuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
@@ -40,7 +44,12 @@ class Admin_model extends Model
 
 	public function get_users()
 	{
-		return $this->admindao->select_all();
+		$users = $this->admindao->select_all();
+		foreach($users as $key => $user)
+		{
+			if ($user->get_id() == $_SESSION['user']['id']) unset($users[$key]);
+		}
+		return $users;
 	}
 
 	public function email_exists($email, $id = '')
