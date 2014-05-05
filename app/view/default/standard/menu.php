@@ -9,6 +9,7 @@ if (islogged())
 
 	if (isadmin()) {
 		$links['/'.get_site_lang().'/admin'] = 'Admins';
+		$links['/'.get_site_lang().'/admin/add'] = 'Add Admin';
 	}
 	$links['/'.get_site_lang().'/login/logout'] = 'Log Out';
 
