@@ -1,6 +1,9 @@
 <div class="row error"><label></label><?php display_message(); ?></div>
 <h2>Add Account</h2>
 <form action="/<?php echo get_site_lang(); ?>/admin/processadd" method="post" id="addform" name="addform">
+	<div class="row">
+        <input type="hidden" name="id" id="id" value=""/> 
+    </div>
     <div class="row">
 		<label for="email">Email:</label>
 		<input type="text" name="email" id="email" value="<?php echo print_post_text('email'); ?>" data-validate="required" data-type="email" />
