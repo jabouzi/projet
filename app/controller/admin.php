@@ -83,19 +83,19 @@ class Admin extends Controller
 		if ($_SESSION['edit']['id'] != $_POST['id'])
 		{
 			$_SESSION['message'] = 'account.security.detected';
-			redirect('admins/edit/'.$_SESSION['edit']['email']);
+			redirect('admins/edit/'.$_SESSION['edit']['id']);
 		}
 		else if ($this->admin_model->email_exists($_POST['email'], $_POST['id']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'admin.email.exists';
-			redirect('admin/edit/'.$_POST['email']);
+			redirect('admin/edit/'.$_POST['id']);
 		}
 		else
 		{
 			$this->admin_model->update_user($_POST);
 			$_SESSION['message'] = 'admin.user_updated';
-			redirect('admin/edit/'.$_POST['email']);
+			redirect('admin/edit/'.$_POST['id']);
 		}
 	}
 }
