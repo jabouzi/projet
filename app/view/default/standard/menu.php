@@ -2,7 +2,7 @@
 <?php
 if (islogged())
 {
-	$links = array('/'=>'Home',
+	$links = array('/'=>'Accounts',
 				   '/'.get_site_lang().'/application/add'=>'Add Account',
 				   '/'.get_site_lang().'/application/import'=>'Import Accounts'
 				   );
