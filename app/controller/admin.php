@@ -105,10 +105,7 @@ class Admin extends Controller
 		}
 		else
 		{
-			for($i = 1; $i < 1000; $i++)
-			{
 			$this->admin_model->update_user($_POST);
-			}
 			$_SESSION['message'] = 'admin.user_updated';
 			redirect('admin/edit/'.$_POST['id']);
 		}
