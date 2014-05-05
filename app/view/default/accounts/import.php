@@ -5,7 +5,7 @@
 </p>
 <form action="/<?php echo get_site_lang(); ?>/application/processimport" method="post" enctype="multipart/form-data">
     <div class="row">
-        <label for="contactsfile">Accounts File:</label><input type="file" id="contactsfile" name="contactsfile" />
+        <label for="accountsfile">Accounts File:</label><input type="file" id="accountsfile" name="accountsfile" />
     </div>
     <div class="row">
         <label for="submit"> </label>

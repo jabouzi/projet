@@ -115,5 +115,8 @@ class Application extends Controller
 	public function processimport()
 	{
 		var_dump($_POST, $_FILES);
+		$path = $_FILES['accountsfile']['name'];
+		$ext = pathinfo($path, PATHINFO_EXTENSION);
+		var_dump($ext);
 	}
 }
