@@ -8,6 +8,7 @@
     </div>
 	<div class="row"><label for="submit"> </label>
         <input type="hidden" name="email" id="email" value="<?php echo $user->get_email(); ?>"/> 
+        <input type="hidden" name="id" id="id" value="<?php echo $user->get_id(); ?>"/> 
     </div>
 </div>
 </form>
