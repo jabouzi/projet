@@ -4,18 +4,21 @@ class Admin_model extends Model
 {
 	private $admin;
 	private $admindao;
+	private $encrypt;
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->admin = new useradmin();
 		$this->admindao = new useradmindao();
+		$this->encrypt = new encryption();
 	}
 
 	public function add_user($userdata)
 	{
 		if (!isset($userdata['admin'])) $userdata['admin'] = 0;
 		if (!isset($userdata['status'])) $userdata['status'] = 0;
+		$userdata['password'] = $this->encrypt->decrypt($userdata['password']);
 		$builder = new useradminbuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
@@ -26,6 +29,7 @@ class Admin_model extends Model
 	{
 		if (!isset($userdata['admin'])) $userdata['admin'] = 0;
 		if (!isset($userdata['status'])) $userdata['status'] = 0;
+		$userdata['password'] = $this->encrypt->decrypt($userdata['password']);
 		$builder = new useradminbuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
