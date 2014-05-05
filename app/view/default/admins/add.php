@@ -30,7 +30,7 @@
     </div>
 	<div class="row">
 		<label for="password">Active:</label>
-		<input type="checkbox" name="status" value="1" <?php if (intval(print_post_text('status')) == 1 echo 'checked'; ?>>
+		<input type="checkbox" name="status" value="1" <?php if (intval(print_post_text('status')) == 1) echo 'checked'; ?>>
     </div>
     <div>
 		<div class="row"><label for="submit"> </label>
