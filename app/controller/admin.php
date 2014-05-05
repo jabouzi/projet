@@ -28,6 +28,18 @@ class Admin extends Controller
 		}
 		view::load_view('default/standard/footer');
 	}
+	
+	public function profile()
+	{
+		$user = $this->admin_model->get_user($_SESSION['user']['email']);
+		$data['user'] = $user;
+		$_SESSION['edit']['id'] = $user->get_id();
+		view::load_view('default/standard/header');
+		view::load_view('default/standard/menu');
+		view::load_view('default/admins/profile', $data);
+		view::load_view('default/standard/footer');
+		unset($_SESSION['request']);
+	}
 
 	public function add()
 	{
@@ -96,6 +108,29 @@ class Admin extends Controller
 			$this->admin_model->update_user($_POST);
 			$_SESSION['message'] = 'admin.user_updated';
 			redirect('admin/edit/'.$_POST['id']);
+		}
+	}
+	
+	public function processprofile()
+	{
+		if ($_SESSION['edit']['id'] != $_POST['id'])
+		{
+			$_SESSION['message'] = 'account.security.detected';
+			redirect('admin/profile');
+		}
+		else if ($this->admin_model->email_exists($_POST['email'], $_POST['id']))
+		{
+			$_SESSION['request'] = $_POST;
+			$_SESSION['message'] = 'admin.email.exists';
+			redirect('admin/profile');
+		}
+		else
+		{
+			$_POST['admin'] = $_SESSION['user']['admin'];
+			$_POST['status'] = $_SESSION['user']['status'];
+			$this->admin_model->update_user($_POST);
+			$_SESSION['message'] = 'admin.user_updated';
+			redirect('admin/profile');
 		}
 	}
 }
