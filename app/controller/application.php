@@ -19,7 +19,7 @@ class Application extends Controller
 		if ($users)
 		{
 			$data['users'] = $users;
-			view::load_view('default/contacts/userslist', $data);
+			view::load_view('default/accounts/userslist', $data);
 		}
 		else
 		{
@@ -32,7 +32,7 @@ class Application extends Controller
 	{
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
-		view::load_view('default/contacts/add');
+		view::load_view('default/accounts/add');
 		view::load_view('default/standard/footer');
 		unset($_SESSION['request']);
 	}
@@ -44,7 +44,7 @@ class Application extends Controller
 		$_SESSION['edit']['user_name'] = $user->get_user_name();
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
-		view::load_view('default/contacts/edit', $data);
+		view::load_view('default/accounts/edit', $data);
 		view::load_view('default/standard/footer');
 		unset($_SESSION['request']);
 	}

@@ -1,6 +1,6 @@
-<h1>Import Your Contacts</h1>
+<h1>Import Accounts</h1>
 <p>
-    Upload a .csv file from Outlook.  Contact helpdesk for assistance.
+    Upload a .csv file or an xml file or an excel file.
 </p>
 <?php
     echo view::show('standard/errors');
