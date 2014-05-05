@@ -103,7 +103,7 @@ class Application extends Controller
 			redirect('application/edit/'.$_POST['user_name']);
 		}
 	}
-	
+
 	public function import()
 	{
 		view::load_view('default/standard/header');
@@ -111,12 +111,12 @@ class Application extends Controller
 		view::load_view('default/accounts/import');
 		view::load_view('default/standard/footer');
 	}
-	
+
 	public function processimport()
 	{
 		$path = $_FILES['accountsfile']['name'];
 		$ext = pathinfo($path, PATHINFO_EXTENSION);
-		if ($_FILES["accountsfile"]["error"] != UPLOAD_ERR_OK) 
+		if ($_FILES["accountsfile"]["error"] != UPLOAD_ERR_OK)
 		{
 			$_SESSION['message'] = 'account.error.fileupload';
 			redirect('application/import');
