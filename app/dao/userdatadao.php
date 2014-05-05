@@ -55,7 +55,7 @@ class Userdatadao {
 			':first_name' => $user->get_user_first_name(),
 			':last_name' => $user->get_user_last_name(),
 		);
-		if (!isempty($user->get_user_password()) 
+		if (!isempty($user->get_user_password()))
 		{
 			$args[':password'] == $user->get_password());
 			$password = ', user_password = encrypt(:password)';

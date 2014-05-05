@@ -40,7 +40,7 @@ class Useradmindao {
 				':status' => $user->get_status(),
 				':id' => $user->get_id()
 			);
-		if (!isempty($user->get_password()) 
+		if (!isempty($user->get_password()) )
 		{
 			$args[':password'] == $user->get_password());
 			$password = ', password = :password';
