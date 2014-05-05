@@ -59,7 +59,7 @@ class Admin extends Controller
 		}
 		$this->admin_model->delete_user($_POST['email']);
 		$_SESSION['message'] = 'admin.user_delete';
-		redirect('/');
+		redirect('admin');
 	}
 
 	public function processadd()
