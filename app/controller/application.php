@@ -114,6 +114,6 @@ class Application extends Controller
 	
 	public function processimport()
 	{
-
+		var_dump($_POST, $_FILE);
 	}
 }
