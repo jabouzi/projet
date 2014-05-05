@@ -74,7 +74,7 @@ class Admin extends Controller
 		{
 			$this->admin_model->add_user($_POST);
 			$_SESSION['message'] = 'admin.user_added';
-			redirect('/');
+			redirect('admin');
 		}
 	}
 
