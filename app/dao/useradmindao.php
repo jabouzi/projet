@@ -29,7 +29,7 @@ class Useradmindao {
 		return $this->db->lastInsertId();
 	}
 
-	public function update($user, $old_email)
+	public function update($user)
 	{
 		$args = array(
 				':email' => $user->get_email(),
