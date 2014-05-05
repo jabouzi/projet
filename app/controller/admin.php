@@ -64,7 +64,7 @@ class Admin extends Controller
 
 	public function processadd()
 	{
-		if ($this->admin_model->email_exists($_POST['email'], $_POST['id']))
+		if ($this->admin_model->email_exists($_POST['email']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'admin.email.exists';
