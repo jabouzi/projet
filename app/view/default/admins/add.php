@@ -1,6 +1,6 @@
 <div class="row error"><label></label><?php display_message(); ?></div>
 <h2>Add Account</h2>
-<form action="/<?php echo get_site_lang(); ?>/application/processadd" method="post" id="addform" name="addform">
+<form action="/<?php echo get_site_lang(); ?>/admin/processadd" method="post" id="addform" name="addform">
 	<div class="row">
         <input type="hidden" name="user_group" id="user_group" value=""/> 
     </div>
