@@ -116,7 +116,7 @@ class Application extends Controller
 	{
 		$path = $_FILES['accountsfile']['name'];
 		$ext = pathinfo($path, PATHINFO_EXTENSION);
-		if ($error != UPLOAD_ERR_OK) 
+		if ($_FILES["accountsfile"]["error"] != UPLOAD_ERR_OK) 
 		{
 			$_SESSION['message'] = 'account.error.fileupload';
 			redirect('application/import');
