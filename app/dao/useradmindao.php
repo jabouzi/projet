@@ -31,18 +31,22 @@ class Useradmindao {
 
 	public function update($user)
 	{
+		$password = '';
 		$args = array(
 				':email' => $user->get_email(),
 				':first_name' => $user->get_first_name(),
 				':last_name' => $user->get_last_name(),
-				':password' => $user->get_password(),
 				':admin' => $user->get_admin(),
 				':status' => $user->get_status(),
 				':id' => $user->get_id()
 			);
-
+		if (!isempty($user->get_password()) 
+		{
+			$args[':password'] == $user->get_password());
+			$password = ', password = :password';
+		}
 		$query = "UPDATE user_admin SET
-				email = :email, first_name = :first_name, last_name = :last_name, password = :password, admin = :admin, status = :status
+				email = :email, first_name = :first_name, last_name = :last_name, admin = :admin, status = :status {$password}
 				WHERE id = :id";
 		$update = $this->db->query($query, $args);
 		$this->cache->delete('select_admin_'.$user->get_email());

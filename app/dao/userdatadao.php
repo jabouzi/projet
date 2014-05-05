@@ -47,16 +47,21 @@ class Userdatadao {
 
 	public function update_info($user)
 	{
+		$password = '';
 		$args = array(
 			':user_name' => $user->get_user_name(),
-			':password' => $user->get_user_password(),
 			':group' => $user->get_user_group(),
 			':email' => $user->get_user_email(),
 			':first_name' => $user->get_user_first_name(),
 			':last_name' => $user->get_user_last_name(),
 		);
+		if (!isempty($user->get_user_password()) 
+		{
+			$args[':password'] == $user->get_password());
+			$password = ', user_password = encrypt(:password)';
+		}
 		$query = "UPDATE user_info SET
-				user_password = encrypt(:password), user_group = :group, user_email = :email, user_first_name = :first_name, user_last_name = :last_name
+				user_group = :group, user_email = :email, user_first_name = :first_name, user_last_name = :last_name {$password}
 				WHERE user_name = :user_name";
 		$update = $this->db->query($query, $args);
 		$this->cache->delete('select_data_'.$user->get_user_name());

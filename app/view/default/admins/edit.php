@@ -31,7 +31,7 @@
 	</div>
 	<div class="row">
 		<label for="password">password:</label>
-		<input type="password" name="password" id="password" value="<?php echo print_post_text('password', $user->get_password()); ?>" />
+		<input type="password" name="password" id="password" value="<?php echo print_post_text('password'); ?>" />
 	</div>
 	<div class="row">
 		<label for="password">Is Admin:</label>

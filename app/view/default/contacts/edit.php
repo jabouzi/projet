@@ -38,7 +38,7 @@
 	</div>
 	<div class="row">
 		<label for="user_password">password:</label>
-		<input type="password" name="user_password" id="user_password" value="<?php echo print_post_text('user_password', $user->get_user_password()); ?>" />
+		<input type="password" name="user_password" id="user_password" value="<?php echo print_post_text('user_password'); ?>" />
 	</div>
     <div>
 		<div class="row"><label for="submit"> </label>
