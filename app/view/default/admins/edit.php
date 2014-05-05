@@ -33,12 +33,12 @@
 		<input type="password" name="password" id="password" value="<?php echo print_post_text('password', $user->get_password()); ?>" />
 	</div>
 	<div class="row">
-		<input type="checkbox" name="admin" value="1" <?php if (intval(print_post_text('admin', $user->get_admin())) == 1) echo 'checked'; ?> >
 		<label for="password">Is Admin:</label>
+		<input type="checkbox" name="admin" value="1" <?php if (intval(print_post_text('admin', $user->get_admin())) == 1) echo 'checked'; ?> >
     </div>
 	<div class="row">
-		<input type="checkbox" name="status" value="1" <?php if (intval(print_post_text('status', $user->get_status())) == 1) echo 'checked'; ?>>
 		<label for="password">Active:</label>
+		<input type="checkbox" name="status" value="1" <?php if (intval(print_post_text('status', $user->get_status())) == 1) echo 'checked'; ?>>
     </div>
     <div>
 		<div class="row"><label for="submit"> </label>
