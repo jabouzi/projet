@@ -103,4 +103,17 @@ class Application extends Controller
 			redirect('application/edit/'.$_POST['user_name']);
 		}
 	}
+	
+	public function import()
+	{
+		view::load_view('default/standard/header');
+		view::load_view('default/standard/menu');
+		view::load_view('default/accounts/import');
+		view::load_view('default/standard/footer');
+	}
+	
+	public function processimport()
+	{
+
+	}
 }
