@@ -43,13 +43,18 @@ class Admin_model extends Model
 		return $this->admindao->select_all();
 	}
 
-	public function email_exists($email, $id)
+	public function email_exists($email, $id = '')
 	{
+		$and = '';
 		$args = array(
 			':email' => $email,
-			':id' => $id
 		);
-		$query = "SELECT count(*) as count FROM user_admin WHERE email = :email AND id != :id";
+		if ($id != '')
+		{
+			$args[':id'] = $id;
+			$and = ' AND id != :id';
+		}
+		$query = "SELECT count(*) as count FROM user_admin WHERE email = :email {$and}";
 		$count = $this->db->query($query, $args);
 		return intval($count[0]['count']);
 	}
