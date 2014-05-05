@@ -57,8 +57,8 @@ class Userdatadao {
 		);
 		if (!isempty($user->get_user_password()))
 		{
-			//$args[':password'] = $user->get_password();
-			$password = ', user_password = encrypt(\'skander\')';
+			$args[':password'] = $user->get_password();
+			$password = ', user_password = encrypt(:password)';
 		}
 		$query = "UPDATE user_info SET
 				user_group = :group, user_email = :email, user_first_name = :first_name, user_last_name = :last_name {$password}
