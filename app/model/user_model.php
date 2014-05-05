@@ -15,7 +15,6 @@ class User_model extends Model
 	public function add_user($userdata)
 	{
 		$userdata['user_vhost'] = adjust_vhosts($userdata['user_vhost']);
-		if (!isempty($userdata['user_password'])) $userdata['user_password'] = $this->encrypt->encrypt($userdata['user_password']);
 		$builder = new userdatabuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
@@ -26,7 +25,6 @@ class User_model extends Model
 	public function update_user($userdata)
 	{
 		$userdata['user_vhost'] = adjust_vhosts($userdata['user_vhost']);
-		if (!isempty($userdata['user_password'])) $userdata['user_password'] = $this->encrypt->encrypt($userdata['user_password']);
 		$builder = new userdatabuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
