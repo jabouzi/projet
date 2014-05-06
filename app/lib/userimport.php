@@ -32,12 +32,12 @@ class Userimport
 		if ($this->usermodel->user_name_exists($userdata['user_name']))
 		{
 			$errors_count++;
-			$_SESSION['message'] = 'user #'.$key.' account.username.exists<br />';
+			$_SESSION['message'] .= 'user #'.$key.' account.username.exists<br />';
 		}
 		if ($this->usermodel->user_email_exists($userdata['user_email']))
 		{
 			$errors_count++;
-			$_SESSION['message'] = 'user #'.$key.' account.email.exists<br />';
+			$_SESSION['message'] .= 'user #'.$key.' account.email.exists<br />';
 		}
 
 		//var_dump($errors_count);
@@ -54,7 +54,7 @@ class Userimport
 		//var_dump($param, item($userdata, $param));
 		//var_dump(isempty($userdata[$param]));
 		if (item($userdata, $param) && !isempty($userdata[$param]))	return 0;
-		$_SESSION['message'] = 'user #'.$key.' account.'.$param.'.empty<br />';
+		$_SESSION['message'] .= 'user #'.$key.' account.'.$param.'.empty<br />';
 		return 1;
 	}
 }
