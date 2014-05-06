@@ -1,6 +1,6 @@
 <?php
 
-class Admin_model extends Model
+class Adminmodel extends Model
 {
 	private $admin;
 	private $admindao;

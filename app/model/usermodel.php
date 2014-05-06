@@ -1,6 +1,6 @@
 <?php
 
-class User_model extends Model
+class Usermodel extends Model
 {
 	private $account;
 	private $accountdao;
