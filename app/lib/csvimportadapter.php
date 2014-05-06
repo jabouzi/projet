@@ -15,6 +15,7 @@ class Csvimportadapter
 		$params = array('user_name', 'user_password', 'user_first_name', 'user_last_name', 'user_email');
 		$index = 0;
 		$usersdata = str_getcsv($csv, "\n");
+		var_dump($usersdata);
 		foreach($usersdata as $userdata)
 		{
 			if ($index)
