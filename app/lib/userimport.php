@@ -1,6 +1,6 @@
 <?php
 
-class Userimport()
+class Userimport
 {
 	private $usemodel;
 	
