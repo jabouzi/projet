@@ -2,10 +2,12 @@
 
 namespace space1;
 
-class test1
+class E1
 {
 	static function show()
 	{
-		echo 'test1';
+		echo 'E1';
 	}
 }
+
+//space1\E1::show();
