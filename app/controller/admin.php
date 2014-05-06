@@ -2,19 +2,19 @@
 
 class Admin extends Controller
 {
-	private $admin_model;
+	private $adminmodel;
 
 	function __construct()
 	{
 		if (!islogged()) redirect('login');
 		if (!isadmin()) redirect('/');
-		$this->admin_model = new Admin_model();
+		$this->adminmodel = new adminmodel();
 	}
 
 	public function index($message = null)
 	{
 		//menu decorator
-		$users = new useriterator($this->admin_model->get_users());
+		$users = new useriterator($this->adminmodel->get_users());
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
 		if ($users)
@@ -31,7 +31,7 @@ class Admin extends Controller
 	
 	public function profile()
 	{
-		$user = $this->admin_model->get_user($_SESSION['user']['email']);
+		$user = $this->adminmodel->get_user($_SESSION['user']['email']);
 		$data['user'] = $user;
 		$_SESSION['edit']['id'] = $user->get_id();
 		view::load_view('default/standard/header');
@@ -52,7 +52,7 @@ class Admin extends Controller
 
 	public function edit($id)
 	{
-		$user = $this->admin_model->get_user($this->admin_model->get_email_by_id($id));
+		$user = $this->adminmodel->get_user($this->adminmodel->get_email_by_id($id));
 		$data['user'] = $user;
 		$_SESSION['edit']['id'] = $user->get_id();
 		view::load_view('default/standard/header');
@@ -69,14 +69,14 @@ class Admin extends Controller
 			$_SESSION['message'] = 'account.security.detected';
 			redirect('admins/edit/'.$_SESSION['edit']['email']);
 		}
-		$this->admin_model->delete_user($_POST['email']);
+		$this->adminmodel->delete_user($_POST['email']);
 		$_SESSION['message'] = 'admin.user_delete';
 		redirect('admin');
 	}
 
 	public function processadd()
 	{
-		if ($this->admin_model->email_exists($_POST['email']))
+		if ($this->adminmodel->email_exists($_POST['email']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'admin.email.exists';
@@ -84,7 +84,7 @@ class Admin extends Controller
 		}
 		else
 		{
-			$this->admin_model->add_user($_POST);
+			$this->adminmodel->add_user($_POST);
 			$_SESSION['message'] = 'admin.user_added';
 			redirect('admin');
 		}
@@ -97,7 +97,7 @@ class Admin extends Controller
 			$_SESSION['message'] = 'account.security.detected';
 			redirect('admins/edit/'.$_SESSION['edit']['id']);
 		}
-		else if ($this->admin_model->email_exists($_POST['email'], $_POST['id']))
+		else if ($this->adminmodel->email_exists($_POST['email'], $_POST['id']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'admin.email.exists';
@@ -105,7 +105,7 @@ class Admin extends Controller
 		}
 		else
 		{
-			$this->admin_model->update_user($_POST);
+			$this->adminmodel->update_user($_POST);
 			$_SESSION['message'] = 'admin.user_updated';
 			redirect('admin/edit/'.$_POST['id']);
 		}
@@ -118,7 +118,7 @@ class Admin extends Controller
 			$_SESSION['message'] = 'account.security.detected';
 			redirect('admin/profile');
 		}
-		else if ($this->admin_model->email_exists($_POST['email'], $_POST['id']))
+		else if ($this->adminmodel->email_exists($_POST['email'], $_POST['id']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'admin.email.exists';
@@ -128,7 +128,7 @@ class Admin extends Controller
 		{
 			$_POST['admin'] = $_SESSION['user']['admin'];
 			$_POST['status'] = $_SESSION['user']['status'];
-			$this->admin_model->update_user($_POST);
+			$this->adminmodel->update_user($_POST);
 			$_SESSION['message'] = 'admin.user_updated';
 			redirect('admin/profile');
 		}

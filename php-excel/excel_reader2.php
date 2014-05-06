@@ -1731,37 +1731,6 @@ class Spreadsheet_Excel_Reader {
 		}
 		return $value;
 	}
-	
-	function dump_csv($row_numbers=false, $col_letters=false, $sheet=0, $table_class='excel') 
-	{
-		$outs = array(); 
-		for($row=1; $row<=$this->rowcount($sheet); $row++) 
-		{
-			$outs_inner = array(); 
-			for($col=1; $col<=$this->colcount($sheet); $col++) 
-			{
-			// Account for Rowspans/Colspans $rowspan = $this->rowspan($row, $col, $sheet); $colspan = $this->colspan($row, $col, $sheet); for($i=0; $i<$rowspan; $i++) {
-				for($j=0; $j<$colspan; $j++) 
-				{
-					if ($i>0 || $j>0) 
-					{
-						$this->sheets[$sheet]['cellsInfo'][$row+$i][$col+$j]['dontprint']=1;
-					}
-				}
-			} 
-			
-			if(!$this->sheets[$sheet]['cellsInfo'][$row][$col]['dontprint']) 
-			{
-				$val = $this->val($row, $col, $sheet); $val = ($val=='')?'':addslashes(htmlentities($val));
-				$outs_inner = "\"{$val}\"";
-				$outs_inner = $val;
-			}
-		} 
-		$outs = implode(',', $outs_inner);
-		$out = implode("\n", $outs); 
-		return($out);
-	} 
-
 
 }
 

@@ -2,18 +2,18 @@
 
 class Application extends Controller
 {
-	private $user_model;
+	private $usermodel;
 
 	function __construct()
 	{
 		if (!islogged()) redirect('login');
-		$this->user_model = new User_model();
+		$this->usermodel = new usermodel();
 	}
 
 	public function index($message = null)
 	{
 		//menu decorator
-		$users = new useriterator($this->user_model->get_users());
+		$users = new useriterator($this->usermodel->get_users());
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
 		if ($users)
@@ -39,7 +39,7 @@ class Application extends Controller
 
 	public function edit($user_name)
 	{
-		$user = $this->user_model->get_user($user_name);
+		$user = $this->usermodel->get_user($user_name);
 		$data['user'] = $user;
 		$_SESSION['edit']['user_name'] = $user->get_user_name();
 		view::load_view('default/standard/header');
@@ -56,20 +56,20 @@ class Application extends Controller
 			$_SESSION['message'] = 'account.security.detected';
 			redirect('application/edit/'.$_SESSION['edit']['user_name']);
 		}
-		$this->user_model->delete_user($_POST['user_name']);
+		$this->usermodel->delete_user($_POST['user_name']);
 		$_SESSION['message'] = 'account.user_delete';
 		redirect('/');
 	}
 
 	public function processadd()
 	{
-		if ($this->user_model->user_email_exists($_POST['user_email']))
+		if ($this->usermodel->user_email_exists($_POST['user_email']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'account.email.exists';
 			redirect('application/add');
 		}
-		else if ($this->user_model->user_name_exists($_POST['user_name']))
+		else if ($this->usermodel->user_name_exists($_POST['user_name']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'account.user_name.exists';
@@ -77,7 +77,7 @@ class Application extends Controller
 		}
 		else
 		{
-			$this->user_model->add_user($_POST);
+			$this->usermodel->add_user($_POST);
 			$_SESSION['message'] = 'account.user_added';
 			redirect('/');
 		}
@@ -90,7 +90,7 @@ class Application extends Controller
 			$_SESSION['message'] = 'account.security.detected';
 			redirect('application/edit/'.$_SESSION['edit']['user_name']);
 		}
-		else if ($this->user_model->user_email_exists($_POST['user_email'], $_POST['user_name']))
+		else if ($this->usermodel->user_email_exists($_POST['user_email'], $_POST['user_name']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = 'account.email.exists';
@@ -98,7 +98,7 @@ class Application extends Controller
 		}
 		else
 		{
-			$this->user_model->update_user($_POST);
+			$this->usermodel->update_user($_POST);
 			$_SESSION['message'] = 'account.user_updated';
 			redirect('application/edit/'.$_POST['user_name']);
 		}
