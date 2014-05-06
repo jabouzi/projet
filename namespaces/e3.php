@@ -12,7 +12,7 @@ spl_autoload_register();
 
 //use space1;
 space1\E1::show();
-\E1::show();
+//\E1::show();
 
 //namespace space4;
 
