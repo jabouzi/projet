@@ -9,8 +9,9 @@ class Jsonimportadapter
 
 	}
 
-	public function import($json)
+	public function import($file)
 	{
+		$json = file_get_contents($file);
 		$users = json_decode($json, true);
 		$this->userimport = new userimport();
 		$this->userimport->import($users);

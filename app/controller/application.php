@@ -132,9 +132,8 @@ class Application extends Controller
 			$tmp_name = $_FILES["accountsfile"]["tmp_name"];
 			$name = $_FILES["accountsfile"]["name"];
 			move_uploaded_file($tmp_name, "/tmp/$name");
-			$file = file_get_contents("/tmp/$name");
 			$jsonimport = Userimportfactory::create($ext);
-			$jsonimport->import($file);
+			$jsonimport->import("/tmp/$name");
 		}
 	}
 }
