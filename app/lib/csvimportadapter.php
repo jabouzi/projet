@@ -22,7 +22,6 @@ class Csvimportadapter
 				if ($index)
 				{
 					$data = str_getcsv($userdata, ";");
-					//var_dump($data);
 					$users[$index]['user_vhost'] = explode(',', $data[6]);
 					foreach($params as $key => $value)
 					{
@@ -32,8 +31,6 @@ class Csvimportadapter
 				$index++;
 			}
 		}
-		var_dump($users);
-		exit;
 		$this->userimport = new userimport();
 		$this->userimport->import($users);
 	}
