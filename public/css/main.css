@@ -31,6 +31,7 @@ form div.row {
     clear: left;
     margin: 5px 0 0;
     padding: 1px 3px;
+    text-align: center;
 }
 label {
     display: block;
@@ -87,6 +88,10 @@ input.radio {
 	cursor: pointer;
 	font-weight: bold;
 	width: auto;
+	display: inline-block;
+	border-radius: 8px;
+	padding: 4px 12px;
+	width: 300px;
 }
 .dissmiss {
 	background-color: #FF0000;
