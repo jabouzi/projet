@@ -29,7 +29,7 @@ class Csvimportadapter
 			}
 			$index++;
 		}
-		var_dump($users);
+		//var_dump($users);
 		exit;
 		$this->userimport = new userimport();
 		$this->userimport->import($users);
