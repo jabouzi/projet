@@ -10,7 +10,7 @@ spl_autoload_register();
 //require_once 'e0.php';
 //require_once 'e1.php';
 
-use space1;
+//use space1;
 space1\E1::show();
 \E1::show();
 
