@@ -26,7 +26,8 @@ class Userimport
 		$errors_count = 0;
 		foreach ($params as $param)
 		{
-			$errors_count += $this->checkitem($userdata, $param, $key);
+			var_dump($this->checkitem($userdata, $param, $key));
+			//$errors_count += $this->checkitem($userdata, $param, $key);
 		}
 
 		if ($this->usermodel->user_name_exists($userdata['user_name']))
