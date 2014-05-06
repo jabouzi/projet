@@ -17,7 +17,7 @@ class Userimport
 			$this->insert($userdata, $key);
 		}
 
-		redirect('application');
+		//redirect('application');
 	}
 
 	public function insert($userdata, $key)
@@ -49,6 +49,7 @@ class Userimport
 
 	private function checkitem($userdata, $param, $key)
 	{
+		var_dump($param, $key);
 		if (item($userdata, $param) && !isempty($userdata[$param]))	return 0;
 		$_SESSION['message'] = 'user #'.$key.' account.'.$param.'.empty<br />';
 		return 1;
