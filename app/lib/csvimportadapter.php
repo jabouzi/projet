@@ -23,6 +23,7 @@ class Csvimportadapter
 				{
 					$data = str_getcsv($userdata, ";");
 					$users[$index]['user_vhost'] = explode(',', $data[6]);
+					$users[$index]['user_group'] = '';
 					foreach($params as $key => $value)
 					{
 						$users[$index][$value] = $data[$key];
