@@ -4,7 +4,7 @@ class Jsonimportadapter
 {
 	private $userimport;
 
-	function __construct($json)
+	function __construct()
 	{
 
 	}
