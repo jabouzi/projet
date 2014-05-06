@@ -18,13 +18,14 @@ class Csvimportadapter
 		$alldata = str_getcsv($csv, "\n");
 		foreach($alldata as &$data)
 		{
+			$data = str_getcsv($data, ";");
 			$users['user_vhost'] = explode(',', $data[5]);
 			foreach($params as $key => $value)
 			{
 				$users[$index][$value] = $data[$key];
 			}
 			var_dump($data);
-			$idnex++;
+			$index++;
 		}
 		exit;
 		$this->userimport = new userimport();
