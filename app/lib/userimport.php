@@ -22,13 +22,18 @@ class Userimport
 
 	public function insert($userdata, $key)
 	{
-		$params = array('user_name', 'user_password', 'user_first_name', 'user_last_name', 'user_email', 'user_vhosts');
+		$params = array('user_name', 'user_password', 'user_first_name', 'user_last_name', 'user_email');
 		$errors_count = 0;
 		foreach ($params as $param)
 		{
 			$errors_count += $this->checkitem($userdata, $param, $key);
 		}
 
+		if (!item($userdata, 'user_vhosts') || !is_array($userdata['user_vhosts']))
+		{
+			$errors_count++;
+			$_SESSION['message'] .= 'user #'.($key+1).' account.user_vhosts.empty<br />';
+		}
 		if ($this->usermodel->user_name_exists($userdata['user_name']))
 		{
 			$errors_count++;
@@ -43,7 +48,7 @@ class Userimport
 		//var_dump($errors_count);
 		if (!$errors_count)
 		{
-			 'user #'.($key+1).' added<br />';
+			'user #'.($key+1).' added<br />';
 			$this->usermodel->add_user($userdata);
 		}
 	}
