@@ -48,7 +48,7 @@ class Userimport
 		//var_dump($errors_count);
 		if (!$errors_count)
 		{
-			'user #'.($key+1).' added<br />';
+			$_SESSION['message'] .= 'user #'.($key+1).' added<br />';
 			$this->usermodel->add_user($userdata);
 		}
 	}
