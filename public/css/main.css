@@ -89,11 +89,11 @@ input.radio {
 	font-weight: bold;
 /*
 	width: auto;
-*/
+
 	display: inline-block;
 	border-radius: 8px;
 	padding: 4px 12px;
-	width: 300px;
+	width: 300px;*/
 }
 .dissmiss {
 	background-color: #FF0000;
