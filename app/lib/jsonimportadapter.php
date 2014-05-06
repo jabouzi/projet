@@ -12,7 +12,7 @@ class Jsonimportadapter
 
 	function import()
 	{
-		$this->userimport = new userimport($this->users);
-		$this->userimport->import();
+		$this->userimport = new userimport();
+		$this->userimport->import($this->users);
 	}
 }
