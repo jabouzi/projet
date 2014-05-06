@@ -132,6 +132,8 @@ class Application extends Controller
 			$tmp_name = $_FILES["accountsfile"]["tmp_name"];
 			$name = $_FILES["accountsfile"]["name"];
 			move_uploaded_file($tmp_name, "/tmp/$name");
+			$json = file_get_contents("/tmp/$name");
+			$jsonimport = new jsonimportadapter($json);
 		}
 	}
 }
