@@ -29,7 +29,7 @@ class Userimport
 			$errors_count += $this->checkitem($userdata, $param, $key);
 		}
 
-		if (!item($userdata, 'user_vhosts') || !is_array($userdata['user_vhosts']))
+		if (!item($userdata, 'user_vhost') || !is_array($userdata['user_vhost']))
 		{
 			$errors_count++;
 			$_SESSION['message'] .= 'user #'.($key+1).' account.user_vhosts.empty<br />';
