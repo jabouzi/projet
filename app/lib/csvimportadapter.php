@@ -13,7 +13,7 @@ class Csvimportadapter
 	{
 		$users = array();
 		$row = 1;
-		while (($data = fgetcsv($csv, 1000, ";")) !== FALSE) {
+		while (($data = str_getcsv($csv, ";")) !== FALSE) {
 			$data['user_vhost'] = explde(',', $data['user_vhost']);
 			$users[] = $data;
 		}
