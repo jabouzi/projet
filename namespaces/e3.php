@@ -1,5 +1,6 @@
 <?php 
-
+echo __dir__.'<br />';
+set_include_path(__DIR__);
 spl_autoload_extensions(".php"); // To make sure spl only includes php-files while autoloading.
 spl_autoload_register();
 
