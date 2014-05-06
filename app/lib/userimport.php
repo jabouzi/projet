@@ -26,8 +26,7 @@ class Userimport
 		$errors_count = 0;
 		foreach ($params as $param)
 		{
-			var_dump($this->checkitem($userdata, $param, $key));
-			//$errors_count += $this->checkitem($userdata, $param, $key);
+			$errors_count += $this->checkitem($userdata, $param, $key);
 		}
 
 		if ($this->usermodel->user_name_exists($userdata['user_name']))
@@ -41,6 +40,7 @@ class Userimport
 			$_SESSION['message'] = 'user #'.$key.' account.email.exists<br />';
 		}
 
+		var_dump($errors_count);
 		if (!$errors_count)
 		{
 			 'user #'.$key.' added<br />';
