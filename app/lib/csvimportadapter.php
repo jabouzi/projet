@@ -13,12 +13,9 @@ class Csvimportadapter
 	{
 		$users = array();
 		$row = 1;
-		if (($handle = fopen($csv, "r")) !== FALSE) {
-			while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-				$data['user_vhost'] = explde(',', $data['user_vhost']);
-				$users[] = $data;
-			}
-			fclose($handle);
+		while (($data = fgetcsv($csv, 1000, ";")) !== FALSE) {
+			$data['user_vhost'] = explde(',', $data['user_vhost']);
+			$users[] = $data;
 		}
 		$this->userimport = new userimport();
 		$this->userimport->import($users);
