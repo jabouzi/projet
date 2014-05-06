@@ -1,6 +1,6 @@
 <?php
 
-class Jsonimportadatpter()
+class Jsonimportadatpter
 {
 	private $userimport;
 	
