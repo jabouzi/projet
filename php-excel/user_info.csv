@@ -1,0 +1,4 @@
+user_name,user_password,user_group,user_first_name,user_last_name,user_email
+admin,admin,NULL,Admin,Admin,admin@admin.com
+admin1,admin1,NULL,Admin1,Admin1,admin1@admin.com
+
