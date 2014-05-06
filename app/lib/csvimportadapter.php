@@ -14,7 +14,7 @@ class Csvimportadapter
 		$users = array();
 		$row = 1;
 		while (($data = str_getcsv($csv, ";")) !== FALSE) {
-			$data['user_vhost'] = explde(',', $data['user_vhost']);
+			$data['user_vhost'] = explode(',', $data['user_vhost']);
 			$users[] = $data;
 		}
 		$this->userimport = new userimport();
