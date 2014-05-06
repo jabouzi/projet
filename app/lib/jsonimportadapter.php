@@ -3,16 +3,16 @@
 class Jsonimportadapter
 {
 	private $userimport;
-	private $users;
 
 	function __construct($json)
 	{
-		$this->users = json_decode($json, true);
+
 	}
 
-	public function import()
+	public function import($json)
 	{
+		$users = json_decode($json, true);
 		$this->userimport = new userimport();
-		$this->userimport->import($this->users);
+		$this->userimport->import($users);
 	}
 }
