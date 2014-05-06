@@ -6,6 +6,7 @@ class Jsonimportadapter
 	
 	function __construct($json)
 	{
+		var_dump($json);
 		$users = json_decode($json);
 		var_dump($users);
 	}
