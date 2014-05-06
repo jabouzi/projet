@@ -49,10 +49,12 @@ class Userimport
 
 	private function checkitem($userdata, $param, $key)
 	{
-		var_dump($param, item($userdata, $param));
-		var_dump(isempty($userdata[$param]));
-		if (item($userdata, $param) && !isempty($userdata[$param]))	return 0;
+		var_dump($param);
+		//var_dump($param, item($userdata, $param));
+		//var_dump(isempty($userdata[$param]));
+		if (item($userdata, $param) && !isempty($userdata[$param]))	var_dump(0); return 0;
 		$_SESSION['message'] = 'user #'.$key.' account.'.$param.'.empty<br />';
+		var_dump(1);
 		return 1;
 	}
 }
