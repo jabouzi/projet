@@ -17,7 +17,7 @@ class Userimport
 			$this->insert($userdata, $key);
 		}
 
-		//redirect('application');
+		redirect('application');
 	}
 
 	public function insert($userdata, $key)
@@ -40,7 +40,7 @@ class Userimport
 			$_SESSION['message'] = 'user #'.$key.' account.email.exists<br />';
 		}
 
-		var_dump($errors_count);
+		//var_dump($errors_count);
 		if (!$errors_count)
 		{
 			 'user #'.$key.' added<br />';
@@ -50,7 +50,7 @@ class Userimport
 
 	private function checkitem($userdata, $param, $key)
 	{
-		var_dump($param);
+		//var_dump($param);
 		//var_dump($param, item($userdata, $param));
 		//var_dump(isempty($userdata[$param]));
 		if (item($userdata, $param) && !isempty($userdata[$param]))	return 0;
