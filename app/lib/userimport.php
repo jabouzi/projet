@@ -9,7 +9,7 @@ class Userimport
 		$this->usermodel = new usermodel();
 	}
 
-	function import($usersdata)
+	public function import($usersdata)
 	{
 		$_SESSION['message'] = '';
 		foreach($usersdata as $key => $userdata)
@@ -20,7 +20,7 @@ class Userimport
 		redirect('application');
 	}
 
-	function insert($userdata, $key)
+	public function insert($userdata, $key)
 	{
 		$params = array('user_name', 'user_password', 'user_first_name', 'user_last_name', 'user_email');
 		$errors_count = 0;
@@ -47,7 +47,7 @@ class Userimport
 		}
 	}
 
-	function checkitem($userdata, $param)
+	private function checkitem($userdata, $param)
 	{
 		if (item($userdata, $param) && !isempty($userdata[$param]))	return 0;
 		$_SESSION['message'] = 'user #'.$key.' account.'.$param.'.empty<br />';

@@ -10,7 +10,7 @@ class Jsonimportadapter
 		$this->users = json_decode($json, true);
 	}
 
-	function import()
+	public function import()
 	{
 		$this->userimport = new userimport();
 		$this->userimport->import($this->users);
