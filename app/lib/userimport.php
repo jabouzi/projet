@@ -22,7 +22,7 @@ class Userimport
 
 	public function insert($userdata, $key)
 	{
-		$params = array('user_name', 'user_password', 'user_first_name', 'user_last_name', 'user_email');
+		$params = array('user_name', 'user_password', 'user_first_name', 'user_last_name', 'user_email' 'user_vhosts');
 		$errors_count = 0;
 		foreach ($params as $param)
 		{
