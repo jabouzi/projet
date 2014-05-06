@@ -26,7 +26,7 @@ class Userimport
 		$errors_count = 0;
 		foreach ($params as $param)
 		{
-			$errors_count += $this->checkitem($userdata, $param);
+			$errors_count += $this->checkitem($userdata, $param, $key);
 		}
 
 		if ($this->usermodel->user_name_exists($userdata['user_name']))
@@ -47,7 +47,7 @@ class Userimport
 		}
 	}
 
-	private function checkitem($userdata, $param)
+	private function checkitem($userdata, $param, $key)
 	{
 		if (item($userdata, $param) && !isempty($userdata[$param]))	return 0;
 		$_SESSION['message'] = 'user #'.$key.' account.'.$param.'.empty<br />';
