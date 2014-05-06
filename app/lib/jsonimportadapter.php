@@ -8,6 +8,7 @@ class Jsonimportadapter
 	function __construct($json)
 	{
 		$this->users = json_decode($json, true);
+		var_dump($this->users);
 	}
 
 	public function import()
