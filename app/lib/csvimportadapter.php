@@ -20,7 +20,7 @@ class Csvimportadapter
 			if ($index)
 			{
 				$data = str_getcsv($userdata, ";");
-				var_dump($data);
+				//var_dump($data);
 				$users[$index]['user_vhost'] = explode(',', $data[5]);
 				foreach($params as $key => $value)
 				{
