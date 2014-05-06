@@ -18,8 +18,8 @@ class Csvimportadapter
 			while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
 				if ($row)
 				{
-					$users[$index]['user_vhost'] = explode(',', $data[6]);
-					$users[$index]['user_group'] = '';
+					$users[$row]['user_vhost'] = explode(',', $data[6]);
+					$users[$row]['user_group'] = '';
 					foreach($params as $key => $value)
 					{
 						$users[$row][$value] = $data[$key];
