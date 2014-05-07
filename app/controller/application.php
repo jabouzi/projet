@@ -3,11 +3,13 @@
 class Application extends Controller
 {
 	private $usermodel;
+	private $maildecorator;
 
 	function __construct()
 	{
 		if (!islogged()) redirect('login');
 		$this->usermodel = new usermodel();
+		$this->maildecorator = new maildecorator();
 	}
 
 	public function index($message = null)
@@ -132,8 +134,14 @@ class Application extends Controller
 			$tmp_name = $_FILES["accountsfile"]["tmp_name"];
 			$name = $_FILES["accountsfile"]["name"];
 			move_uploaded_file($tmp_name, "/tmp/$name");
-			$jsonimport = Userimportfactory::create($ext);
-			$jsonimport->import("/tmp/$name");
+			$import = Userimportfactory::create($ext);
+			$import->import("/tmp/$name");
 		}
+	}
+	
+	private function sendemail($user)
+	{
+		$this->maildecorator->decorateuser($user, file_get_contents(APPPATH.'public/docs/useremail.txt'));
+		$this->maildecorator->sendusermail($user);
 	}
 }
