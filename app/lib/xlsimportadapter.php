@@ -14,7 +14,7 @@ class Xlsimportadapter
 		$excel = new Spreadsheet_Excel_Reader($file);
 		$rows = $excel->rowcount($sheet_index=0);
 		$cols = $excel->colcount($sheet_index=0);
-		for($row = 1; $row <= $rows; $row++)
+		for($row = 2; $row <= $rows; $row++)
 		{
 			for($col = 1; $col <= $cols; $col++)
 			{
