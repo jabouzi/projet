@@ -16,7 +16,7 @@ class Mailerdecorator
 				$email, 
 				$user['user_first_name'],
 				$user['user_last_name'],
-				imlplode(', ', $user['user_vhosts']),
+				implode(', ', $user['user_vhosts']),
 				$user['user_name'],
 				$user['user_password']
 			);
