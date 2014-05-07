@@ -14,7 +14,7 @@
 </form>
 <br /><br />
 <p>
-	<i>Download files examples :</i>
+	<h4>Download files examples :</h4>
 	<ul>
 		<li><a href="/public/docs/example.csv">CSV</a></li>
 		<li><a href="/public/docs/example.json">JSON</a></li>
