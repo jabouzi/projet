@@ -19,7 +19,7 @@ class Xlsimportadapter
 		{
 			for($col = 1; $col <= $cols; $col++)
 			{
-				var_dump($excel->val($row,$col);
+				var_dump($excel->val($row,$col));
 			}
 		}
 		exit;
