@@ -3,13 +3,13 @@
 class Application extends Controller
 {
 	private $usermodel;
-	private $maildecorator;
+	private $mailerdecorator;
 
 	function __construct()
 	{
 		if (!islogged()) redirect('login');
 		$this->usermodel = new usermodel();
-		$this->maildecorator = new maildecorator();
+		$this->mailerdecorator = new mailerdecorator();
 	}
 
 	public function index($message = null)
@@ -147,7 +147,7 @@ class Application extends Controller
 	
 	private function sendemail($user)
 	{
-		$this->maildecorator->decorateuser($user, file_get_contents(APPPATH.'public/docs/useremail.txt'));
-		$this->maildecorator->sendusermail($user);
+		$this->mailerdecorator->decorateuser($user, file_get_contents(APPPATH.'public/docs/useremail.txt'));
+		$this->mailerdecorator->sendusermail($user);
 	}
 }
