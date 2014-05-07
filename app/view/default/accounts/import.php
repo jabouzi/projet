@@ -12,13 +12,14 @@
         <input id="submit" type="submit" class="submitbutton" value="Upload" />
     </div>
 </form>
-<br />
+<br /><br />
 <p>
-	<i>Download files examples :</i>
+	<i>Download files examples :
 	<ul>
 		<li><a href="/public/docs/example.csv">CSV</a></li>
 		<li><a href="/public/docs/example.json">JSON</a></li>
 		<li><a href="/public/docs/example.xls">Excel</a></li>
 		<li><a href="/public/docs/example.xml">XML</a></li>
 	</ul>
+	</i>
 </p>
