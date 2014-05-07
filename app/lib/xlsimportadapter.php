@@ -1,6 +1,6 @@
 <?php
 
-class Excelimportadapter
+class Xlsimportadapter
 {
 	private $userimport;
 
