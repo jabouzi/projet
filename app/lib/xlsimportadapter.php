@@ -31,6 +31,7 @@ class Xlsimportadapter
 			}
 			$this->userimport = new userimport();
 			$this->userimport->import($users);
+			return $users;
 		} catch (Exception $e) {
 			throw $e->getMessage();
 		}

@@ -24,6 +24,6 @@ class Xmlimportadapter
 		}
 		$this->userimport = new userimport();
 		$this->userimport->import($users);
-
+		return $users;
 	}
 }

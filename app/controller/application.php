@@ -135,7 +135,12 @@ class Application extends Controller
 			$name = $_FILES["accountsfile"]["name"];
 			move_uploaded_file($tmp_name, "/tmp/$name");
 			$import = Userimportfactory::create($ext);
-			$import->import("/tmp/$name");
+			$users = $import->import("/tmp/$name");
+			foreach($users as $user)
+			{
+				$this->sendemail($user);
+			}
+			redirect('application');
 		}
 	}
 	

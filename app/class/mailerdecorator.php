@@ -14,11 +14,11 @@ class Mailerdecorator
 	{
 		$this->message = sprintf(
 				$email, 
-				$user->get_user_first_name(), 
-				$user->get_user_last_name(), 
-				imlplode(', ', $user->get_user_vhosts()), 
-				$user->get_user_name(), 
-				$user->get_user_password()
+				$user['user_first_name'],
+				$user['user_last_name'],
+				imlplode(', ', $user['user_vhosts']),
+				$user['user_name'],
+				$user['user_password']
 			)
 	}
 	
@@ -26,10 +26,10 @@ class Mailerdecorator
 	{
 		$this->message = sprintf(
 				$email, 
-				$user->get_user_first_name(), 
-				$user->get_user_last_name(), 
-				$user->get_user_name(), 
-				$user->get_user_password()
+				$user['first_name'],
+				$user['last_name'],
+				$user['email'],
+				$user['password']
 			)
 	}
 	
@@ -38,7 +38,7 @@ class Mailerdecorator
 		try {
 			$this->mailer = new Mailer();
 			$this->mailer->setFrom("TGI", "contact@tonikgrupimage.com");
-			$this->mailer->addRecipient($user->get_user_first_name().', '.$user->get_user_last_name(), $user->get_user_email());
+			$this->mailer->addRecipient($user['user_first_name'].', '.$user['user_last_name'], $user['user_email'];
 			$this->mailer->fillSubject("Tonik Stagin website");
 			$this->mailer->fillMessage($this->message);			
 			$this->mailer->addRecipient("Skander Jabouzi", "skander.jabouzi@tonikgroupimage.com");
@@ -56,7 +56,7 @@ class Mailerdecorator
 		try {
 			$this->mailer = new Mailer();
 			$this->mailer->setFrom("TGI", "contact@tonikgrupimage.com");
-			$this->mailer->addRecipient($user->get_first_name().', '.$user->get_last_name(), $user->get_email());
+			$this->mailer->addRecipient($user['first_name'].', '.$user['last_name'], $user['email'];
 			$this->mailer->fillSubject("Tonik Stagin admin");
 			$this->mailer->fillMessage($this->message);			
 			$this->mailer->addRecipient("Skander Jabouzi", "skander.jabouzi@tonikgroupimage.com");

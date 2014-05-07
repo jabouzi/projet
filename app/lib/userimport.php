@@ -16,8 +16,6 @@ class Userimport
 		{
 			$this->insert($userdata, $key);
 		}
-
-		redirect('application');
 	}
 
 	public function insert($userdata, $key)

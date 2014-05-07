@@ -33,6 +33,7 @@ class Csvimportadapter
 			fclose($handle);
 			$this->userimport = new userimport();
 			$this->userimport->import($users);
+			return $users;
 		}
 	}
 }
