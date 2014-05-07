@@ -19,7 +19,7 @@ class Mailerdecorator
 				imlplode(', ', $user['user_vhosts']),
 				$user['user_name'],
 				$user['user_password']
-			)
+			);
 	}
 	
 	public function decorateadmin($user, $email)
@@ -30,7 +30,7 @@ class Mailerdecorator
 				$user['last_name'],
 				$user['email'],
 				$user['password']
-			)
+			);
 	}
 	
 	public function sendusermail($user)
