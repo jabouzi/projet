@@ -15,7 +15,12 @@ class Mailerdecorator
 		$this->message = sprintf($email,
 				$user['user_first_name'],
 				$user['user_last_name'],
-				$user['user_vhost'] = implode(', ', $user['user_vhost']),
+				implode(', ', $user['user_vhost']),
+				$user['user_name'],
+				$user['user_password'],
+				$user['user_first_name'],
+				$user['user_last_name'],
+				implode(', ', $user['user_vhost']),
 				$user['user_name'],
 				$user['user_password']
 			);
@@ -26,6 +31,10 @@ class Mailerdecorator
 	public function decorateadmin($user, $email)
 	{
 		$this->message = sprintf($email,
+				$user['first_name'],
+				$user['last_name'],
+				$user['email'],
+				$user['password'],
 				$user['first_name'],
 				$user['last_name'],
 				$user['email'],
