@@ -6,7 +6,7 @@ class Xlsimportadapter
 
 	function __construct()
 	{
-		require_once APPPATH.'lib/php-excel/excel_reader2.php';
+		require_once APPPATH.'app/lib/php-excel/excel_reader2.php';
 	}
 
 	public function import($file)
