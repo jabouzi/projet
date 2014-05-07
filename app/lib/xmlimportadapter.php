@@ -23,7 +23,8 @@ class Xmlimportadapter
 			}
 		}
 		$this->userimport = new userimport();
-		$_SESSION['message'] = $this->userimport->import($users);
+		$this->userimport->import($users);
+		$_SESSION['message'] = $this->userimport->get_message();
 		return $users;
 	}
 }
