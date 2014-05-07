@@ -12,10 +12,12 @@ class Xmlimportadapter
 	public function import($file)
 	{
 		$racine = simplexml_load_file($file);
-		foreach ($racine->user_info as $key => $usr_info) 
+		$index = 0;
+		foreach ($racine->user_info as $usr_info) 
 		{
-			$users[] = (array)$usr_info;
-			$users[$key]['user_vhost'] = explode(',', $users[$key]['user_vhost']);
+			$users[$index] = (array)$usr_info;
+			$users[$index]['user_vhost'] = explode(',', $users[$key]['user_vhost']);
+			$index++;
 		}
 		var_dump($users);exit;
 		$this->userimport = new userimport();
