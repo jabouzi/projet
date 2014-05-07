@@ -16,14 +16,16 @@ class Csvimportadapter
 		$params = array('user_name', 'user_password', 'user_first_name', 'user_last_name', 'user_email');
 		if (($handle = fopen($file, "r")) !== FALSE) {
 			while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-				var_dump($data);
 				if ($row)
 				{
-					$users[$row]['user_vhost'] = explode(',', $data[6]);
-					$users[$row]['user_group'] = '';
-					foreach($params as $key => $value)
+					if (count($data) == 6)
 					{
-						$users[$row][$value] = $data[$key];
+						$users[$row]['user_vhost'] = explode(',', $data[6]);
+						$users[$row]['user_group'] = '';
+						foreach($params as $key => $value)
+						{
+							$users[$row][$value] = $data[$key];
+						}
 					}
 					$row++;
 				}
