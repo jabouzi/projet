@@ -28,8 +28,6 @@ class Xlsimportadapter
 				}
 			}
 		}
-		var_dump($users);
-		exit;
 		$this->userimport = new userimport();
 		$this->userimport->import($users);
 
