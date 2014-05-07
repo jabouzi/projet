@@ -42,7 +42,7 @@ class Userimport
 		{
 			$errors_count++;
 			$this->message .= 'user :'.$userdata['user_email'].' account.email.exists<br />';
-			var_dump($this->message);
+			var_dump($this->message);exit;
 		}
 
 		if (!$errors_count)
