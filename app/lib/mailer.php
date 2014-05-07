@@ -38,7 +38,7 @@ class Mailer {
 	private $replyTo = NULL;
 	private $attachments = array();
 	
-	public function __construct($to = NULL, $subject = NULL, $textMessage = NULL, $this->headers = NULL) {
+	public function __construct($to = NULL, $subject = NULL, $textMessage = NULL, $headers = NULL) {
 		$this->to = $to;
 		$this->recipients = $to;
 		$this->subject = $subject;
