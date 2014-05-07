@@ -51,6 +51,8 @@ class Userimport
 			$this->message .= 'user :'.$userdata['user_name'].' added<br />';
 			$this->usermodel->add_user($userdata);
 		}
+		
+		var_dump($this->message);
 	}
 
 	private function checkitem($userdata, $param, $key)
