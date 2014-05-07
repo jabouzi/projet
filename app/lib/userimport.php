@@ -3,6 +3,7 @@
 class Userimport
 {
 	private $usemodel;
+	private $message;
 
 	function __construct()
 	{
@@ -11,7 +12,7 @@ class Userimport
 
 	public function import($usersdata)
 	{
-		$_SESSION['message'] = '';
+		$this->message = '';
 		foreach($usersdata as $key => $userdata)
 		{
 			$this->insert($userdata, $key);
@@ -30,30 +31,32 @@ class Userimport
 		if (!item($userdata, 'user_vhost') || !is_array($userdata['user_vhost']))
 		{
 			$errors_count++;
-			$_SESSION['message'] .= 'user :'.$userdata['user_name'].' account.user_vhosts.empty<br />';
+			$this->message .= 'user :'.$userdata['user_name'].' account.user_vhosts.empty<br />';
 		}
 		if ($this->usermodel->user_name_exists($userdata['user_name']))
 		{
 			$errors_count++;
-			$_SESSION['message'] .= 'user :'.$userdata['user_name'].' account.username.exists<br />';
+			$this->message .= 'user :'.$userdata['user_name'].' account.username.exists<br />';
 		}
 		if ($this->usermodel->user_email_exists($userdata['user_email']))
 		{
 			$errors_count++;
-			$_SESSION['message'] .= 'user :'.$userdata['user_email'].' account.email.exists<br />';
+			$this->message .= 'user :'.$userdata['user_email'].' account.email.exists<br />';
 		}
 
 		if (!$errors_count)
 		{
-			$_SESSION['message'] .= 'user :'.$userdata['user_name'].' added<br />';
+			$this->message .= 'user :'.$userdata['user_name'].' added<br />';
 			$this->usermodel->add_user($userdata);
 		}
+		
+		return $this->message;
 	}
 
 	private function checkitem($userdata, $param, $key)
 	{
 		if (item($userdata, $param) && !isempty($userdata[$param]))	return 0;
-		$_SESSION['message'] .= 'user with '.$param.' account.'.$param.'.empty<br />';
+		$this->message .= 'user with '.$param.' account.'.$param.'.empty<br />';
 		return 1;
 	}
 }

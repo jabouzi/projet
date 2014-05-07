@@ -32,7 +32,7 @@ class Csvimportadapter
 			}
 			fclose($handle);
 			$this->userimport = new userimport();
-			$this->userimport->import($users);
+			$_SESSION['message'] = $this->userimport->import($users);
 			return $users;
 		}
 	}
