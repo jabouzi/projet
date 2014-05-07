@@ -29,7 +29,7 @@ class Mailer {
 	private $to = NULL;
 	private $subject = NULL;
 	private $textMessage = NULL;
-	private $this->headers = NULL;
+	private $headers = NULL;
 	
 	private $recipients = NULL;
 	private $cc = NULL;
