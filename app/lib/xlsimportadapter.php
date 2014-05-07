@@ -16,6 +16,7 @@ class Xlsimportadapter
 		$excel = new Spreadsheet_Excel_Reader($file);
 		$rows = $excel->rowcount($sheet_index=0);
 		$cols = $excel->colcount($sheet_index=0);
+		var_dump($count($cols));
 		for($row = 2; $row <= $rows; $row++)
 		{
 			if (count($cols) == 7)
