@@ -16,6 +16,7 @@ class Csvimportadapter
 		$params = array('user_name', 'user_password', 'user_first_name', 'user_last_name', 'user_email');
 		if (($handle = fopen($file, "r")) !== FALSE) {
 			while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+				var_dump($data);
 				if ($row)
 				{
 					if (count($data) == 7)
@@ -31,7 +32,6 @@ class Csvimportadapter
 				}
 			}
 			fclose($handle);
-			var_dump($users);
 			$this->userimport = new userimport();
 			$_SESSION['message'] = $this->userimport->import($users);
 			//var_dump($_SESSION['message']);
