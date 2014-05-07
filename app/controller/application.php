@@ -141,7 +141,8 @@ class Application extends Controller
 			{
 				$this->sendemail($user);
 			}
-			redirect('application');
+			var_dump($_SESSION['message']);
+			//redirect('application');
 		}
 	}
 	
