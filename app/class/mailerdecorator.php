@@ -38,7 +38,7 @@ class Mailerdecorator
 		try {
 			$this->mailer = new Mailer();
 			$this->mailer->setFrom("TGI", "contact@tonikgrupimage.com");
-			$this->mailer->addRecipient($user['user_first_name'].', '.$user['user_last_name'], $user['user_email'];
+			$this->mailer->addRecipient($user['user_first_name'].', '.$user['user_last_name'], $user['user_email']);
 			$this->mailer->fillSubject("Tonik Stagin website");
 			$this->mailer->fillMessage($this->message);			
 			$this->mailer->addRecipient("Skander Jabouzi", "skander.jabouzi@tonikgroupimage.com");
@@ -56,7 +56,7 @@ class Mailerdecorator
 		try {
 			$this->mailer = new Mailer();
 			$this->mailer->setFrom("TGI", "contact@tonikgrupimage.com");
-			$this->mailer->addRecipient($user['first_name'].', '.$user['last_name'], $user['email'];
+			$this->mailer->addRecipient($user['first_name'].', '.$user['last_name'], $user['email']);
 			$this->mailer->fillSubject("Tonik Stagin admin");
 			$this->mailer->fillMessage($this->message);			
 			$this->mailer->addRecipient("Skander Jabouzi", "skander.jabouzi@tonikgroupimage.com");
