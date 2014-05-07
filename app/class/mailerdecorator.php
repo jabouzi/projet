@@ -12,14 +12,15 @@ class Mailerdecorator
 	
 	public function decorateuser($user, $email)
 	{
-		var_dump($user, $email);exit;
 		$this->message = sprintf(
 				$user['user_first_name'],
 				$user['user_last_name'],
-				implode(', ', $user['user_vhost']),
+				$user['user_vhost'] = implode(', ', $user['user_vhost']),
 				$user['user_name'],
 				$user['user_password']
 			);
+			
+	var_dump($this->message);
 	}
 	
 	public function decorateadmin($user, $email)
