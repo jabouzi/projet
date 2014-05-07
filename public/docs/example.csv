@@ -1,0 +1,3 @@
+user_name;user_password;user_first_name;user_last_name;user_email;user_group;user_vhost
+admin;admin;Admin;Admin;admin@admin.com;NULL;ecx.staging.tgiprojects.com,skyspa.staging.tgiprojects.com
+admin1;admin1;Admin1;Admin1;admin1@admin.com;NULL;ecx.staging.tgiprojects.com,skyspa.staging.tgiprojects.com

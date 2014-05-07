@@ -1,0 +1,10 @@
+[
+	{
+		"user_name": "admin","user_password": "admin","user_group": null,"user_first_name": "Admin","user_last_name": "Admin","user_email": "admin@admin.com",
+		"user_vhost": ["ecx.staging.tgiprojects.com", "skyspa.staging.tgiprojects.com"]
+	}, 
+	{
+		"user_name": "admin1","user_password": "admin1","user_group": null,"user_first_name": "Admin1","user_last_name": "Admin1","user_email": "admin1@admin.com",
+		"user_vhost": ["ecx.staging.tgiprojects.com", "skyspa.staging.tgiprojects.com"]
+	} 
+]

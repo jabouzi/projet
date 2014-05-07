@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<users_infos>
+	<user_info>
+		<user_name>admin</user_name>
+		<user_password>admin</user_password>
+		<user_group>NULL</user_group>
+		<user_first_name>Admin</user_first_name>
+		<user_last_name>Admin</user_last_name>
+		<user_email>admin@admin.com</user_email>
+		<user_vhost>ecx.staging.tgiprojects.com,skyspa.staging.tgiprojects.com</user_vhost>
+	</user_info>
+	<user_info>
+		<user_name>admin1</user_name>
+		<user_password>admin1</user_password>
+		<user_group>NULL</user_group>
+		<user_first_name>Admin1</user_first_name>
+		<user_last_name>Admin1</user_last_name>
+		<user_email>admin1@admin.com</user_email>
+		<user_vhost>ecx.staging.tgiprojects.com,skyspa.staging.tgiprojects.com</user_vhost>
+	</user_info>
+</users_infos>
