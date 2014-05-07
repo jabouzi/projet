@@ -12,6 +12,7 @@ class Mailerdecorator
 	
 	public function decorateuser($user, $email)
 	{
+		var_dump($user, $email);exit;
 		$this->message = sprintf(
 				$user['user_first_name'],
 				$user['user_last_name'],
