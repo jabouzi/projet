@@ -1,9 +1,9 @@
 Bonjour %s %s,
 
-Votre compte pour : %s a été créé
+Votre compte admin pour les sites staging été créé
 Votre identifiant est : %s
 Votre mot de passe est : %s
-Pour tout autre questions, contacter votre chef de projet chez Tonikgroupimage.
+Le lien de l'application : http://auth.tgiprojects.com/
 
 Merci.
 
@@ -11,9 +11,9 @@ Merci.
 
 Hello %s %s 
 
-Login to :%s was created 
+Your admin account for staging site was created 
 Your username is:%s 
 Your password is:%s 
-For any other questions, contact your project manager at Tonikgroupimage. 
+The application link: http://auth.tgiprojects.com/ 
 
 Thank you.

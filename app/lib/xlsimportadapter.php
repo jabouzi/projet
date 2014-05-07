@@ -33,8 +33,6 @@ class Xlsimportadapter
 			$this->userimport->import($users);
 		} catch (Exception $e) {
 			throw $e->getMessage();
-			//exit(0);
 		}
-
 	}
 }
