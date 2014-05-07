@@ -13,6 +13,7 @@ class Userimport
 
 	public function import($usersdata)
 	{
+		var_dump($usersdata);exit;
 		foreach($usersdata as $key => $userdata)
 		{
 			$this->insert($userdata, $key);
