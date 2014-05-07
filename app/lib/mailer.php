@@ -43,7 +43,7 @@ class Mailer {
 		$this->recipients = $to;
 		$this->subject = $subject;
 		$this->textMessage = $textMessage;
-		$this->headers = $this->headers;
+		$this->headers = $headers;
 		return $this;
 	}
 	
