@@ -29,7 +29,7 @@ class Mailer {
 	private $to = NULL;
 	private $subject = NULL;
 	private $textMessage = NULL;
-	private $headers = NULL;
+	private $this->headers = NULL;
 	
 	private $recipients = NULL;
 	private $cc = NULL;
@@ -38,12 +38,12 @@ class Mailer {
 	private $replyTo = NULL;
 	private $attachments = array();
 	
-	public function __construct($to = NULL, $subject = NULL, $textMessage = NULL, $headers = NULL) {
+	public function __construct($to = NULL, $subject = NULL, $textMessage = NULL, $this->headers = NULL) {
 		$this->to = $to;
 		$this->recipients = $to;
 		$this->subject = $subject;
 		$this->textMessage = $textMessage;
-		$this->headers = $headers;
+		$this->headers = $this->headers;
 		return $this;
 	}
 	
@@ -141,7 +141,7 @@ class Mailer {
 			
 			if ($this->attachments) {
 				$random_hash = md5(date('r', time()));
-				$headers .= "Content-Type: multipart/mixed; boundary=\"PHP-mixed-".$random_hash."\"" . PHP_EOL;
+				$this->headers .= "Content-Type: multipart/mixed; boundary=\"PHP-mixed-".$random_hash."\"" . PHP_EOL;
 				
 				$pos = strpos($this->textMessage, "<html>");
 				if ($pos === false) {
@@ -189,20 +189,20 @@ class Mailer {
 			} else {
 				$pos = strpos($this->textMessage, "<html>");
 				if ($pos === false) {
-					$headers .= "Content-Type: text/plain; charset=\"utf-8\"" . PHP_EOL;
-					$headers .= "Content-Transfer-Encoding: 7bit";
+					$this->headers .= "Content-Type: text/plain; charset=\"utf-8\"" . PHP_EOL;
+					$this->headers .= "Content-Transfer-Encoding: 7bit";
 					$str .= $this->textMessage . PHP_EOL;
 				}
 				
 				if ($pos === 0) {
-					$headers .= "Content-Type: text/html; charset=\"utf-8\"" . PHP_EOL;
-					$headers .= "Content-Transfer-Encoding: 7bit";
+					$this->headers .= "Content-Type: text/html; charset=\"utf-8\"" . PHP_EOL;
+					$this->headers .= "Content-Transfer-Encoding: 7bit";
 					$str .= $this->textMessage . PHP_EOL;
 				}
 				
 				if ($pos > 0) {
 					$random_hash = md5(date('r', time()));
-					$headers .= "Content-Type: multipart/alternative; boundary=\"PHP-alt-".$random_hash."\"" . PHP_EOL;
+					$this->headers .= "Content-Type: multipart/alternative; boundary=\"PHP-alt-".$random_hash."\"" . PHP_EOL;
 					$str .= "--PHP-alt-$random_hash" . PHP_EOL;
 					$str .= "Content-Type: text/plain; charset=\"utf-8\"" . PHP_EOL;
 					$str .= "Content-Transfer-Encoding: 7bit";
