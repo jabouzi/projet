@@ -31,6 +31,7 @@ class Csvimportadapter
 				}
 			}
 			fclose($handle);
+			var_dump($users);
 			$this->userimport = new userimport();
 			$_SESSION['message'] = $this->userimport->import($users);
 			//var_dump($_SESSION['message']);
