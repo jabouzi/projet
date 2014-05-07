@@ -17,6 +17,7 @@ class Xmlimportadapter
 			$users[] = (array)$usr_info;
 			$users[$key]['user_vhost'] = explode(',', $users[$key]['user_vhost']);
 		}
+		var_dump($users);exit;
 		$this->userimport = new userimport();
 		$this->userimport->import($users);
 
