@@ -14,5 +14,11 @@
 </form>
 <br />
 <p>
-	Welcome to the replacement system for the Outlook Address book.
+	<i>Download files examples :</i>
+	<ul>
+		<li><a href="/public/docs/example.csv">CSV</a></li>
+		<li><a href="/public/docs/example.json">JSON</a></li>
+		<li><a href="/public/docs/example.xls">Excel</a></li>
+		<li><a href="/public/docs/example.xml">XML</a></li>
+	</ul>
 </p>
