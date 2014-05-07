@@ -16,7 +16,7 @@ class Xmlimportadapter
 		foreach ($racine->user_info as $usr_info) 
 		{
 			$users[$index] = (array)$usr_info;
-			$users[$index]['user_vhost'] = explode(',', $users[$key]['user_vhost']);
+			$users[$index]['user_vhost'] = explode(',', $users[$index]['user_vhost']);
 			$index++;
 		}
 		var_dump($users);exit;
