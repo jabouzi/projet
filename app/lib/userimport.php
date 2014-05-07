@@ -8,11 +8,11 @@ class Userimport
 	function __construct()
 	{
 		$this->usermodel = new usermodel();
+		$this->message = '';
 	}
 
 	public function import($usersdata)
 	{
-		$this->message = '';
 		foreach($usersdata as $key => $userdata)
 		{
 			$this->insert($userdata, $key);
