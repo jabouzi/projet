@@ -23,6 +23,7 @@ class Userimport
 
 	public function insert($userdata, $key)
 	{
+		var_dump($this->message);
 		$params = array('user_name', 'user_password', 'user_first_name', 'user_last_name', 'user_email');
 		$errors_count = 0;
 		foreach ($params as $param)
@@ -51,8 +52,6 @@ class Userimport
 			$this->message .= 'user :'.$userdata['user_name'].' added<br />';
 			$this->usermodel->add_user($userdata);
 		}
-		
-		var_dump($this->message);
 	}
 
 	private function checkitem($userdata, $param, $key)
