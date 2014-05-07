@@ -11,25 +11,30 @@ class Xlsimportadapter
 
 	public function import($file)
 	{
-		$users = array();
-		$params = array(1 => 'user_name', 'user_password', 'user_first_name', 'user_last_name', 'user_email', 'user_group', 'user_vhost');
-		$excel = new Spreadsheet_Excel_Reader($file);
-		$rows = $excel->rowcount($sheet_index=0);
-		$cols = $excel->colcount($sheet_index=0);
-		for($row = 2; $row <= $rows; $row++)
-		{
-			if ($cols == 7)
+		try {
+			$users = array();
+			$params = array(1 => 'user_name', 'user_password', 'user_first_name', 'user_last_name', 'user_email', 'user_group', 'user_vhost');
+			$excel = new Spreadsheet_Excel_Reader($file);
+			$rows = $excel->rowcount($sheet_index=0);
+			$cols = $excel->colcount($sheet_index=0);
+			for($row = 2; $row <= $rows; $row++)
 			{
-				for($col = 1; $col <= $cols; $col++)
+				if ($cols == 7)
 				{
-					$users[$row][$params[$col]] = $excel->val($row,$col);
-					$users[$row]['user_vhost'] = explode(',', $excel->val($row,7));
-					$users[$row]['user_group'] = '';
+					for($col = 1; $col <= $cols; $col++)
+					{
+						$users[$row][$params[$col]] = $excel->val($row,$col);
+						$users[$row]['user_vhost'] = explode(',', $excel->val($row,7));
+						$users[$row]['user_group'] = '';
+					}
 				}
 			}
+			$this->userimport = new userimport();
+			$this->userimport->import($users);
+		} catch (Exception $e) {
+			echo $e->getMessage();
+			exit(0);
 		}
-		$this->userimport = new userimport();
-		$this->userimport->import($users);
 
 	}
 }
