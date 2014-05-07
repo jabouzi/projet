@@ -1,6 +1,6 @@
 <?php
 
-class Xmlmportadapter
+class Xmlimportadapter
 {
 	private $userimport;
 
