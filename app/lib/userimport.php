@@ -17,13 +17,10 @@ class Userimport
 		{
 			$this->insert($userdata, $key);
 		}
-		
-		return $this->message;
 	}
 
 	public function insert($userdata, $key)
 	{
-		var_dump($this->message);
 		$params = array('user_name', 'user_password', 'user_first_name', 'user_last_name', 'user_email');
 		$errors_count = 0;
 		foreach ($params as $param)
@@ -45,6 +42,7 @@ class Userimport
 		{
 			$errors_count++;
 			$this->message .= 'user :'.$userdata['user_email'].' account.email.exists<br />';
+			var_dump($this->message);
 		}
 
 		if (!$errors_count)
@@ -52,6 +50,11 @@ class Userimport
 			$this->message .= 'user :'.$userdata['user_name'].' added<br />';
 			$this->usermodel->add_user($userdata);
 		}
+	}
+	
+	public function get_message()
+	{
+		return $this->message;
 	}
 
 	private function checkitem($userdata, $param, $key)
