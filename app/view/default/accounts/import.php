@@ -14,12 +14,11 @@
 </form>
 <br /><br />
 <p>
-	<i>Download files examples :
+	<i>Download files examples :</i>
 	<ul>
 		<li><a href="/public/docs/example.csv">CSV</a></li>
 		<li><a href="/public/docs/example.json">JSON</a></li>
 		<li><a href="/public/docs/example.xls">Excel</a></li>
 		<li><a href="/public/docs/example.xml">XML</a></li>
 	</ul>
-	</i>
 </p>
