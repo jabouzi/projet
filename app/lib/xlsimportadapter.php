@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL ^ E_NOTICE);
+
 class Xlsimportadapter
 {
 	private $userimport;
@@ -11,8 +11,7 @@ class Xlsimportadapter
 
 	public function import($file)
 	{
-		$data= file_get_contents($file);
-		$excel = new Spreadsheet_Excel_Reader($data);
+		$excel = new Spreadsheet_Excel_Reader($file);
 		$rows = $excel->rowcount($sheet_index=0);
 		$cols = $excel->colcount($sheet_index=0);
 		for($row = 1; $row <= $rows; $row++)
