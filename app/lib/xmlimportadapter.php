@@ -12,7 +12,7 @@ class Xmlimportadapter
 	public function import($file)
 	{
 		$racine = simplexml_load_file($file);
-        var_dump((array)$racine);
+        var_dump((array)$racine->user_info);
 		$i = 0;
 		//foreach ($racine->Niveau1 as $key => $niveau) 
 		//{
