@@ -1,0 +1,19 @@
+Bonjour %s %s,
+
+Votre compte pour : %s a été créé
+Votre identifiant est : %s
+Votre mot de passe est : %s
+Pour tout autre questions, contacter votre chef de projet chez Tonikgroupimage.
+
+Merci.
+
+--------------------
+
+Hello %s %s 
+
+Login to :%s was created 
+Your username is:%s 
+Your password is:%s 
+For any other questions, contact your project manager at Tonikgroupimage. 
+
+Thank you.
