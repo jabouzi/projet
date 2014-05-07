@@ -32,34 +32,30 @@ class Userimport
 		if (!item($userdata, 'user_vhost') || !is_array($userdata['user_vhost']))
 		{
 			$errors_count++;
-			$_SESSION['message'] .= 'user #'.($key+1).' account.user_vhosts.empty<br />';
+			$_SESSION['message'] .= 'user :'.$userdata['user_name'].' account.user_vhosts.empty<br />';
 		}
 		if ($this->usermodel->user_name_exists($userdata['user_name']))
 		{
 			$errors_count++;
-			$_SESSION['message'] .= 'user #'.($key+1).' account.username.exists<br />';
+			$_SESSION['message'] .= 'user :'.$userdata['user_name'].' account.username.exists<br />';
 		}
 		if ($this->usermodel->user_email_exists($userdata['user_email']))
 		{
 			$errors_count++;
-			$_SESSION['message'] .= 'user #'.($key+1).' account.email.exists<br />';
+			$_SESSION['message'] .= 'user :'.$userdata['user_email'].' account.email.exists<br />';
 		}
 
-		//var_dump($errors_count);
 		if (!$errors_count)
 		{
-			$_SESSION['message'] .= 'user #'.($key+1).' added<br />';
+			$_SESSION['message'] .= 'user :'.$userdata['user_name'].' added<br />';
 			$this->usermodel->add_user($userdata);
 		}
 	}
 
 	private function checkitem($userdata, $param, $key)
 	{
-		//var_dump($param);
-		//var_dump($param, item($userdata, $param));
-		//var_dump(isempty($userdata[$param]));
 		if (item($userdata, $param) && !isempty($userdata[$param]))	return 0;
-		$_SESSION['message'] .= 'user #'.($key+1).' account.'.$param.'.empty<br />';
+		$_SESSION['message'] .= 'user with '.$param.' account.'.$param.'.empty<br />';
 		return 1;
 	}
 }
