@@ -80,6 +80,7 @@ class Application extends Controller
 		else
 		{
 			$this->usermodel->add_user($_POST);
+			$this->sendemail($_POST);
 			$_SESSION['message'] = 'account.user_added';
 			redirect('/');
 		}
