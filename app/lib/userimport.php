@@ -17,6 +17,8 @@ class Userimport
 		{
 			$this->insert($userdata, $key);
 		}
+		
+		return $this->message;
 	}
 
 	public function insert($userdata, $key)
@@ -49,8 +51,6 @@ class Userimport
 			$this->message .= 'user :'.$userdata['user_name'].' added<br />';
 			$this->usermodel->add_user($userdata);
 		}
-		
-		return $this->message;
 	}
 
 	private function checkitem($userdata, $param, $key)
