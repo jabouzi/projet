@@ -14,8 +14,10 @@ class Xmlimportadapter
 		$racine = simplexml_load_file($file);
 		foreach ($racine->user_info as $key => $usr_info) 
 		{
-			var_dump((array)$usr_info);
+			$users[] = (array)$usr_info;
 		}
+		$this->userimport = new userimport();
+		$this->userimport->import($users);
 
 	}
 }
