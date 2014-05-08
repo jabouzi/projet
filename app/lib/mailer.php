@@ -119,6 +119,7 @@ class Mailer {
 	}
 	
 	private function packHeaders() {
+		$headers = '';
 		if (!$this->headers) {
 			$this->headers = "MIME-Version: 1.0" . PHP_EOL;
 			$this->headers .= "To: " . $this->recipients . PHP_EOL;
