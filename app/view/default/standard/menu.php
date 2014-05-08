@@ -22,5 +22,7 @@ if (islogged())
 }
 
 ?>
+
+<span style="float:right">fr</span>
 </div>
     <div id="body">
