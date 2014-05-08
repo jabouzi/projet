@@ -22,7 +22,7 @@ if (islogged())
 	
 }
 
-echo '<li><a href="/'.strtolower(lang('site.lang')).'">'.lang('site.lang').'</a>';
+echo '<li class="last-item"><a href="/'.strtolower(lang('site.lang')).'">'.lang('site.lang').'</a>';
 echo '</ul>';
 
 ?>
