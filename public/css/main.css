@@ -91,7 +91,6 @@ input.radio {
 	cursor: pointer;
 	font-weight: bold;
 	display: inline-block;
-	border-radius: 8px;
 	padding: 4px 12px;
 }
 .dissmiss {
