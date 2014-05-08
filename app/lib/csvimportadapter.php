@@ -32,7 +32,7 @@ class Csvimportadapter
 			}
 			fclose($handle);
 			$this->userimport = new userimport();
-			$errors = $this->userimport->import($users);
+			$users = $this->userimport->import($users);
 			$_SESSION['message'] = $this->userimport->get_message();
 			if (!$errors) return $users;
 			return false;
