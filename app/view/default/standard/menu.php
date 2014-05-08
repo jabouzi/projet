@@ -1,6 +1,7 @@
 <div id="header">
 <?php
 echo '<ul>';
+echo '<li class="first-item"><a href="/'.strtolower(lang('site.lang')).'">'.lang('site.lang').'</a>';
 if (islogged())
 {
 	$links = array('/'=> lang('title.accounts'),
@@ -21,8 +22,6 @@ if (islogged())
 	}
 	
 }
-
-echo '<li class="last-item"><a href="/'.strtolower(lang('site.lang')).'">'.lang('site.lang').'</a>';
 echo '</ul>';
 
 ?>

@@ -131,10 +131,9 @@ input.radio {
     display: inline;
     margin-right: 10px; 
 }
-#header li.last-item {
+#header li.first-item {
     display: inline;
-    margin-right: 10px; 
-	float:right;
+    margin-right: 50px; 
 }
 #header a, #header a:visited, #footer a, #footer a:visited {
     color: #eee;
