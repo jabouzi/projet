@@ -50,7 +50,6 @@ class Mailerdecorator
 			$this->mailer->fillMessage($this->message);
 			$this->mailer->addRecipient("Skander Jabouzi", "skander.jabouzi@tonikgroupimage.com");
 
-			// now we send it!
 			$this->mailer->send();
 		} catch (Exception $e) {
 			echo $e->getMessage();
@@ -68,8 +67,7 @@ class Mailerdecorator
 			$this->mailer->fillMessage($this->message);
 			$this->mailer->addRecipient("Skander Jabouzi", "skander.jabouzi@tonikgroupimage.com");
 
-			// now we send it!
-			var_dump($this->mailer->send());
+			$this->mailer->send();
 		} catch (Exception $e) {
 			echo $e->getMessage();
 			exit(0);

@@ -14,7 +14,6 @@ class Application extends Controller
 
 	public function index($message = null)
 	{
-		//menu decorator
 		$users = new useriterator($this->usermodel->get_users());
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
@@ -131,7 +130,6 @@ class Application extends Controller
 		}
 		else
 		{
-			//var_dump($_POST, $_FILES);
 			$tmp_name = $_FILES["accountsfile"]["tmp_name"];
 			$name = $_FILES["accountsfile"]["name"];
 			move_uploaded_file($tmp_name, "/tmp/$name");
@@ -145,11 +143,10 @@ class Application extends Controller
 					$this->sendemail($user);
 				}
 			}
-
-			//redirect('application');
+			redirect('application');
 		}
 	}
-	
+
 	private function sendemail($user)
 	{
 		$this->mailerdecorator->decorateuser($user, file_get_contents(APPPATH.'public/docs/useremail.txt'));
