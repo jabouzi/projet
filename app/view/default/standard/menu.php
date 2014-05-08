@@ -18,6 +18,7 @@ if (islogged())
 	foreach ($links as $link=>$title) {
 		echo '<li><a href="' . $link . '">' . $title . '</a></li>';
 	}
+	echo '<li style="float:right"><a href="">fr</a>';
 	echo '</ul>';
 }
 
