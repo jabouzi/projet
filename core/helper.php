@@ -91,7 +91,7 @@ function isadmin()
 
 function display_message()
 {
-	echo (isset($_SESSION['message'])) ? lang($_SESSION['message']) : '';
+	echo (isset($_SESSION['message'])) ? '<span class="error">'.lang($_SESSION['message']).'</span>' : '';
 	unset($_SESSION['message']);
 }
 
