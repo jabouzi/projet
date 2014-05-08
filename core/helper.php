@@ -110,6 +110,7 @@ function print_post_text($key, $othertext = '')
 function lang($key)
 {
 	global $lang;
+	var_dump($lang);
 	$text = get_item($lang, $key);
 	return (!isempty($text)) ? $text : $key;
 }
