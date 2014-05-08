@@ -111,5 +111,5 @@ function lang($key)
 {
 	global $lang;
 	$text = get_item($lang, $key);
-	echo (!isempty($text)) ? $text : $key;
+	return (!isempty($text)) ? $text : $key;
 }
