@@ -23,6 +23,6 @@ if (islogged())
 
 ?>
 
-<ul style="float:right"><li>fr</li></ul>
+<ul style="float:right"><li><a href="">fr</a></li></ul>
 </div>
     <div id="body">
