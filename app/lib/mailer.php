@@ -141,7 +141,7 @@ class Mailer {
 			
 			if ($this->attachments) {
 				$random_hash = md5(date('r', time()));
-				$this->headers .= "Content-Type: multipart/mixed; boundary=\"PHP-mixed-".$random_hash."\"" . PHP_EOL;
+				$headers .= "Content-Type: multipart/mixed; boundary=\"PHP-mixed-".$random_hash."\"" . PHP_EOL;
 				
 				$pos = strpos($this->textMessage, "<html>");
 				if ($pos === false) {
@@ -189,20 +189,20 @@ class Mailer {
 			} else {
 				$pos = strpos($this->textMessage, "<html>");
 				if ($pos === false) {
-					$this->headers .= "Content-Type: text/plain; charset=\"utf-8\"" . PHP_EOL;
-					$this->headers .= "Content-Transfer-Encoding: 7bit";
+					$headers .= "Content-Type: text/plain; charset=\"utf-8\"" . PHP_EOL;
+					$headers .= "Content-Transfer-Encoding: 7bit";
 					$str .= $this->textMessage . PHP_EOL;
 				}
 				
 				if ($pos === 0) {
-					$this->headers .= "Content-Type: text/html; charset=\"utf-8\"" . PHP_EOL;
-					$this->headers .= "Content-Transfer-Encoding: 7bit";
+					$headers .= "Content-Type: text/html; charset=\"utf-8\"" . PHP_EOL;
+					$headers .= "Content-Transfer-Encoding: 7bit";
 					$str .= $this->textMessage . PHP_EOL;
 				}
 				
 				if ($pos > 0) {
 					$random_hash = md5(date('r', time()));
-					$this->headers .= "Content-Type: multipart/alternative; boundary=\"PHP-alt-".$random_hash."\"" . PHP_EOL;
+					$headers .= "Content-Type: multipart/alternative; boundary=\"PHP-alt-".$random_hash."\"" . PHP_EOL;
 					$str .= "--PHP-alt-$random_hash" . PHP_EOL;
 					$str .= "Content-Type: text/plain; charset=\"utf-8\"" . PHP_EOL;
 					$str .= "Content-Transfer-Encoding: 7bit";
