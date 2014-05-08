@@ -44,5 +44,8 @@
 		<div class="row"><label for="submit"> </label>
 			<input id="submitedit" type="button" value="<?php echo lang('title.edit.account'); ?>" class="submitbutton" />
 		</div>
+		<div class="row error_form_msg">
+			<span class="error"><?php echo lang('form.check.required.fields'); ?></span>
+		</div>
     </div>
 </form>

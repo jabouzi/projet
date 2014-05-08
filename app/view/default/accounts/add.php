@@ -32,8 +32,8 @@
 		<div class="row"><label for="submit"> </label>
 			<input id="submitadd" type="button" value="<?php echo lang('title.add.account'); ?>" class="submitbutton"/>
 		</div>
-		<div class="row error error_form_msg"><label></label>
-			<?php echo lang('form.check.required.fields'); ?>:
+		<div class="row error_form_msg">
+			<span class="error"><?php echo lang('form.check.required.fields'); ?></span>
 		</div>
     </div>
 </form>
