@@ -10,7 +10,7 @@ require(APPPATH.'core/core.php');
 require(APPPATH.'core/autoload.php');
 require(APPPATH.'core/helper.php');
 require(APPPATH.'app/config/config.php');
-
+echo get_site_lang();
 foreach($config['autoload_helpers'] as $file)
 {
 	require(APPPATH."app/helper/{$file}.php");
