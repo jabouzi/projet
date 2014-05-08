@@ -106,12 +106,7 @@ input.radio {
 	padding: 4px 12px;
 }
 .error_form_msg {
-	background-color: #FF0000;
-	color: #fff;
-	cursor: pointer;
-	font-weight: bold;
 	display: none;
-	width: auto;
 }
 #count_num {
     text-decoration: none;
