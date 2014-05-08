@@ -91,7 +91,7 @@ function isadmin()
 
 function display_message()
 {
-	echo (isset($_SESSION['message'])) ? '<label></label>'.$_SESSION['message'] : '';
+	echo (isset($_SESSION['message'])) ? lang($_SESSION['message']) : '';
 	unset($_SESSION['message']);
 }
 
@@ -105,4 +105,11 @@ function print_post_text($key, $othertext = '')
 	if (isset($_SESSION['request'][$key])) return $_SESSION['request'][$key];
 	else if ($othertext != '') return $othertext;
 	else return '';
+}
+
+function lang($key)
+{
+	global $lang;
+	$text = get_item($lang, $key);
+	echo (!isempty($text)) ? $text : $key;
 }

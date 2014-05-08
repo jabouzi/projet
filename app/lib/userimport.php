@@ -34,22 +34,22 @@ class Userimport
 		if (!item($userdata, 'user_vhost') || !is_array($userdata['user_vhost']))
 		{
 			$errors_count++;
-			$this->set_message('user :'.$userdata['user_name'].' account.user_vhosts.empty<br />');
+			$this->set_message('user :'.$userdata['user_name'].' '.lang('account.user_vhosts.empty').'<br />');
 		}
 		if ($this->usermodel->user_name_exists($userdata['user_name']))
 		{
 			$errors_count++;
-			$this->set_message('user :'.$userdata['user_name'].' account.username.exists<br />');
+			$this->set_message('user :'.$userdata['user_name'].' '.lang('account.user_name.exists').'<br />');
 		}
 		if ($this->usermodel->user_email_exists($userdata['user_email']))
 		{
 			$errors_count++;
-			$this->set_message('user :'.$userdata['user_email'].' account.email.exists<br />');
+			$this->set_message('user :'.$userdata['user_email'].' '.lang('account.user_email.exists').'<br />');
 		}
 
 		if (!$errors_count)
 		{
-			$this->set_message('user :'.$userdata['user_name'].' added<br />');
+			$this->set_message('user :'.$userdata['user_name'].' '.lang('account.user_added').'<br />');
 			$this->usermodel->add_user($userdata);
 		}
 		
@@ -69,7 +69,7 @@ class Userimport
 	private function checkitem($userdata, $param, $key)
 	{
 		if (item($userdata, $param) && !isempty($userdata[$param]))	return 0;
-		$this->set_message('user with '.$param.' account.'.$param.'.empty<br />');
+		$this->set_message(sptrinf(lang('account.param.empty'), $param).'<br />');
 		return 1;
 	}
 }

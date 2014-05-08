@@ -27,12 +27,12 @@ class Login extends Controller
 	{
 		if (isempty($_POST['email'])) 
 		{
-			$_SESSION['message'] = 'login.email.empty';
+			$_SESSION['message'] = lang('login.email.empty');
 			redirect('login');
 		}
 		else if (isempty($_POST['password']))
 		{
-			$_SESSION['message'] = 'login.password.empty';
+			$_SESSION['message'] = lang('login.password.empty');
 			redirect('login');
 		}
 		else
@@ -52,17 +52,17 @@ class Login extends Controller
 		$this->user = $this->userdao->select_user($email);
 		if (!$this->user)
 		{
-			$_SESSION['message'] = 'login.failed';
+			$_SESSION['message'] = lang('login.failed');
 			redirect('login');
 		}
 		else if (!$this->user->get_status())
 		{
-			$_SESSION['message'] = 'login.account.nonactive';
+			$_SESSION['message'] = lang('login.account.nonactive');
 			redirect('login');
 		}
 		else if ($this->encrypt->decrypt($this->user->get_password()) != $password)
 		{
-			$_SESSION['message'] = 'login.failed';
+			$_SESSION['message'] = lang('login.failed');
 			redirect('login');
 		}
 		else 

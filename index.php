@@ -18,7 +18,7 @@ foreach($config['autoload_helpers'] as $file)
 
 foreach($config['autoload_languages'] as $file)
 {
-	require(APPPATH."app/languages/{$file}.php");
+	require(APPPATH."app/languages/".get_site_lang()."/{$file}.php");
 }
 
 //require 'includes/exceptions.php';

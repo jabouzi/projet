@@ -66,11 +66,11 @@ class Admin extends Controller
 	{
 		if ($_SESSION['edit']['id'] != $_POST['id'])
 		{
-			$_SESSION['message'] = 'account.security.detected';
+			$_SESSION['message'] = lang('account.security.detected');
 			redirect('admins/edit/'.$_SESSION['edit']['email']);
 		}
 		$this->adminmodel->delete_user($_POST['email']);
-		$_SESSION['message'] = 'admin.user_delete';
+		$_SESSION['message'] = lang('admin.user_delete');
 		redirect('admin');
 	}
 
@@ -79,13 +79,13 @@ class Admin extends Controller
 		if ($this->adminmodel->email_exists($_POST['email']))
 		{
 			$_SESSION['request'] = $_POST;
-			$_SESSION['message'] = 'admin.email.exists';
+			$_SESSION['message'] = lang('admin.email.exists');
 			redirect('admin/add');
 		}
 		else
 		{
 			$this->adminmodel->add_user($_POST);
-			$_SESSION['message'] = 'admin.user_added';
+			$_SESSION['message'] = lang('admin.user_added');
 			redirect('admin');
 		}
 	}
@@ -94,19 +94,19 @@ class Admin extends Controller
 	{
 		if ($_SESSION['edit']['id'] != $_POST['id'])
 		{
-			$_SESSION['message'] = 'account.security.detected';
+			$_SESSION['message'] = lang('account.security.detected');
 			redirect('admins/edit/'.$_SESSION['edit']['id']);
 		}
 		else if ($this->adminmodel->email_exists($_POST['email'], $_POST['id']))
 		{
 			$_SESSION['request'] = $_POST;
-			$_SESSION['message'] = 'admin.email.exists';
+			$_SESSION['message'] = lang('admin.email.exists');
 			redirect('admin/edit/'.$_POST['id']);
 		}
 		else
 		{
 			$this->adminmodel->update_user($_POST);
-			$_SESSION['message'] = 'admin.user_updated';
+			$_SESSION['message'] = lang('admin.user_updated');
 			redirect('admin/edit/'.$_POST['id']);
 		}
 	}
@@ -115,13 +115,13 @@ class Admin extends Controller
 	{
 		if ($_SESSION['edit']['id'] != $_POST['id'])
 		{
-			$_SESSION['message'] = 'account.security.detected';
+			$_SESSION['message'] = lang('account.security.detected');
 			redirect('admin/profile');
 		}
 		else if ($this->adminmodel->email_exists($_POST['email'], $_POST['id']))
 		{
 			$_SESSION['request'] = $_POST;
-			$_SESSION['message'] = 'admin.email.exists';
+			$_SESSION['message'] = lang('admin.email.exists');
 			redirect('admin/profile');
 		}
 		else
@@ -129,7 +129,7 @@ class Admin extends Controller
 			$_POST['admin'] = $_SESSION['user']['admin'];
 			$_POST['status'] = $_SESSION['user']['status'];
 			$this->adminmodel->update_user($_POST);
-			$_SESSION['message'] = 'admin.user_updated';
+			$_SESSION['message'] = lang('admin.user_updated');
 			redirect('admin/profile');
 		}
 	}

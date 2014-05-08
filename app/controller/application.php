@@ -54,11 +54,11 @@ class Application extends Controller
 	{
 		if ($_SESSION['edit']['user_name'] != $_POST['user_name'])
 		{
-			$_SESSION['message'] = 'account.security.detected';
+			$_SESSION['message'] = lang('account.security.detected');
 			redirect('application/edit/'.$_SESSION['edit']['user_name']);
 		}
 		$this->usermodel->delete_user($_POST['user_name']);
-		$_SESSION['message'] = 'account.user_delete';
+		$_SESSION['message'] = lang('account.user_delete');
 		redirect('/');
 	}
 
@@ -67,20 +67,20 @@ class Application extends Controller
 		if ($this->usermodel->user_email_exists($_POST['user_email']))
 		{
 			$_SESSION['request'] = $_POST;
-			$_SESSION['message'] = 'account.email.exists';
+			$_SESSION['message'] = lang('account.email.exists');
 			redirect('application/add');
 		}
 		else if ($this->usermodel->user_name_exists($_POST['user_name']))
 		{
 			$_SESSION['request'] = $_POST;
-			$_SESSION['message'] = 'account.user_name.exists';
+			$_SESSION['message'] = lang('account.user_name.exists');
 			redirect('application/add');
 		}
 		else
 		{
 			$this->usermodel->add_user($_POST);
 			$this->sendemail($_POST);
-			$_SESSION['message'] = 'account.user_added';
+			$_SESSION['message'] = lang('account.user_added');
 			redirect('/');
 		}
 	}
@@ -89,19 +89,19 @@ class Application extends Controller
 	{
 		if ($_SESSION['edit']['user_name'] != $_POST['user_name'])
 		{
-			$_SESSION['message'] = 'account.security.detected';
+			$_SESSION['message'] = lang('account.security.detected');
 			redirect('application/edit/'.$_SESSION['edit']['user_name']);
 		}
 		else if ($this->usermodel->user_email_exists($_POST['user_email'], $_POST['user_name']))
 		{
 			$_SESSION['request'] = $_POST;
-			$_SESSION['message'] = 'account.email.exists';
+			$_SESSION['message'] = lang('account.email.exists';
 			redirect('application/edit/'.$_POST['user_name']);
 		}
 		else
 		{
 			$this->usermodel->update_user($_POST);
-			$_SESSION['message'] = 'account.user_updated';
+			$_SESSION['message'] = lang('account.user_updated';
 			redirect('application/edit/'.$_POST['user_name']);
 		}
 	}
@@ -120,12 +120,12 @@ class Application extends Controller
 		$ext = pathinfo($path, PATHINFO_EXTENSION);
 		if ($_FILES["accountsfile"]["error"] != UPLOAD_ERR_OK)
 		{
-			$_SESSION['message'] = 'account.error.fileupload';
+			$_SESSION['message'] = lang('account.error.fileupload');
 			redirect('application/import');
 		}
 		else if (!in_array($ext, array('csv', 'xml', 'json', 'xls', 'xlsx')))
 		{
-			$_SESSION['message'] = 'account.wrong.filetype';
+			$_SESSION['message'] = lang('account.wrong.filetype');
 			redirect('application/import');
 		}
 		else
