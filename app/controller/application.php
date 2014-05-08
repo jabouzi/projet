@@ -101,7 +101,7 @@ class Application extends Controller
 		else
 		{
 			$this->usermodel->update_user($_POST);
-			$_SESSION['message'] = lang('account.user_updated';
+			$_SESSION['message'] = lang('account.user_updated');
 			redirect('application/edit/'.$_POST['user_name']);
 		}
 	}
