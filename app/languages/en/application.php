@@ -1,5 +1,6 @@
 <?php
 
+$lang['site.lang'] = 'Fr';
 $lang['text.upload.types'] = 'Upload a .csv file or an xml file or an excel file.';
 $lang['text.file.examples'] = 'Download files examples';
 $lang['title.login'] = 'Login';

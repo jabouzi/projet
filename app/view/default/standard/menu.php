@@ -22,7 +22,7 @@ if (islogged())
 	
 }
 
-echo '<li style="float:right"><a href="">fr</a>';
+echo '<li><a href="/'.strtolower(lang('site.lang')).'">'.lang('site.lang').'</a>';
 echo '</ul>';
 
 ?>
