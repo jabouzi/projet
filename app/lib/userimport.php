@@ -19,7 +19,6 @@ class Userimport
 			$error = $this->insert($userdata, $key);
 			if (!$error) $users[] = $userdata;
 		}
-		var_dump($users);
 		return $users;
 	}
 
