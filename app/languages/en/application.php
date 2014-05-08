@@ -1,5 +1,8 @@
 <?php
 
+$lang['title.login'] = 'Login';
+$lang['form.username'] = 'Username';
+$lang['form.password'] = 'Password';
 $lang['account.security.detected'] = '';
 $lang['account.email.exists'] = '';
 $lang['account.user_name.exists'] = '';
