@@ -27,6 +27,9 @@ legend {
 fieldset {
     margin-bottom: 10px;
 }
+form{
+	text-align:center;
+}
 form div.row {
     clear: left;
     margin: 5px 0 0;
