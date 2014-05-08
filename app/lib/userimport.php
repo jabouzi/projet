@@ -17,7 +17,6 @@ class Userimport
 		foreach($usersdata as $key => $userdata)
 		{
 			$error = $this->insert($userdata, $key);
-			var_dump($error);
 			if (!$error) $users[] = $userdata;
 		}
 		var_dump($users);
