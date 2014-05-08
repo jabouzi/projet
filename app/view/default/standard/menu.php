@@ -1,5 +1,6 @@
 <div id="header">
 <?php
+echo '<ul>';
 if (islogged())
 {
 	$links = array('/'=> lang('title.accounts'),
@@ -14,16 +15,17 @@ if (islogged())
 	$links['/'.get_site_lang().'/admin/profile'] = lang('title.profile');
 	$links['/'.get_site_lang().'/login/logout'] = lang('login.logout');
 
-	echo '<ul>';
+	
 	foreach ($links as $link=>$title) {
 		echo '<li><a href="' . $link . '">' . $title . '</a></li>';
 	}
-	echo '<li style="float:right"><a href="">fr</a>';
-	echo '</ul>';
+	
 }
+
+echo '<li style="float:right"><a href="">fr</a>';
+echo '</ul>';
 
 ?>
 
-<ul style="float:right"><li><a href="">fr</a></li></ul>
 </div>
     <div id="body">
