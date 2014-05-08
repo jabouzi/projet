@@ -137,7 +137,8 @@ class Application extends Controller
 			move_uploaded_file($tmp_name, "/tmp/$name");
 			$import = Userimportfactory::create($ext);
 			$users = $import->import("/tmp/$name");
-			if ($users)
+			var_dump($users);
+			if (count($users))
 			{
 				foreach($users as $user)
 				{
@@ -145,7 +146,7 @@ class Application extends Controller
 				}
 			}
 
-			redirect('application');
+			//redirect('application');
 		}
 	}
 	
