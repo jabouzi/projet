@@ -95,7 +95,7 @@ class Application extends Controller
 		else if ($this->usermodel->user_email_exists($_POST['user_email'], $_POST['user_name']))
 		{
 			$_SESSION['request'] = $_POST;
-			$_SESSION['message'] = lang('account.email.exists';
+			$_SESSION['message'] = lang('account.email.exists');
 			redirect('application/edit/'.$_POST['user_name']);
 		}
 		else
