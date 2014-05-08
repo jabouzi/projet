@@ -34,7 +34,7 @@ class Xlsimportadapter
 			$_SESSION['message'] = $this->userimport->get_message();
 			return $users;
 		} catch (Exception $e) {
-			throw $e->getMessage();
+			display_page_error();
 		}
 	}
 }
