@@ -132,6 +132,8 @@ input.radio {
     margin-right: 10px; 
 }
 #header li.last-item {
+    display: inline;
+    margin-right: 10px; 
 	float:right;
 }
 #header a, #header a:visited, #footer a, #footer a:visited {
