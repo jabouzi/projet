@@ -1,5 +1,5 @@
-<div class="row error"><label></label><?php display_message(); ?></div>
-<h1>Accounts</h1>
+<div class="row"><?php display_message(); ?></div>
+<h1><?php echo lang('title.admins'); ?></h1>
 <div id="browsecontacts">
 <?php
 	foreach ($users as $user) {

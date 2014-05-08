@@ -1,11 +1,11 @@
-<div class="row error"><?php display_message(); ?></div>
-<h1>Import Accounts</h1>
+<div class="row"><?php display_message(); ?></div>
+<h1><?php echo lang('title.import.accounts'); ?></h1>
 <p>
-    Upload a .csv file or an xml file or an excel file.
+    <?php echo lang('text.upload.types'); ?>
 </p>
 <form action="/<?php echo get_site_lang(); ?>/application/processimport" method="post" enctype="multipart/form-data">
     <div class="row">
-        <label for="accountsfile">Accounts File:</label><input type="file" id="accountsfile" name="accountsfile" />
+        <label for="accountsfile"><?php echo lang('form.accounts.file'); ?>:</label><input type="file" id="accountsfile" name="accountsfile" />
     </div>
     <div class="row">
         <label for="submit"> </label>
@@ -14,7 +14,7 @@
 </form>
 <br /><br />
 <p>
-	<h4>Download files examples :</h4>
+	<h4><?php echo lang('text.file.examples'); ?>:</h4>
 	<ul>
 		<li><a href="/public/docs/example.csv">CSV</a></li>
 		<li><a href="/public/docs/example.json">JSON</a></li>

@@ -29,6 +29,5 @@ function display_page_error()
 {
     $message = file_get_contents(APPPATH . "core/template/error.html");
     $message = printf($message, 'Warning', '404 Page Not Found', 'The page you requested was not found.');    
-    //echo $message;
 }
 

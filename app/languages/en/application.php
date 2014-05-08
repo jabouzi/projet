@@ -1,8 +1,13 @@
 <?php
 
+$lang['text.upload.types'] = 'Upload a .csv file or an xml file or an excel file.';
+$lang['text.file.examples'] = 'Download files examples';
 $lang['title.login'] = 'Login';
+$lang['title.add.account'] = 'Add Account';
+$lang['contact.help'] = 'Contact Help';
 $lang['form.username'] = 'Username';
 $lang['form.password'] = 'Password';
+$lang['form.check.required.fields' = 'Check required fields';
 $lang['account.security.detected'] = '';
 $lang['account.email.exists'] = '';
 $lang['account.user_name.exists'] = '';
