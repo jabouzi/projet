@@ -21,8 +21,6 @@ foreach($config['autoload_languages'] as $file)
 	require(APPPATH."app/languages/".get_site_lang()."/{$file}.php");
 }
 
-//require 'includes/exceptions.php';
-//require '/home/jabouzic/public_html/projet.jabouzi.comapp/lib/session.php';
 $session = new Session();
 session_set_save_handler(array(&$session, '_open'),
                          array(&$session, '_close'),
@@ -31,17 +29,6 @@ session_set_save_handler(array(&$session, '_open'),
                          array(&$session, '_destroy'),
                          array(&$session, '_clean'));
 session_start();
-/*$encrpt = new encryption();
-var_dump($encrpt->encrypt('7024043'));
-//$pass2 = $encrpt->decrypt($pass);
-
-$memcached = new cachefactory();
-var_dump($memcached->cache_info());
-//$memcached->save('skander', 'jabouzi');
-//var_dump($memcached->get_metadata('skander'));
-//var_dump($memcached->get('skander'));*/
-
-
 $params = get_controller_params($_GET);
 
 if (isset($_GET['u']) and isset($params['lang']))

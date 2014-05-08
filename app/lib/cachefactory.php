@@ -1,5 +1,4 @@
-<?php //if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+<?php
 
 class Cachefactory {
 
@@ -63,11 +62,8 @@ class Cachefactory {
 		);
 	}
 	
-	public function connect($host , $port){ 
-		//$servers = $this->cache->getServerList(); 
-		//if(is_array($servers)) { 
-			//foreach ($servers as $server) if($server['host'] == $host and $server['port'] == $port) return true; 
-		//} 
+	public function connect($host , $port)
+	{ 
 		return $this->cache->addServer($host , $port); 
 	} 
 
