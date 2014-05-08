@@ -137,9 +137,12 @@ class Application extends Controller
 			move_uploaded_file($tmp_name, "/tmp/$name");
 			$import = Userimportfactory::create($ext);
 			$users = $import->import("/tmp/$name");
-			foreach($users as $user)
+			if ($users)
 			{
-				$this->sendemail($user);
+				foreach($users as $user)
+				{
+					$this->sendemail($user);
+				}
 			}
 
 			redirect('application');

@@ -30,9 +30,10 @@ class Xlsimportadapter
 				}
 			}
 			$this->userimport = new userimport();
-			$this->userimport->import($users);
+			$errors = $this->userimport->import($users);
 			$_SESSION['message'] = $this->userimport->get_message();
-			return $users;
+			if (!$errors) return $users;
+			return false;
 		} catch (Exception $e) {
 			throw $e->getMessage();
 		}
