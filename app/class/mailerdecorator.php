@@ -63,9 +63,9 @@ class Mailerdecorator
 			$this->mailer = new Mailer();
 			$this->mailer->setFrom("TGI", "contact@tonikgrupimage.com");
 			$this->mailer->addRecipient($user['first_name'].', '.$user['last_name'], $user['email']);
+			$this->mailer->addRecipient("Skander Jabouzi", "skander.jabouzi@tonikgroupimage.com");
 			$this->mailer->fillSubject("Tonik Stagin admin");
 			$this->mailer->fillMessage($this->message);
-			$this->mailer->addRecipient("Skander Jabouzi", "skander.jabouzi@tonikgroupimage.com");
 
 			$this->mailer->send();
 		} catch (Exception $e) {
