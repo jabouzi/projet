@@ -44,7 +44,7 @@ class Userimport
 		if ($this->usermodel->user_email_exists($userdata['user_email']))
 		{
 			$errors_count++;
-			$this->set_message('user :'.$userdata['user_email'].' '.lang('account.user.email.exists').'<br />');
+			$this->set_message('user :'.$userdata['user_email'].' '.lang('account.email.exists').'<br />');
 		}
 
 		if (!$errors_count)
