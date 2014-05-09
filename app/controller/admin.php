@@ -3,12 +3,14 @@
 class Admin extends Controller
 {
 	private $adminmodel;
+	private $mailerdecorator;
 
 	function __construct()
 	{
 		if (!islogged()) redirect('login');
 		if (!isadmin()) redirect('/');
 		$this->adminmodel = new adminmodel();
+		$this->mailerdecorator = new mailerdecorator();
 	}
 
 	public function index($message = null)
