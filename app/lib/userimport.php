@@ -34,22 +34,22 @@ class Userimport
 		if (!item($userdata, 'user_vhost') || !is_array($userdata['user_vhost']))
 		{
 			$errors_count++;
-			$this->set_message('user :'.$userdata['user_name'].' '.lang('account.user_vhosts.empty').'<br />');
+			$this->set_message('user :'.$userdata['user_name'].' '.lang('account.user.vhosts.empty').'<br />');
 		}
 		if ($this->usermodel->user_name_exists($userdata['user_name']))
 		{
 			$errors_count++;
-			$this->set_message('user :'.$userdata['user_name'].' '.lang('account.user_name.exists').'<br />');
+			$this->set_message('user :'.$userdata['user_name'].' '.lang('account.user.name.exists').'<br />');
 		}
 		if ($this->usermodel->user_email_exists($userdata['user_email']))
 		{
 			$errors_count++;
-			$this->set_message('user :'.$userdata['user_email'].' '.lang('account.user_email.exists').'<br />');
+			$this->set_message('user :'.$userdata['user_email'].' '.lang('account.user.email.exists').'<br />');
 		}
 
 		if (!$errors_count)
 		{
-			$this->set_message('user :'.$userdata['user_name'].' '.lang('account.user_added').'<br />');
+			$this->set_message('user :'.$userdata['user_name'].' '.lang('account.user.added').'<br />');
 			$this->usermodel->add_user($userdata);
 		}
 		
