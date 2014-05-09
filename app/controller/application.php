@@ -58,7 +58,7 @@ class Application extends Controller
 			redirect('application/edit/'.$_SESSION['edit']['user_name']);
 		}
 		$this->usermodel->delete_user($_POST['user_name']);
-		$_SESSION['message'] = lang('account.user_delete');
+		$_SESSION['message'] = lang('account.user.delete');
 		redirect('/');
 	}
 
@@ -73,14 +73,14 @@ class Application extends Controller
 		else if ($this->usermodel->user_name_exists($_POST['user_name']))
 		{
 			$_SESSION['request'] = $_POST;
-			$_SESSION['message'] = lang('account.user_name.exists');
+			$_SESSION['message'] = lang('account.user.name.exists');
 			redirect('application/add');
 		}
 		else
 		{
 			$this->usermodel->add_user($_POST);
 			$this->sendemail($_POST);
-			$_SESSION['message'] = lang('account.user_added');
+			$_SESSION['message'] = lang('account.user.added');
 			redirect('/');
 		}
 	}
@@ -101,7 +101,7 @@ class Application extends Controller
 		else
 		{
 			$this->usermodel->update_user($_POST);
-			$_SESSION['message'] = lang('account.user_updated');
+			$_SESSION['message'] = lang('account.user.updated');
 			redirect('application/edit/'.$_POST['user_name']);
 		}
 	}

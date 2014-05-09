@@ -70,7 +70,7 @@ class Admin extends Controller
 			redirect('admins/edit/'.$_SESSION['edit']['email']);
 		}
 		$this->adminmodel->delete_user($_POST['email']);
-		$_SESSION['message'] = lang('admin.user_delete');
+		$_SESSION['message'] = lang('admin.user.deleted');
 		redirect('admin');
 	}
 
@@ -85,7 +85,7 @@ class Admin extends Controller
 		else
 		{
 			$this->adminmodel->add_user($_POST);
-			$_SESSION['message'] = lang('admin.user_added');
+			$_SESSION['message'] = lang('admin.user.added');
 			redirect('admin');
 		}
 	}
@@ -106,7 +106,7 @@ class Admin extends Controller
 		else
 		{
 			$this->adminmodel->update_user($_POST);
-			$_SESSION['message'] = lang('admin.user_updated');
+			$_SESSION['message'] = lang('admin.user.updated');
 			redirect('admin/edit/'.$_POST['id']);
 		}
 	}
@@ -129,7 +129,7 @@ class Admin extends Controller
 			$_POST['admin'] = $_SESSION['user']['admin'];
 			$_POST['status'] = $_SESSION['user']['status'];
 			$this->adminmodel->update_user($_POST);
-			$_SESSION['message'] = lang('admin.user_updated');
+			$_SESSION['message'] = lang('admin.user.updated');
 			redirect('admin/profile');
 		}
 	}

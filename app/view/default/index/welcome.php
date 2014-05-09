@@ -1,21 +1,22 @@
 <div class="sidebar">
 	<br />
-	<a class="featured" href="/application/add"><?php echo lang('title.add.account'); ?>:</a>
-	<a class="featured" href="/application/import">Import Contacts</a>
+	<a class="featured" href="/<?php echo get_site_lang(); ?>/application/add"><?php echo lang('title.add.account'); ?></a>
+	<a class="featured" href="/<?php echo get_site_lang(); ?>/application/import"><?php echo lang('title.import.accounts'); ?></a>
 </div>
-<h2>Welcome to Acme Company Contact Manager</h2>
+<h2><?php lang('site.welcome.1'); ?></h2>
 <p>
-	Welcome to the replacement system for the Outlook Address book.
+	<?php lang('site.welcome.2'); ?>
 </p>
 <p>
-	Cool things to know:
+	<?php lang('site.welcome.3'); ?>
 </p>
 <ul>
-	<li>You can easily <a href="/application/add"><?php echo lang('title.add.account'); ?>:s</a></li>
-	<li>You can <a href="/application/import">import your address book</a> from Outlook</li>
-	<li>You can view this using your mobile phone</li>
-	<li>You can send email directly to a contact by clicking their email address.</li>
+	<li><?php lang('site.welcome.4'); ?> <a href="/application/add"><?php echo lang('title.add.account'); ?></a></li>
+	<li><?php lang('site.welcome.4'); ?> <a href="/application/add"><?php echo lang('title.edit.account'); ?></a></li>
+	<li><?php lang('site.welcome.4'); ?> <a href="/application/add"><?php echo lang('title.delete.account'); ?></a></li>
+	<li><?php lang('site.welcome.5'); ?> <a href="/application/import"><?php lang('site.welcome.6'); ?>:</a></li>
+	<li><?php lang('site.welcome.7'); ?></li>
 </ul>
 <p>
-	If you have any questions, please contact the help desk.
+	<?php lang('site.welcome.8'); ?>
 </p>
