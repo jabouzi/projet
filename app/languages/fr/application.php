@@ -14,6 +14,7 @@ $lang['text.upload.types'] = 'Uploadez un fichier .csv ou un fihcier xml ou un f
 $lang['text.file.examples'] = 'Télécharger les fichiers modèles';
 $lang['title.login'] = 'Connexion';
 $lang['title.add.account'] = 'Ajouter un compte';
+$lang['title.edit.account'] = 'Éditer un compte';
 $lang['title.accounts'] = 'Liste des comptes';
 $lang['title.import.accounts'] = 'Importer des comptes';
 $lang['title.admins'] = 'List des admins';
