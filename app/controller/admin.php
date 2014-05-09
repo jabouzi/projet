@@ -13,7 +13,6 @@ class Admin extends Controller
 
 	public function index($message = null)
 	{
-		//menu decorator
 		$users = new useriterator($this->adminmodel->get_users());
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
@@ -52,6 +51,7 @@ class Admin extends Controller
 
 	public function edit($id)
 	{
+		if ($id == $_SESSION['user']['id']) redirect ('admin/profile');
 		$user = $this->adminmodel->get_user($this->adminmodel->get_email_by_id($id));
 		$data['user'] = $user;
 		$_SESSION['edit']['id'] = $user->get_id();
