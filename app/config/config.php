@@ -7,7 +7,7 @@ if (strstr($_SERVER['HTTP_HOST'], 'tgiprojects.com'))
 	$config['database'] = 'staging_auth';
 	$config['username'] = 'root';
 	$config['password'] = 'xXd3eAXg7uV';
-	$config['host'] = '10.1.6.204'
+	$config['host'] = '10.1.6.204';
 }
 else
 {
