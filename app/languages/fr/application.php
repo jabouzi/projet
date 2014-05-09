@@ -21,6 +21,7 @@ $lang['title.admins'] = 'List des admins';
 $lang['title.add.admin'] = 'Ajouter un admin';
 $lang['title.edit.admin'] = 'Éditer cet admin';
 $lang['title.profile'] = 'Mon profile';
+$lang['title.edit.profile'] = 'Editer mon profile';
 $lang['login.logout'] = 'Quitter';
 $lang['contact.help'] = 'Demander de l\'aide';
 $lang['form.username'] = 'Nom utilisateur';
