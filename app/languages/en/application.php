@@ -1,6 +1,7 @@
 <?php
 
 $lang['site.lang'] = 'Fr';
+$lang['site.title'] = 'Staging account manager';
 $lang['site.welcome.1'] = 'Welcome Tonikien!';
 $lang['site.welcome.2'] = 'Welcome to staging user account manager system.';
 $lang['site.welcome.3'] = 'Cool things to know:';
