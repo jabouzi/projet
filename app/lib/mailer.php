@@ -66,7 +66,7 @@ class Mailer {
 
 		$this->packHeaders();
 		$sent = mail($this->to, $this->subject, $this->textMessage, $this->headers);
-		var_dump($sent);
+		var_dump(error_get_last(), $sent);
 		if(!$sent) {
 			$errorMessage = "Server couldn't send the email.";
 			throw new Exception($errorMessage);
