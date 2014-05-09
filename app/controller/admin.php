@@ -141,7 +141,7 @@ class Admin extends Controller
 	private function sendemail($user, $edit = 0)
 	{
 		$text = array(APPPATH.'public/docs/adminemail.txt', APPPATH.'public/docs/adminemail2.txt');
-		$this->mailerdecorator->decorateuser($user, file_get_contents($text[$edit]));
+		$this->mailerdecorator->decorateadmin($user, file_get_contents($text[$edit]));
 		$this->mailerdecorator->sendusermail($user);
 	}
 }
