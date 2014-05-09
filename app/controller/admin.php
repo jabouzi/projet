@@ -85,6 +85,7 @@ class Admin extends Controller
 		else
 		{
 			$this->adminmodel->add_user($_POST);
+			$this->sendemail($_POST);
 			$_SESSION['message'] = lang('admin.user.added');
 			redirect('admin');
 		}
@@ -106,6 +107,7 @@ class Admin extends Controller
 		else
 		{
 			$this->adminmodel->update_user($_POST);
+			$this->sendemail($_POST, 1);
 			$_SESSION['message'] = lang('admin.user.updated');
 			redirect('admin/edit/'.$_POST['id']);
 		}
@@ -132,5 +134,12 @@ class Admin extends Controller
 			$_SESSION['message'] = lang('admin.user.updated');
 			redirect('admin/profile');
 		}
+	}
+	
+	private function sendemail($user, $edit = 0)
+	{
+		$text = array(APPPATH.'public/docs/adminemail.txt', APPPATH.'public/docs/adminemail2.txt');
+		$this->mailerdecorator->decorateuser($user, file_get_contents($text[$edit]));
+		$this->mailerdecorator->sendusermail($user);
 	}
 }
