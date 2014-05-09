@@ -34,7 +34,7 @@
 		<input type="password" name="password" id="password" value="<?php echo print_post_text('password'); ?>" />
 	</div>
 	<div class="row">
-		<label for="password"><?php echo lang('form.id.admin'); ?>:</label>
+		<label for="password"><?php echo lang('form.is.admin'); ?>:</label>
 		<input type="checkbox" name="admin" value="1" <?php if (intval(print_post_text('admin', $user->get_admin())) == 1) echo 'checked'; ?> >
     </div>
 	<div class="row">
