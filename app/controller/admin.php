@@ -142,6 +142,6 @@ class Admin extends Controller
 	{
 		$text = array(APPPATH.'public/docs/adminemail.txt', APPPATH.'public/docs/adminemail2.txt');
 		$this->mailerdecorator->decorateadmin($user, file_get_contents($text[$edit]));
-		$this->mailerdecorator->sendusermail($user);
+		$this->mailerdecorator->sendadminmail($user);
 	}
 }
