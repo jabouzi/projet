@@ -41,7 +41,7 @@
 		<label for="password"><?php echo lang('form.active'); ?>:</label>
 		<input type="checkbox" name="status" value="1" <?php if (intval(print_post_text('status', $user->get_status())) == 1) echo 'checked'; ?>>
     </div>
-    <div>
+    <div class="row">
 		<div class="row"><label for="submit"> </label>
 			<input id="submitedit" type="button" value="<?php echo lang('title.edit.admin'); ?>" class="submitbutton" />
 		</div>
