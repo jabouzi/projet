@@ -53,3 +53,5 @@ $lang['login.email.empty'] = 'Login email is empty';
 $lang['login.password.empty'] = 'Login password is empty';
 $lang['login.failed'] = 'Login failed';
 $lang['login.account.nonactive'] = 'Your account is desactive';
+$lang['account.email.subject'] = 'Tonik Stagin account';
+$lang['admin.email.subject'] = 'Tonik Stagin admin';

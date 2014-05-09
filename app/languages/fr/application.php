@@ -54,3 +54,5 @@ $lang['login.email.empty'] = 'Le courriel est vide';
 $lang['login.password.empty'] = 'Le mot de passe est vide';
 $lang['login.failed'] = 'La connexion a échoué';
 $lang['login.account.nonactive'] = 'Votre compte est desactivé';
+$lang['account.email.subject'] = 'Compte staging de Tonik';
+$lang['admin.email.subject'] = 'Admin staging de Tonik';
