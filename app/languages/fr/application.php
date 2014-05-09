@@ -28,6 +28,7 @@ $lang['form.email'] = 'Courriel';
 $lang['form.firstname'] = 'Prénom';
 $lang['form.lastname'] = 'Nom';
 $lang['form.hosts'] = 'Sites';
+$lang['form.accounts.file'] = 'Fichier';
 $lang['form.check.required.fields'] = 'Vérifiez les champs obligatoires';
 $lang['account.security.detected'] = 'Security issue detected';
 $lang['account.email.exists'] = 'Courriel du compte existant';

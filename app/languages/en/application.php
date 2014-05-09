@@ -28,6 +28,7 @@ $lang['form.email'] = 'Email';
 $lang['form.firstname'] = 'Firstname';
 $lang['form.lastname'] = 'Lastname';
 $lang['form.hosts'] = 'Hosts';
+$lang['form.accounts.file'] = 'File';
 $lang['form.check.required.fields'] = 'Check required fields';
 $lang['account.security.detected'] = 'Security issue detected';
 $lang['account.email.exists'] = 'Account email exists';
