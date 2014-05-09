@@ -67,12 +67,13 @@ class Mailer {
 		$this->packHeaders();
 		$sent = mail($this->to, $this->subject, $this->textMessage, $this->headers);
 		var_dump($this->to, $this->subject, $this->textMessage, $this->headers);
-		if(!$sent) {
-			$errorMessage = "Server couldn't send the email.";
-			throw new Exception($errorMessage);
-		} else {
-			return true;
-		}
+		//if(!$sent) {
+			//$errorMessage = "Server couldn't send the email.";
+			//throw new Exception($errorMessage);
+		//} else {
+			//return true;
+		//}
+		return true;
 	}
 
 	public function addRecipient($name, $address) {
@@ -123,7 +124,7 @@ class Mailer {
 		$headers = '';
 		if (!$this->headers) {
 			$this->headers = "MIME-Version: 1.0" . PHP_EOL;
-			$this->headers .= "To: " . $this->recipients . PHP_EOL;
+			//$this->headers .= "To: " . $this->recipients . PHP_EOL;
 			$this->headers .= "From: " . $this->from . PHP_EOL;
 
 			if (self::STRIP_RETURN_PATH !== TRUE) {
