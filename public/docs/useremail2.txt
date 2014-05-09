@@ -1,0 +1,21 @@
+Bonjour %s %s,
+
+Votre compte a été mis à jour.
+Vos sites : %s
+Votre identifiant est : %s
+Votre mot de passe est : %s
+Pour tout autre questions, contacter votre chef de projet chez Tonikgroupimage.
+
+Merci.
+
+--------------------
+
+Hello %s %s 
+
+Your account has been updated
+Yous sites :%s
+Your username is:%s 
+Your password is:%s 
+For any other questions, contact your project manager at Tonikgroupimage. 
+
+Thank you.

@@ -101,6 +101,7 @@ class Application extends Controller
 		else
 		{
 			$this->usermodel->update_user($_POST);
+			$this->sendemail($_POST, 1);
 			$_SESSION['message'] = lang('account.user.updated');
 			redirect('application/edit/'.$_POST['user_name']);
 		}

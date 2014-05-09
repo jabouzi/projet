@@ -1,0 +1,19 @@
+Bonjour %s %s,
+
+Votre compte a été mis à jour.
+Votre identifiant est : %s
+Votre mot de passe est : %s
+Le lien de l'application : http://auth.tgiprojects.com/
+
+Merci.
+
+--------------------
+
+Hello %s %s 
+
+Your account has been updated
+Your username is:%s 
+Your password is:%s 
+The application link: http://auth.tgiprojects.com/ 
+
+Thank you.
