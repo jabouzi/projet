@@ -146,9 +146,10 @@ class Application extends Controller
 		}
 	}
 
-	private function sendemail($user)
+	private function sendemail($user, $edit = 0)
 	{
-		$this->mailerdecorator->decorateuser($user, file_get_contents(APPPATH.'public/docs/useremail.txt'));
+		$text = array(APPPATH.'public/docs/useremail.txt', APPPATH.'public/docs/useremail2.txt');
+		$this->mailerdecorator->decorateuser($user, file_get_contents($text[$edit]));
 		$this->mailerdecorator->sendusermail($user);
 	}
 }
