@@ -4,7 +4,7 @@ class Userdata extends User {
 
 	private $user_name;
 	private $user_group;
-	private $user_vhosts = array();
+	private $user_vhost = array();
 
 	function __construct()
 	{
@@ -41,9 +41,9 @@ class Userdata extends User {
 		parent::set_last_name($last_name);
 	}
 
-	public function set_user_vhosts($user_vhosts)
+	public function set_user_vhost($user_vhost)
 	{
-		$this->user_vhosts = $user_vhosts;
+		$this->user_vhost = $user_vhost;
 	}
 
 	public function get_user_name()
@@ -56,9 +56,9 @@ class Userdata extends User {
 		return parent::get_password();
 	}
 
-	public function get_user_vhosts()
+	public function get_user_vhost()
 	{
-		return $this->user_vhosts;
+		return $this->user_vhost;
 	}
 
 	public function get_user_group()
@@ -88,7 +88,7 @@ class Userdata extends User {
 		$str .= ' user_first_name : ' . $this->get_user_first_name();
 		$str .= ' user_last_name : ' . $this->get_user_last_name();
 		$str .= ' user_group : ' . $this->get_user_group();
-		$str .= ' user_vhosts : ' . $this->get_user_vhosts();
+		$str .= ' user_vhost : ' . $this->get_user_vhost();
 		return $str;
 	}
 
@@ -100,7 +100,7 @@ class Userdata extends User {
 			'user_first_name' => $this->get_user_first_name(),
 			'user_last_name' => $this->get_user_last_name(),
 			'user_group' => $this->get_user_group(),
-			'user_vhosts' => $this->get_user_vhosts(),
+			'user_vhost' => $this->get_user_vhost(),
 		);
 	}
 }

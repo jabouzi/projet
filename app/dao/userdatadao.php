@@ -31,7 +31,7 @@ class Userdatadao {
 	public function insert_vhosts($user)
 	{
 		$insert = 0;
-		foreach($user->get_user_vhosts() as $vhost)
+		foreach($user->get_user_vhost() as $vhost)
 		{
 			$args_vhost = array(
 				':user_name' => $user->get_user_name(),
@@ -42,7 +42,7 @@ class Userdatadao {
 		}
 		$this->cache->delete('select_data_'.$user->get_user_name());
 		$this->cache->delete('select_data_all');
-		return ($insert == count($user->get_user_vhosts()));
+		return ($insert == count($user->get_user_vhost()));
 	}
 
 	public function update_info($user)
