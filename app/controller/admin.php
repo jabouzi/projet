@@ -15,7 +15,6 @@ class Admin extends Controller
 
 	public function index($message = null)
 	{
-		unset($_SESSION['admin_edit']);
 		$users = new useriterator($this->adminmodel->get_users());
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');

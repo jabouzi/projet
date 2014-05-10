@@ -14,7 +14,6 @@ class Application extends Controller
 
 	public function index($message = null)
 	{
-		unset($_SESSION['user_edit']);
 		$users = new useriterator($this->usermodel->get_users());
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
