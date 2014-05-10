@@ -100,7 +100,6 @@ class Application extends Controller
 		}
 		else
 		{
-			var_dump(compare_user_data($_POST, $_SESSION['user_edit']));
 			if (count(compare_user_data($_POST, $_SESSION['user_edit'])))
 			{
 				$this->usermodel->update_user($_POST);
