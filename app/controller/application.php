@@ -14,6 +14,7 @@ class Application extends Controller
 
 	public function index($message = null)
 	{
+		unset($_SESSION['user_edit']);
 		$users = new useriterator($this->usermodel->get_users());
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
@@ -42,7 +43,7 @@ class Application extends Controller
 	{
 		$user = $this->usermodel->get_user($user_name);
 		$data['user'] = $user;
-		$_SESSION['edit']['user_name'] = $user->get_user_name();
+		$_SESSION['user_edit'] = $user->__toArray();
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
 		view::load_view('default/accounts/edit', $data);
@@ -52,10 +53,10 @@ class Application extends Controller
 
 	public function delete()
 	{
-		if ($_SESSION['edit']['user_name'] != $_POST['user_name'])
+		if ($_SESSION['user_edit']['user_name'] != $_POST['user_name'])
 		{
 			$_SESSION['message'] = lang('account.security.detected');
-			redirect('application/edit/'.$_SESSION['edit']['user_name']);
+			redirect('application/edit/'.$_SESSION['user_edit']['user_name']);
 		}
 		$this->usermodel->delete_user($_POST['user_name']);
 		$_SESSION['message'] = lang('account.user.delete');
@@ -87,10 +88,10 @@ class Application extends Controller
 
 	public function processedit()
 	{
-		if ($_SESSION['edit']['user_name'] != $_POST['user_name'])
+		if ($_SESSION['user_edit']['user_name'] != $_POST['user_name'])
 		{
 			$_SESSION['message'] = lang('account.security.detected');
-			redirect('application/edit/'.$_SESSION['edit']['user_name']);
+			redirect('application/edit/'.$_SESSION['user_edit']['user_name']);
 		}
 		else if ($this->usermodel->user_email_exists($_POST['user_email'], $_POST['user_name']))
 		{
@@ -100,9 +101,13 @@ class Application extends Controller
 		}
 		else
 		{
-			$this->usermodel->update_user($_POST);
-			$this->sendemail($_POST, 1);
-			$_SESSION['message'] = lang('account.user.updated');
+			if (count(compare_user_data($_POST, $_SESSION['user_edit'])))
+			{
+				$this->usermodel->update_user($_POST);
+				$user = $this->usermodel->get_user($_POST['user_name'])->__toArray();
+				$this->sendemail($user, 1);
+				$_SESSION['message'] = lang('account.user.updated');
+			}
 			redirect('application/edit/'.$_POST['user_name']);
 		}
 	}

@@ -15,6 +15,7 @@ class Admin extends Controller
 
 	public function index($message = null)
 	{
+		unset($_SESSION['admin_edit']);
 		$users = new useriterator($this->adminmodel->get_users());
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
@@ -34,7 +35,7 @@ class Admin extends Controller
 	{
 		$user = $this->adminmodel->get_user($_SESSION['user']['email']);
 		$data['user'] = $user;
-		$_SESSION['edit']['id'] = $user->get_id();
+		$_SESSION['admin_edit'] = $user->__toArray();
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
 		view::load_view('default/admins/profile', $data);
@@ -56,7 +57,7 @@ class Admin extends Controller
 		if ($id == $_SESSION['user']['id']) redirect ('admin/profile');
 		$user = $this->adminmodel->get_user($this->adminmodel->get_email_by_id($id));
 		$data['user'] = $user;
-		$_SESSION['edit']['id'] = $user->get_id();
+		$_SESSION['admin_edit'] = $user->__toArray();
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
 		view::load_view('default/admins/edit', $data);
@@ -66,10 +67,10 @@ class Admin extends Controller
 
 	public function delete()
 	{
-		if ($_SESSION['edit']['id'] != $_POST['id'])
+		if ($_SESSION['admin_edit']['id'] != $_POST['id'])
 		{
 			$_SESSION['message'] = lang('account.security.detected');
-			redirect('admins/edit/'.$_SESSION['edit']['email']);
+			redirect('admins/edit/'.$_SESSION['admin_edit']['email']);
 		}
 		$this->adminmodel->delete_user($_POST['email']);
 		$_SESSION['message'] = lang('admin.user.deleted');
@@ -95,10 +96,10 @@ class Admin extends Controller
 
 	public function processedit()
 	{
-		if ($_SESSION['edit']['id'] != $_POST['id'])
+		if ($_SESSION['admin_edit']['id'] != $_POST['id'])
 		{
 			$_SESSION['message'] = lang('account.security.detected');
-			redirect('admins/edit/'.$_SESSION['edit']['id']);
+			redirect('admins/edit/'.$_SESSION['admin_edit']['id']);
 		}
 		else if ($this->adminmodel->email_exists($_POST['email'], $_POST['id']))
 		{
@@ -108,16 +109,20 @@ class Admin extends Controller
 		}
 		else
 		{
-			$this->adminmodel->update_user($_POST);
-			$this->sendemail($_POST, 1);
-			$_SESSION['message'] = lang('admin.user.updated');
+			if (count(compare_user_admin($_POST, $_SESSION['admin_edit'])))
+			{
+				$this->adminmodel->update_user($_POST);
+				$admin = $this->adminmodel->get_user($this->adminmodel->get_email_by_id($_SESSION['admin_edit']['id']))->__toArray();
+				$this->sendemail($admin, 1);
+				$_SESSION['message'] = lang('admin.user.updated');
+			}
 			redirect('admin/edit/'.$_POST['id']);
 		}
 	}
 	
 	public function processprofile()
 	{
-		if ($_SESSION['edit']['id'] != $_POST['id'])
+		if ($_SESSION['admin_edit']['id'] != $_POST['id'])
 		{
 			$_SESSION['message'] = lang('account.security.detected');
 			redirect('admin/profile');

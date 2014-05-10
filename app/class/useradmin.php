@@ -3,9 +3,6 @@
 class Useradmin extends User {
 
 	private $id;
-	private $email;
-	private $first_name;
-	private $last_name;
 	private $admin;
 	private $status;
 
@@ -82,5 +79,30 @@ class Useradmin extends User {
 	public function get_status()
 	{
 		return $this->status;
+	}
+
+	public function __toString()
+	{
+		$str = ' id : ' . $this->get_id();
+		$str .= ' email : ' . $this->get_email();
+		$str .= ' password : ' . $this->get_password();
+		$str .= ' first_name : ' . $this->get_first_name();
+		$str .= ' last_name : ' . $this->get_last_name();
+		$str .= ' admin : ' . $this->get_admin();
+		$str .= ' status : ' . $this->get_status();
+		return $str;
+	}
+
+	public function __toArray()
+	{
+		return array(
+			'id' => $this->get_id(),
+			'email' => $this->get_email(),
+			'password' => $this->get_password(),
+			'first_name' => $this->get_first_name(),
+			'last_name' => $this->get_last_name(),
+			'admin' => $this->get_admin(),
+			'status' => $this->get_status(),
+		);
 	}
 }

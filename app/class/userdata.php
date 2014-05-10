@@ -80,4 +80,27 @@ class Userdata extends User {
 	{
 		return parent::get_last_name();
 	}
+
+	public function __toString()
+	{
+		$str = ' user_name : ' . $this->get_user_name();
+		$str .= ' user_email : ' . $this->get_user_email();
+		$str .= ' user_first_name : ' . $this->get_user_first_name();
+		$str .= ' user_last_name : ' . $this->get_user_last_name();
+		$str .= ' user_group : ' . $this->get_user_group();
+		$str .= ' user_vhosts : ' . $this->get_user_vhosts();
+		return $str;
+	}
+
+	public function __toArray()
+	{
+		return array(
+			'user_name' => $this->get_user_name(),
+			'user_email' => $this->get_user_email(),
+			'user_first_name' => $this->get_user_first_name(),
+			'user_last_name' => $this->get_user_last_name(),
+			'user_group' => $this->get_user_group(),
+			'user_vhosts' => $this->get_user_vhosts(),
+		);
+	}
 }

@@ -27,3 +27,23 @@ function adjust_vhosts($vhosts)
 	else if (!in_array('*', $vhosts) && count($vhosts) == count($projects)) return array('*');
 	else return $vhosts;
 }
+
+function compare_user_data($user1, $user2)
+{
+	if (isempty($user1['password'])) $user2['password'] = '';
+	$a1 = $user1;
+	$a2 = $user1['user_vhosts'];
+	unset($a1['user_vhosts']);
+
+	$b1 = $user2;
+	$b2 = $user2['user_vhosts'];
+	unset($b1['user_vhosts']);
+
+	return array_merge(array_diff_assoc($a1, $b1),array_diff_assoc($a2, $b2),array_diff_assoc($b1, $a1),array_diff_assoc($b2, $a2));
+}
+
+function compare_user_admin($user1, $user2)
+{	
+	if (isempty($user1['password'])) $user2['password'] = '';
+	return array_merge(array_diff_assoc($user1, $user2), array_diff_assoc($user2, $user1));
+}
