@@ -10,7 +10,7 @@
 	</div>
 	<div class="row">
 		<label for="user_password"><?php echo lang('form.password'); ?>:</label>
-		<input type="password" name="user_password" id="user_password" value="" data-validate="required" />
+		<input type="password" name="user_password" id="user_password" value="" data-validate="required" autocomplete="off" />
 	</div>
     <div class="row">
 		<label for="email"><?php echo lang('form.email'); ?>:</label>

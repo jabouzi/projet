@@ -18,7 +18,7 @@
 	</div>
 	<div class="row">
 		<label for="password"><?php echo lang('form.password'); ?>:</label>
-		<input type="password" name="password" id="password" value="<?php echo print_post_text('password'); ?>" />
+		<input type="password" name="password" id="password" value="<?php echo print_post_text('password'); ?>" autocomplete="off" />
 	</div>
     <div>
 		<div class="row"><label for="submit"> </label>

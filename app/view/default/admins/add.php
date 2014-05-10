@@ -18,15 +18,15 @@
 	</div>
 	<div class="row">
 		<label for="password"><?php echo lang('form.password'); ?>:</label>
-		<input type="password" name="password" id="password" value="<?php echo print_post_text('password'); ?>" data-validate="required"/>
+		<input type="password" name="password" id="password" value="<?php echo print_post_text('password'); ?>" data-validate="required" autocomplete="off"/>
 	</div>
 	<div class="row">
-		<label for="password"><?php echo lang('form.is.admin'); ?>:</label>
-		<input type="checkbox" name="admin" value="1" <?php if (intval(print_post_text('admin')) == 1) echo 'checked'; ?> >
+		<label for="admin"><?php echo lang('form.is.admin'); ?>:</label>
+		<input type="checkbox" name="admin" id="admin" value="1" <?php if (intval(print_post_text('admin')) == 1) echo 'checked'; ?> >
     </div>
 	<div class="row">
-		<label for="password"><?php echo lang('form.active'); ?>:</label>
-		<input type="checkbox" name="status" value="1" <?php if (intval(print_post_text('status')) == 1) echo 'checked'; ?>>
+		<label for="status"><?php echo lang('form.active'); ?>:</label>
+		<input type="checkbox" name="status" id="status" value="1" <?php if (intval(print_post_text('status')) == 1) echo 'checked'; ?>>
     </div>
     <div>
 		<div class="row"><label for="submit"> </label>

@@ -43,7 +43,9 @@ class Adminmodel extends Model
 
 	public function get_user($email)
 	{
-		return $this->admindao->select_user($email);
+		$user = $this->admindao->select_user($email);
+		$user->set_password($this->encrypt->decrypt($user->get_password()));
+		return $user;
 	}
 
 	public function get_users()
