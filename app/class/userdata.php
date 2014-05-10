@@ -85,6 +85,7 @@ class Userdata extends User {
 	{
 		$str = ' user_name : ' . $this->get_user_name();
 		$str .= ' user_email : ' . $this->get_user_email();
+		$str .= ' user_password : ' . $this->get_user_password();
 		$str .= ' user_first_name : ' . $this->get_user_first_name();
 		$str .= ' user_last_name : ' . $this->get_user_last_name();
 		$str .= ' user_group : ' . $this->get_user_group();
@@ -97,6 +98,7 @@ class Userdata extends User {
 		return array(
 			'user_name' => $this->get_user_name(),
 			'user_email' => $this->get_user_email(),
+			'user_password' => $this->get_user_password(),
 			'user_first_name' => $this->get_user_first_name(),
 			'user_last_name' => $this->get_user_last_name(),
 			'user_group' => $this->get_user_group(),
