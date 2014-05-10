@@ -87,7 +87,6 @@ class Application extends Controller
 
 	public function processedit()
 	{
-		var_dump($_SESSION, $_POST);
 		if ($_SESSION['user_edit']['user_name'] != $_POST['user_name'])
 		{
 			$_SESSION['message'] = lang('account.security.detected');
