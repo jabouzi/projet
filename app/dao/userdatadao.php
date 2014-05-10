@@ -28,7 +28,7 @@ class Userdatadao {
 		return $insert;
 	}
 
-	public function insert_vhosts($user)
+	public function insert_vhost($user)
 	{
 		$insert = 0;
 		foreach($user->get_user_vhost() as $vhost)
@@ -69,10 +69,10 @@ class Userdatadao {
 		return $update;
 	}
 
-	public function update_vhosts($user)
+	public function update_vhost($user)
 	{
-		$this->delete_vhosts($user->get_user_name());
-		$update = $this->insert_vhosts($user);
+		$this->delete_vhost($user->get_user_name());
+		$update = $this->insert_vhost($user);
 		$this->cache->delete('select_data_'.$user->get_user_name());
 		$this->cache->delete('select_data_all');
 		return $update;
@@ -80,7 +80,7 @@ class Userdatadao {
 
 	public function delete_info($user_name)
 	{
-		$delete = $this->delete_vhosts($user_name);
+		$delete = $this->delete_vhost($user_name);
 		$args = array(
 			':user_name' => $user_name
 		);
@@ -91,7 +91,7 @@ class Userdatadao {
 		return $delete;
 	}
 
-	public function delete_vhosts($user_name)
+	public function delete_vhost($user_name)
 	{
 		$args = array(
 			':user_name' => $user_name

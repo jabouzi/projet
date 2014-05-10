@@ -19,7 +19,7 @@ class Usermodel extends Model
 		$builder->build();
 		$user = $builder->getUser();
 		$this->accountdao->insert_info($user);
-		$this->accountdao->insert_vhosts($user);
+		$this->accountdao->insert_vhost($user);
 	}
 
 	public function update_user($userdata)
@@ -29,7 +29,7 @@ class Usermodel extends Model
 		$builder->build();
 		$user = $builder->getUser();
 		$this->accountdao->update_info($user);
-		$this->accountdao->update_vhosts($user);
+		$this->accountdao->update_vhost($user);
 	}
 	
 	public function delete_user($user_name)

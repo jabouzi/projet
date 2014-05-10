@@ -34,7 +34,7 @@
 	</div>
 	<div class="row">
 		<label><?php echo lang('form.hosts'); ?>:</label>
-		<?php get_projects($user->get_user_vhosts()); ?>
+		<?php get_projects($user->get_user_vhost()); ?>
 	</div>
 	<div class="row">
 		<label for="user_password"><?php echo lang('form.password'); ?>:</label>
