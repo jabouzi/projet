@@ -30,7 +30,7 @@ function adjust_vhosts($vhosts)
 
 function compare_user_data($user1, $user2)
 {
-	if (isempty($user1['password'])) $user2['password'] = '';
+	if (isempty($user1['user_password'])) $user2['user_password'] = '';
 	$a1 = $user1;
 	$a2 = $user1['user_vhosts'];
 	unset($a1['user_vhosts']);
