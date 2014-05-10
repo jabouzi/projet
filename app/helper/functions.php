@@ -33,10 +33,12 @@ function compare_user_data($user1, $user2)
 	if (isempty($user1['user_password'])) $user2['user_password'] = '';
 	$a1 = $user1;
 	$a2 = $user1['user_vhost'];
+	sort($a2);
 	unset($a1['user_vhost']);
 
 	$b1 = $user2;
 	$b2 = $user2['user_vhost'];
+	sort($b2);
 	unset($b1['user_vhost']);
 
 	return array_merge(array_diff_assoc($a1, $b1),array_diff_assoc($a2, $b2),array_diff_assoc($b1, $a1),array_diff_assoc($b2, $a2));
