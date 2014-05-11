@@ -3,13 +3,13 @@
 class Login extends Controller
 {
 	private $user;
-	private $userdao;
+	private $adminmodel;
 	private $encrypt;
 
 	function __construct()
 	{
 		$this->user = new useradmin();
-		$this->userdao = new useradmindao();
+		$this->adminmodel = new adminmodel();
 		$this->encrypt = new encryption();
 	}
 
@@ -49,7 +49,7 @@ class Login extends Controller
 
 	private function check_login($email, $password)
 	{
-		$this->user = $this->userdao->select_user($email);
+		$this->user = $this->adminmodel->get_user($email);
 		if (!$this->user)
 		{
 			$_SESSION['message'] = lang('login.failed');
