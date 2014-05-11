@@ -4,6 +4,8 @@ class Application extends Controller
 {
 	private $usermodel;
 	private $mailerdecorator;
+	private const EDIT = 1;
+	private const ADD = 0;
 
 	function __construct()
 	{
@@ -79,7 +81,7 @@ class Application extends Controller
 		else
 		{
 			$this->usermodel->add_user($_POST);
-			$this->sendemail($_POST);
+			$this->sendemail($_POST, self::ADD);
 			$_SESSION['message'] = lang('account.user.added');
 			redirect('/');
 		}
@@ -104,7 +106,7 @@ class Application extends Controller
 			{
 				$this->usermodel->update_user($_POST);
 				$user = $this->usermodel->get_user($_POST['user_name'])->__toArray();
-				$this->sendemail($user, 1);
+				$this->sendemail($user, , self::EDIT);
 				$_SESSION['message'] = lang('account.user.updated');
 			}
 			redirect('application/edit/'.$_POST['user_name']);
@@ -144,7 +146,7 @@ class Application extends Controller
 			{
 				foreach($users as $user)
 				{
-					$this->sendemail($user);
+					$this->sendemail($user, self::ADD);
 				}
 			}
 			redirect('application');

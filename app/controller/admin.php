@@ -4,6 +4,8 @@ class Admin extends Controller
 {
 	private $adminmodel;
 	private $mailerdecorator;
+	private const EDIT = 1;
+	private const ADD = 0;
 
 	function __construct()
 	{
@@ -87,7 +89,7 @@ class Admin extends Controller
 		else
 		{
 			$this->adminmodel->add_user($_POST);
-			$this->sendemail($_POST);
+			$this->sendemail($_POST, self::ADD);
 			$_SESSION['message'] = lang('admin.user.added');
 			redirect('admin');
 		}
@@ -113,7 +115,7 @@ class Admin extends Controller
 				$this->adminmodel->update_user($_POST);
 				$admin = $this->adminmodel->get_user($this->adminmodel->get_email_by_id($_SESSION['admin_edit']['id']))->__toArray();
 				
-				$this->sendemail($admin, 1);
+				$this->sendemail($admin, , self::EDIT);
 				$_SESSION['message'] = lang('admin.user.updated');
 			}
 			redirect('admin/edit/'.$_POST['id']);
