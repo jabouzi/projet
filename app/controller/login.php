@@ -48,7 +48,7 @@ class Login extends Controller
 	private function check_login($email, $password)
 	{
 		$this->user = $this->adminmodel->get_user($email);
-		var_dump($this->user);
+		var_dump($this->user, $this->user->get_password());exit;
 		if (!$this->user)
 		{
 			$_SESSION['message'] = lang('login.failed');
