@@ -4,12 +4,14 @@ class Adminmodel extends Model
 {
 	private $admin;
 	private $admindao;
+	private $cache;
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->admin = new useradmin();
 		$this->admindao = new useradmindao();
+		$this->cache = new cachefactory();
 	}
 
 	public function add_user($userdata)
@@ -20,6 +22,8 @@ class Adminmodel extends Model
 		$builder->build();
 		$user = $builder->getUser();
 		$this->admindao->insert($user);
+		$this->cache->delete('select_admin_'.$userdata['email']);
+		$this->cache->delete('select_admin_all');
 	}
 
 	public function update_user($userdata)
@@ -30,26 +34,43 @@ class Adminmodel extends Model
 		$builder->build();
 		$user = $builder->getUser();
 		$this->admindao->update($user);
+		$this->cache->delete('select_admin_'.$userdata['email']);
+		$this->cache->delete('select_admin_all');
 	}
 	
 	public function delete_user($email)
 	{
 		$this->admindao->delete($email);
+		$this->cache->delete('select_admin_'.$email);
+		$this->cache->delete('select_admin_all');
 	}
 
 	public function get_user($email)
 	{
-		$user = $this->admindao->select_user($email);
+		if ($this->cache->get('select_admin_'.$email)) return $this->cache->get('select_admin_'.$email);
+		$result = $this->admindao->select_user($email);
+		$user = new useradminbuilder($result);
+		$builder->build();
+		$user = $builder->getUser();
+		$this->cache->save('select_admin_'.$email, $user);
 		return $user;
 	}
 
 	public function get_users()
 	{
-		$users = $this->admindao->select_all();
-		foreach($users as $key => $user)
+		if ($this->cache->get('select_admin_all')) return $this->cache->get('select_admin_all');
+		$results = $this->admindao->select_all();
+		foreach($results as $result)
 		{
-			if ($user->get_id() == $_SESSION['user']['id']) unset($users[$key]);
+			if($_SESSION['user']['id'] != $result['id'])
+			{
+				$result['password'] = $this->encrypt->decrypt($result['password']);
+				$builder = new useradminbuilder($result);
+				$builder->build();
+				$users[] = $builder->getUser();
+			}
 		}
+		$this->cache->save('select_admin_all', $users);
 		return $users;
 	}
 

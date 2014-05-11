@@ -9,6 +9,7 @@ class Userdatabuilder
 	{
 		$this->user_data = $user_data;
 	}
+
 	public function build()
 	{
 		$this->user = new Userdata();
@@ -20,6 +21,7 @@ class Userdatabuilder
 		$this->user->set_user_first_name($this->user_data['user_first_name']);
 		$this->user->set_user_last_name($this->user_data['user_last_name']);
 	}
+
 	public function getUser()
 	{
 		return $this->user;

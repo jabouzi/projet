@@ -4,12 +4,14 @@ class Usermodel extends Model
 {
 	private $userdata;
 	private $userdatadao;
+	private $cache;
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->userdata = new userdata();
 		$this->userdatadao = new userdatadao();
+		$this->cache = new cachefactory();
 	}
 
 	public function add_user($userdata)
@@ -18,8 +20,10 @@ class Usermodel extends Model
 		$builder = new userdatabuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
-		$this->userdatadao->insert_info($user);
+		$this->userdatadao->insert_user($user);
 		$this->userdatadao->insert_vhost($user);
+		$this->cache->delete('select_data_'.$userdata['user_name']);
+		$this->cache->delete('select_data_all');
 	}
 
 	public function update_user($userdata)
@@ -28,23 +32,45 @@ class Usermodel extends Model
 		$builder = new userdatabuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
-		$this->userdatadao->update_info($user);
+		$this->userdatadao->update_user($user);
 		$this->userdatadao->update_vhost($user);
+		$this->cache->delete('select_data_'.$userdata['user_name']);
+		$this->cache->delete('select_data_all');
 	}
 	
 	public function delete_user($user_name)
 	{
 		$this->userdatadao->delete_info($user_name);
+		$this->cache->delete('select_data_'.$userdata['user_name']);
+		$this->cache->delete('select_data_all');
 	}
 
 	public function get_user($user_name)
 	{
-		return $this->userdatadao->select_user($user_name);
+		if ($this->cache->get('select_data_'.$user_name)) return $this->cache->get('select_data_'.$user_name);
+		$result = $this->userdatadao->select_user($user_name);
+		$builder = new userdatabuilder($result);
+		$builder->build();
+		$user = $builder->getUser();
+		$this->cache->save('select_data_'.$user_name, $user);
+		return $user;
 	}
 
 	public function get_users()
 	{
-		return $this->userdatadao->select_all();
+		if ($this->cache->get('select_data_all')) return $this->cache->get('select_data_all');
+		$users = array();
+		$results = $this->userdatadao->select_all();
+		foreach($results as $result)
+		{
+			$result['user_password'] = $this->encrypt->decrypt($result['user_pwd']);
+			$result['user_vhost'] = array();
+			$builder = new userdatabuilder($result);
+			$builder->build();
+			$users[] = $builder->getUser();
+		}
+		$this->cache->save('select_data_all', $users);
+		return $users;
 	}
 
 	public function user_email_exists($user_email, $user_name = '')
