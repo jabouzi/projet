@@ -13,7 +13,7 @@ class Userdatadao {
 
 	public function insert_user($user)
 	{
-		$args_info = array(
+		$args = array(
 			':user_name' => $user->get_user_name(),
 			':password' => $user->get_user_password(),
 			':group' => $user->get_user_group(),
@@ -23,7 +23,7 @@ class Userdatadao {
 			':pwd' => $this->encrypt->encrypt($user->get_user_password()),
 		);
 		$query = "INSERT INTO user_info VALUES (:user_name, encrypt(:password), :group, :first_name, :last_name, :email, :pwd)";
-		$insert = $this->db->query($query, $args_info);
+		$insert = $this->db->query($query, $args);
 		return $insert;
 	}
 
@@ -32,9 +32,9 @@ class Userdatadao {
 		$insert = 0;
 		foreach($user->get_user_vhost() as $vhost)
 		{
-			$args_vhost = array(':user_name' => $user->get_user_name(), ':vhost' => $vhost);
+			$args = array(':user_name' => $user->get_user_name(), ':vhost' => $vhost);
 			$query = "INSERT INTO user_vhost VALUES (:user_name, :vhost)";
-			$insert += $this->db->query($query, $args_vhost);
+			$insert += $this->db->query($query, $args);
 		}
 		return ($insert == count($user->get_user_vhost()));
 	}
@@ -55,6 +55,7 @@ class Userdatadao {
 			$args[':pwd'] = $this->encrypt->encrypt($user->get_user_password());
 			$password = ', user_password = encrypt(:password), user_pwd = :pwd';
 		}
+		var_dump($args);exit;
 		$query = "UPDATE user_info SET
 				user_group = :group, user_email = :email, user_first_name = :first_name, user_last_name = :last_name {$password}
 				WHERE user_name = :user_name";
