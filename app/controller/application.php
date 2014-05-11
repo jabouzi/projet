@@ -106,7 +106,6 @@ class Application extends Controller
 			{
 				$this->usermodel->update_user($_POST);
 				$user = $this->usermodel->get_user($_POST['user_name'])->__toArray();
-				var_dump($user);exit;
 				$this->sendemail($user, self::EDIT);
 				$_SESSION['message'] = lang('account.user.updated');
 			}

@@ -49,7 +49,6 @@ class Usermodel extends Model
 	{
 		if ($this->cache->get('select_data_'.$user_name)) return $this->cache->get('select_data_'.$user_name);
 		$result = $this->userdatadao->select_user($user_name);
-		var_dump($result);
 		$builder = new userdatabuilder($result);
 		$builder->build();
 		$user = $builder->getUser();
