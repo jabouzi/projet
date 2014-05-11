@@ -4,8 +4,8 @@ class Application extends Controller
 {
 	private $usermodel;
 	private $mailerdecorator;
-	private const EDIT = 1;
-	private const ADD = 0;
+	const EDIT = 1;
+	const ADD = 0;
 
 	function __construct()
 	{
