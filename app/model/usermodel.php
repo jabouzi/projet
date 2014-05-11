@@ -5,7 +5,6 @@ class Usermodel extends Model
 	private $userdata;
 	private $userdatadao;
 	private $cache;
-	private $encrypt;
 
 	public function __construct()
 	{
@@ -13,7 +12,6 @@ class Usermodel extends Model
 		$this->userdata = new userdata();
 		$this->userdatadao = new userdatadao();
 		$this->cache = new cachefactory();
-		$this->encrypt = new encryption();
 	}
 
 	public function add_user($userdata)
@@ -51,6 +49,7 @@ class Usermodel extends Model
 	{
 		if ($this->cache->get('select_data_'.$user_name)) return $this->cache->get('select_data_'.$user_name);
 		$result = $this->userdatadao->select_user($user_name);
+		var_dump($result);
 		$builder = new userdatabuilder($result);
 		$builder->build();
 		$user = $builder->getUser();
@@ -65,7 +64,6 @@ class Usermodel extends Model
 		$results = $this->userdatadao->select_all();
 		foreach($results as $result)
 		{
-			$result['user_password'] = $this->encrypt->decrypt($result['user_pwd']);
 			$result['user_vhost'] = array();
 			$builder = new userdatabuilder($result);
 			$builder->build();

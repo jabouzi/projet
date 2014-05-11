@@ -5,15 +5,13 @@ class Adminmodel extends Model
 	private $admin;
 	private $admindao;
 	private $cache;
-	private $encrypt;
-	
+
 	public function __construct()
 	{
 		parent::__construct();
 		$this->admin = new useradmin();
 		$this->admindao = new useradmindao();
 		$this->cache = new cachefactory();
-		$this->encrypt = new encryption();
 	}
 
 	public function add_user($userdata)
@@ -66,7 +64,6 @@ class Adminmodel extends Model
 		{
 			if($_SESSION['user']['id'] != $result['id'])
 			{
-				$result['password'] = $this->encrypt->decrypt($result['password']);
 				$builder = new useradminbuilder($result);
 				$builder->build();
 				$users[] = $builder->getUser();
