@@ -43,7 +43,6 @@ class Application extends Controller
 		$user = $this->usermodel->get_user($user_name);
 		$data['user'] = $user;
 		$_SESSION['user_edit'] = $user->__toArray();
-		var_dump($_SESSION['user_edit']);
 		view::load_view('default/standard/header');
 		view::load_view('default/standard/menu');
 		view::load_view('default/accounts/edit', $data);
