@@ -51,7 +51,7 @@ class Adminmodel extends Model
 	{
 		if ($this->cache->get('select_admin_'.$email)) return $this->cache->get('select_admin_'.$email);
 		$result = $this->admindao->select_user($email);
-		$user = new useradminbuilder($result);
+		$builder = new useradminbuilder($result);
 		$builder->build();
 		$user = $builder->getUser();
 		$this->cache->save('select_admin_'.$email, $user);
