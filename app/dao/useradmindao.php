@@ -38,7 +38,6 @@ class Useradmindao {
 				':status' => $user->get_status(),
 				':id' => $user->get_id()
 			);
-		var_dump($args);
 		if (!isempty($user->get_password()))
 		{
 			$args[':password'] = $this->encrypt->encrypt($user->get_password());

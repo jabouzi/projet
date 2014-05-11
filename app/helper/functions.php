@@ -47,9 +47,7 @@ function compare_user_data($user1, $user2)
 function compare_user_admin($user1, $user2)
 {	
 	if (isempty($user1['password'])) $user2['password'] = '';
-	unset($user1['admin']);
-	unset($user2['admin']);
-	unset($user1['status']);
-	unset($user2['status']);
+	if (!isset($user1['admin'])) unset($user2['admin']);
+	if (!isset($user1['status'])) unset($user2['status']);
 	return array_merge(array_diff_assoc($user1, $user2), array_diff_assoc($user2, $user1));
 }
