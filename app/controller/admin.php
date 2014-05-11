@@ -110,12 +110,15 @@ class Admin extends Controller
 		}
 		else
 		{
-			var_dump(compare_user_admin($_POST, $_SESSION['admin_edit']));
-			if (count(compare_user_admin($_POST, $_SESSION['admin_edit'])))
+			$diff = compare_user_admin($_POST, $_SESSION['admin_edit']);
+			if (count($diff))
 			{
 				$this->adminmodel->update_user($_POST);
 				$admin = $this->adminmodel->get_user($this->adminmodel->get_email_by_id($_SESSION['admin_edit']['id']))->__toArray();
-				$this->sendemail($admin, self::EDIT);
+				if (!in_array('admin', $diff) || !in_array('status', $diff))
+				{
+					$this->sendemail($admin, self::EDIT);
+				}
 				$_SESSION['message'] = lang('admin.user.updated');
 			}
 			redirect('admin/edit/'.$_POST['id']);
