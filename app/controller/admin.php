@@ -110,6 +110,7 @@ class Admin extends Controller
 		}
 		else
 		{
+			var_dump(compare_user_admin($_POST, $_SESSION['admin_edit']));
 			if (count(compare_user_admin($_POST, $_SESSION['admin_edit'])))
 			{
 				$this->adminmodel->update_user($_POST);
