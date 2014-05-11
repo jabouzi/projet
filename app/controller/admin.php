@@ -114,7 +114,6 @@ class Admin extends Controller
 			{
 				$this->adminmodel->update_user($_POST);
 				$admin = $this->adminmodel->get_user($this->adminmodel->get_email_by_id($_SESSION['admin_edit']['id']))->__toArray();
-				
 				$this->sendemail($admin, self::EDIT);
 				$_SESSION['message'] = lang('admin.user.updated');
 			}
