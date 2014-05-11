@@ -41,7 +41,7 @@ class Usermodel extends Model
 	public function delete_user($user_name)
 	{
 		$this->userdatadao->delete_user($user_name);
-		$this->cache->delete('select_data_'.$userdata['user_name']);
+		$this->cache->delete('select_data_'.$user_name);
 		$this->cache->delete('select_data_all');
 	}
 
