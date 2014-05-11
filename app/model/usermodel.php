@@ -5,6 +5,7 @@ class Usermodel extends Model
 	private $userdata;
 	private $userdatadao;
 	private $cache;
+	private $encrypt;
 
 	public function __construct()
 	{
@@ -12,6 +13,7 @@ class Usermodel extends Model
 		$this->userdata = new userdata();
 		$this->userdatadao = new userdatadao();
 		$this->cache = new cachefactory();
+		$this->encrypt = new encryption();
 	}
 
 	public function add_user($userdata)

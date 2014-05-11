@@ -5,13 +5,15 @@ class Adminmodel extends Model
 	private $admin;
 	private $admindao;
 	private $cache;
-
+	private $encrypt;
+	
 	public function __construct()
 	{
 		parent::__construct();
 		$this->admin = new useradmin();
 		$this->admindao = new useradmindao();
 		$this->cache = new cachefactory();
+		$this->encrypt = new encryption();
 	}
 
 	public function add_user($userdata)
