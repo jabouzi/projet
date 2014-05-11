@@ -60,7 +60,7 @@ class Login extends Controller
 			$_SESSION['message'] = lang('login.account.nonactive');
 			redirect('login');
 		}
-		else if ($this->encrypt->decrypt($this->user->get_password()) != $password)
+		else if ($this->user->get_password() != $password)
 		{
 			$_SESSION['message'] = lang('login.failed');
 			redirect('login');
