@@ -4,11 +4,13 @@ class Useradmindao {
 
 	private $db;
 	private $cache;
+	private $encrypt;
 
 	function __construct()
 	{
 		$this->db = Database::getInstance();
 		$this->cache = new cachefactory();
+		$this->encrypt = new encryption();
 	}
 
 	public function insert($user)
@@ -17,7 +19,7 @@ class Useradmindao {
 				':email' => $user->get_email(),
 				':first_name' => $user->get_first_name(),
 				':last_name' => $user->get_last_name(),
-				':password' => $user->get_password(),
+				':password' => $this->encrypt->encrypt($user->get_password()),
 				':admin' => $user->get_admin(),
 				':status' => $user->get_status()
 			);
@@ -42,7 +44,7 @@ class Useradmindao {
 			);
 		if (!isempty($user->get_password()))
 		{
-			$args[':password'] = $user->get_password();
+			$args[':password'] = $this->encrypt->encrypt($user->get_password());
 			$password = ', password = :password';
 		}
 		$query = "UPDATE user_admin SET
@@ -76,6 +78,7 @@ class Useradmindao {
 		if (!count($results)) return false;
 		foreach($results as $result)
 		{
+			$result['password'] = $this->encrypt->decrypt($result['password']);
 			$builder = new useradminbuilder($result);
 			$builder->build();
 			$users[] = $builder->getUser();
@@ -93,6 +96,7 @@ class Useradmindao {
 		$query = "SELECT * FROM user_admin WHERE email = :email";
 		$result = $this->db->query($query, $args);
 		if (!count($result)) return false;
+		$result[0]['password'] = $this->encrypt->decrypt($result[0]['password']);
 		$builder = new useradminbuilder($result[0]);
 		$builder->build();
 		$user = $builder->getUser();

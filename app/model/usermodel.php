@@ -2,14 +2,14 @@
 
 class Usermodel extends Model
 {
-	private $account;
-	private $accountdao;
+	private $userdata;
+	private $userdatadao;
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->account = new userdata();
-		$this->accountdao = new userdatadao();
+		$this->userdata = new userdata();
+		$this->userdatadao = new userdatadao();
 	}
 
 	public function add_user($userdata)
@@ -18,8 +18,8 @@ class Usermodel extends Model
 		$builder = new userdatabuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
-		$this->accountdao->insert_info($user);
-		$this->accountdao->insert_vhost($user);
+		$this->userdatadao->insert_info($user);
+		$this->userdatadao->insert_vhost($user);
 	}
 
 	public function update_user($userdata)
@@ -28,23 +28,23 @@ class Usermodel extends Model
 		$builder = new userdatabuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
-		$this->accountdao->update_info($user);
-		$this->accountdao->update_vhost($user);
+		$this->userdatadao->update_info($user);
+		$this->userdatadao->update_vhost($user);
 	}
 	
 	public function delete_user($user_name)
 	{
-		$this->accountdao->delete_info($user_name);
+		$this->userdatadao->delete_info($user_name);
 	}
 
 	public function get_user($user_name)
 	{
-		return $this->accountdao->select_account($user_name);
+		return $this->userdatadao->select_user($user_name);
 	}
 
 	public function get_users()
 	{
-		return $this->accountdao->select_all();
+		return $this->userdatadao->select_all();
 	}
 
 	public function user_email_exists($user_email, $user_name = '')

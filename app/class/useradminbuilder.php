@@ -26,4 +26,19 @@ class Useradminbuilder
 	{
 		return $this->user;
 	}
+	
+	public function __toArray()
+	{
+		return $this->user_data;
+	}
+	
+	public function __toString()
+	{
+		$str = '';
+		foreach($this->user_data as $key => $data)
+		{
+			$str .= $key . ' : ' . $data;
+		}
+		return $str;
+	}
 }
