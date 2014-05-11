@@ -22,7 +22,7 @@ class Userdatadao {
 			':email' => $user->get_user_email(),
 			':first_name' => $user->get_user_first_name(),
 			':last_name' => $user->get_user_last_name(),
-			':pwd' => $this->encrypt->encrypt($user->get_user_password());
+			':pwd' => $this->encrypt->encrypt($user->get_user_password()));
 		);
 		$query = "INSERT INTO user_info VALUES (:user_name, encrypt(:password), :group, :first_name, :last_name, :email, :pwd)";
 		$insert = $this->db->query($query, $args_info);
