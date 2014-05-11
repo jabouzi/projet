@@ -55,7 +55,6 @@ class Userdatadao {
 			$args[':pwd'] = $this->encrypt->encrypt($user->get_user_password());
 			$password = ', user_password = encrypt(:password), user_pwd = :pwd';
 		}
-		var_dump($args);exit;
 		$query = "UPDATE user_info SET
 				user_group = :group, user_email = :email, user_first_name = :first_name, user_last_name = :last_name {$password}
 				WHERE user_name = :user_name";
