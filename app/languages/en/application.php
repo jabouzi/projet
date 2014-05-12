@@ -35,6 +35,7 @@ $lang['form.is.admin'] = 'Is admin';
 $lang['form.active'] = 'Active';
 $lang['form.delete.account'] = 'Delete this account';
 $lang['form.delete.admin'] = 'Delete this admin';
+$lang['form.cancel.delete'] = 'Cancel delete ';
 $lang['form.check.required.fields'] = 'Check required fields';
 $lang['account.security.detected'] = 'Security issue detected';
 $lang['account.email.exists'] = 'Account email exists';

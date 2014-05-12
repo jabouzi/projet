@@ -35,6 +35,7 @@ $lang['form.is.admin'] = 'Est admin';
 $lang['form.active'] = 'Actif';
 $lang['form.delete.account'] = 'Supprimer ce compte';
 $lang['form.delete.admin'] = 'Supprimer cet admin';
+$lang['form.cancel.delete'] = 'Annuler la suppression ';
 $lang['form.check.required.fields'] = 'Vérifiez les champs obligatoires';
 $lang['account.security.detected'] = 'Security issue detected';
 $lang['account.email.exists'] = 'Courriel du compte existant';
