@@ -5,6 +5,7 @@ class Usermodel extends Model
 	private $userdata;
 	private $userdatadao;
 	private $cache;
+	private $log;
 
 	public function __construct()
 	{
@@ -12,6 +13,7 @@ class Usermodel extends Model
 		$this->userdata = new userdata();
 		$this->userdatadao = new userdatadao();
 		$this->cache = new cachefactory();
+		$this->log = Phplog::getInstance();
 	}
 
 	public function add_user($userdata)
@@ -24,6 +26,7 @@ class Usermodel extends Model
 		$this->userdatadao->insert_vhost($user);
 		$this->cache->delete('select_data_'.$userdata['user_name']);
 		$this->cache->delete('select_data_all');
+		$this->log->save('ADD USER', $userdata);
 	}
 
 	public function update_user($userdata)
@@ -36,6 +39,7 @@ class Usermodel extends Model
 		$this->userdatadao->update_vhost($user);
 		$this->cache->delete('select_data_'.$userdata['user_name']);
 		$this->cache->delete('select_data_all');
+		$this->log->save('UPDATE USER', $userdata);
 	}
 	
 	public function delete_user($user_name)
@@ -43,6 +47,7 @@ class Usermodel extends Model
 		$this->userdatadao->delete_user($user_name);
 		$this->cache->delete('select_data_'.$user_name);
 		$this->cache->delete('select_data_all');
+		$this->log->save('DELETE USER', $user_name);
 	}
 
 	public function get_user($user_name)

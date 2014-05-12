@@ -1,14 +1,12 @@
 <?php
 
-class phplog
+class Phplog
 {
 	private static $instance;
-	private $logText;
 	private $db;
 
 	function __construct()
 	{
-		$this->logText = array();
 		$this->db = Database::getInstance();
 	}
 
@@ -24,26 +22,11 @@ class phplog
 		return self::$instance;
 	}
 
-	public function add($text)
+	function save($logAction, $logText)
 	{
-		$this->logText[] = $text;
-	}
-
-	public function getLog()
-	{
-		return $this->logText;
-	}
-
-	function save()
-	{
-		$args = array(':user' => print_r($_SESSION['user'], true), ':data' => print_r($this->getLog(), true));
-		$query = "INSERT INTO log (id, user, data) VALUES('', :user, :data)";
+		$args = array(':user' => print_r($_SESSION['user'], true), ':action' => $logAction, ':data' => print_r($logText, true));
+		$query = "INSERT INTO log (id, user, data) VALUES('', :user, :action, :data)";
 		$insert = $this->db->query($query, $args);
 		$this->clean();
-	}
-
-	public function clean()
-	{
-		$this->logText = array();
 	}
 }

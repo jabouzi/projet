@@ -5,6 +5,7 @@ class Adminmodel extends Model
 	private $admin;
 	private $admindao;
 	private $cache;
+	private $log;
 
 	public function __construct()
 	{
@@ -12,6 +13,7 @@ class Adminmodel extends Model
 		$this->admin = new useradmin();
 		$this->admindao = new useradmindao();
 		$this->cache = new cachefactory();
+		$this->log = Phplog::getInstance();
 	}
 
 	public function add_user($userdata)
@@ -24,6 +26,7 @@ class Adminmodel extends Model
 		$this->admindao->insert($user);
 		$this->cache->delete('select_admin_'.$userdata['email']);
 		$this->cache->delete('select_admin_all');
+		$this->log->save('ADD ADMIN', $userdata);
 	}
 
 	public function update_user($userdata)
@@ -36,13 +39,15 @@ class Adminmodel extends Model
 		$this->admindao->update($user);
 		$this->cache->delete('select_admin_'.$userdata['email']);
 		$this->cache->delete('select_admin_all');
+		$this->log->save('UPDATE ADMIN', $userdata);
 	}
-	
+
 	public function delete_user($email)
 	{
 		$this->admindao->delete($email);
 		$this->cache->delete('select_admin_'.$email);
 		$this->cache->delete('select_admin_all');
+		$this->log->save('UPDATE ADMIN', $email);
 	}
 
 	public function get_user($email)
@@ -88,7 +93,7 @@ class Adminmodel extends Model
 		$count = $this->db->query($query, $args);
 		return intval($count[0]['count']);
 	}
-	
+
 	public function get_email_by_id($id)
 	{
 		$args = array(
