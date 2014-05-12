@@ -64,6 +64,7 @@ class Adminmodel extends Model
 	public function get_users()
 	{
 		if ($this->cache->get('select_admin_all')) return $this->cache->get('select_admin_all');
+		$users = array();
 		$results = $this->admindao->select_all();
 		foreach($results as $result)
 		{
